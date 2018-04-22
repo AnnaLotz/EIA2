@@ -13,11 +13,11 @@ namespace Aufg3Memory {
 
     // Variablen deklarieren ***************************
 
-    let cardContent: string[] = ["Panda", "Koala", "Leopard", "Delfin", "Hase", "Adler", "Katze", "Hund", "Elefant", "Maus"];
+    let cardContent: string[] = ["Tetris", "Pong", "Mario", "Zelda", "Minecraft", "Sims",  "Portal", "SimCity", "Sonic",  "Assassins Creed"];
 
     let cardArray: HTMLElement[] = []; //Divs für Karten, leeres Array, in das die letztendlich für das Spiel benötigten Karten als divs hineingespeichert werden
 
-    let openArray: string[] = [];     //leeres Array um später den karteninhalt vergleichen zu können
+   // let openArray: string[] = [];     //leeres Array um später den karteninhalt vergleichen zu können
     let openCards: number = 0;      //später hochzählen, wie viele karten offen sind um nicht mehr als 2 karten offen zu haben
 
     let numPairs: number;
@@ -36,12 +36,12 @@ namespace Aufg3Memory {
 
     function main(): void {
 
-        numPairs = parseInt(prompt("Bitte die Anzahl der Kartenpaare eingeben", "5" /* "5 - 10 Kartenpaare " */), 10);
+        numPairs = parseInt(prompt("Bitte Anzahl Kartenpaare eingeben (5 bis 10)", "7"), 10);
         if (numPairs < 5 || numPairs > 10) {
             numPairs = 8;
         } //Pop-up abfrage kartenpaare
 
-        numPlayers = parseInt(prompt("Bitte die Anzahl der Spieler eingeben", "2" /*"nicht mehr als 4 Spieler"*/), 10);
+        numPlayers = parseInt(prompt("Bitte Anzahl der Spieler eingeben (1 bis 4)", "2"), 10);
         numPlayers > 4 ? numPlayers = 4 : numPlayers = numPlayers; //Pop-up spielerzahl
 
         playerInfo = document.getElementById("player-info");  // DOM abhängige Varaiblen deklarieren
@@ -127,7 +127,7 @@ namespace Aufg3Memory {
         }
         if (openCards == 2) {
             console.log("2 Karten sind offen und werden verglichen");
-            setTimeout(compareCards, 100);
+            setTimeout(compareCards, 1300);
         }
 
         if (openCards > 2) {
@@ -141,23 +141,24 @@ namespace Aufg3Memory {
     function compareCards(): void {
         let openArray: HTMLElement[] = filterCardsByClass("visible");
 
-        if (openArray[0].children[0].innerHTML == openArray[1].children[0].innerHTML) {
+        if (openArray[0].children[0].innerHTML == openArray[1].children[0].innerHTML) { //Vergleichen von Element 0 und 1 im openArray
             console.log("Die Karten sind gleich");
             for (let p: number = 0; p < openArray.length; p++) { //als Schleife damit beide Karten als taken deklariert werden
-                openArray[p].classList.remove("visible");
+                openArray[p].classList.remove("visible");       //karten als Taken deklarieren
                 openArray[p].classList.add("taken");
             }
         }
         else {
             console.log("Karten sind nicht identisch");
             for (let p: number = 0; p < openArray.length; p++) { //als Schleife damit beide Karten wieder verdeckt werden
-                openArray[p].classList.remove("visible");
+                openArray[p].classList.remove("visible");       //karten Verdecken
                 openArray[p].classList.add("hidden");
             }
         }
 
         let cardsTaken: HTMLElement[] = filterCardsByClass("hidden");
-        if (cardsTaken.length == 0) {                                        //Pop up mit "Win" wenn alle karten Taken sind
+        if (cardsTaken.length == 0) {   
+            console.log("Spiel gewonnen");                                     //Pop up mit "Win" wenn alle karten Taken sind
             alert("Glueckwunsch! Du hast gewonnen.");
         }
         

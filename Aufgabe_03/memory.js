@@ -9,9 +9,9 @@ var Aufg3Memory;
 (function (Aufg3Memory) {
     document.addEventListener("DOMContentLoaded", main);
     // Variablen deklarieren ***************************
-    let cardContent = ["Panda", "Koala", "Leopard", "Delfin", "Hase", "Adler", "Katze", "Hund", "Elefant", "Maus"];
+    let cardContent = ["Tetris", "Pong", "Mario", "Zelda", "Minecraft", "Sims", "Portal", "SimCity", "Sonic", "Assassins Creed"];
     let cardArray = []; //Divs f�r Karten, leeres Array, in das die letztendlich f�r das Spiel ben�tigten Karten als divs hineingespeichert werden
-    let openArray = []; //leeres Array um sp�ter den karteninhalt vergleichen zu k�nnen
+    // let openArray: string[] = [];     //leeres Array um sp�ter den karteninhalt vergleichen zu k�nnen
     let openCards = 0; //sp�ter hochz�hlen, wie viele karten offen sind um nicht mehr als 2 karten offen zu haben
     let numPairs;
     let numPlayers;
@@ -21,11 +21,11 @@ var Aufg3Memory;
     let cardField;
     // Hauptfunktion *******************************
     function main() {
-        numPairs = parseInt(prompt("Bitte die Anzahl der Kartenpaare eingeben", "5" /* "5 - 10 Kartenpaare " */), 10);
+        numPairs = parseInt(prompt("Bitte Anzahl Kartenpaare eingeben (5 bis 10)", "7"), 10);
         if (numPairs < 5 || numPairs > 10) {
             numPairs = 8;
         } //Pop-up abfrage kartenpaare
-        numPlayers = parseInt(prompt("Bitte die Anzahl der Spieler eingeben", "2" /*"nicht mehr als 4 Spieler"*/), 10);
+        numPlayers = parseInt(prompt("Bitte Anzahl der Spieler eingeben (1 bis 4)", "2"), 10);
         numPlayers > 4 ? numPlayers = 4 : numPlayers = numPlayers; //Pop-up spielerzahl
         playerInfo = document.getElementById("player-info"); // DOM abh�ngige Varaiblen deklarieren
         cardField = document.getElementById("card-div");
@@ -95,7 +95,7 @@ var Aufg3Memory;
         }
         if (openCards == 2) {
             console.log("2 Karten sind offen und werden verglichen");
-            setTimeout(compareCards, 100);
+            setTimeout(compareCards, 1300);
         }
         if (openCards > 2) {
             console.log("2 Karten sind schon offen, keine weitere �ffnen");
@@ -108,19 +108,20 @@ var Aufg3Memory;
         if (openArray[0].children[0].innerHTML == openArray[1].children[0].innerHTML) {
             console.log("Die Karten sind gleich");
             for (let p = 0; p < openArray.length; p++) {
-                openArray[p].classList.remove("visible");
+                openArray[p].classList.remove("visible"); //karten als Taken deklarieren
                 openArray[p].classList.add("taken");
             }
         }
         else {
             console.log("Karten sind nicht identisch");
             for (let p = 0; p < openArray.length; p++) {
-                openArray[p].classList.remove("visible");
+                openArray[p].classList.remove("visible"); //karten Verdecken
                 openArray[p].classList.add("hidden");
             }
         }
         let cardsTaken = filterCardsByClass("hidden");
         if (cardsTaken.length == 0) {
+            console.log("Spiel gewonnen"); //Pop up mit "Win" wenn alle karten Taken sind
             alert("Glueckwunsch! Du hast gewonnen.");
         }
         openArray = []; // Array leeren
