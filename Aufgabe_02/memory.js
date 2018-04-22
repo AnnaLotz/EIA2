@@ -5,45 +5,30 @@
   Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
   Dieser Code wurde in Zusammenarbeit mit Abreitsgruppe Gruen und unter Anleitung von Melvin Busch erstellt.
   */
+//Aufbau immer so bitte! : DOM, eventListener, alle Variablen benennen, alle Funtionen
 var Memory;
 (function (Memory) {
+    document.addEventListener("DOMContentLoaded", main);
     // Variablen deklarieren
     let cardContent = ["Panda", "Koala", "Leopard", "Delfin", "Hase", "Adler", "Katze", "Hund", "Elefant", "Maus"];
-    let cardArray = [];
+    let cardArray = []; //Divs f�r Karten
     // leeres Array, in das die letztendlich f�r das Spiel ben�tigten Karten als divs hineingespeichert werden
     let numPairs;
     let numPlayers;
+    let name = "Spieler ";
+    let score = 0;
     let playerInfo;
     let cardField;
     function createCard(textDerAufDieKarteSoll, _state) {
         let card = document.createElement("div");
         // div erzeugen
-        card.innerText = textDerAufDieKarteSoll;
+        card.innerText = textDerAufDieKarteSoll; //Funktion wird auf die Karte gegeben
         // Text aus dem Array soll auf eine Karte
         card.setAttribute("class", "card " + _state);
-        // Attribut hinzuf�gen: class = Welches Attribut (hier eine Klasse); card = zugeh�riger Wert
+        // Attribut hinzuf�gen: class = Welches Attribut (hier eine Klasse); card = zugeh�riger Wert (Hidden, taken, open)
         cardArray.push(card);
-        // cardArray = Array vom Anfang; Speicher f�r alle erzeugten Karten
+        // cardArray = Array vom Anfang; Speicher f�r alle erzeugten Karten; pusht die Karte hoch
     }
-    /******** Dieser Part wurde von Melvin Busch �bernommen, da wir nicht wissen, wie es anders gel�st werden kann *********/
-    class Player {
-        constructor(_name) {
-            this.name = _name;
-            this.score = 0;
-        }
-        scoreUp() {
-            this.score += 10;
-            return this.score;
-        }
-        show() {
-            this.player = document.createElement("div");
-            this.player.innerHTML = `
-          <span class="player-name">${this.name}</span>
-          <span class="player-score">Punkte: ${this.score}</span>`;
-            playerInfo.appendChild(this.player);
-        }
-    }
-    /*************** Part Ende *************/
     // Shuffle Arrays
     function randomMix(_array) {
         // _array = das Array, das durchmischt werden soll
@@ -71,6 +56,18 @@ var Memory;
             return "visible";
         }
     }
+    function createPlayer(_score, _name) {
+        //div f�r anzeige pro spieler
+        let player = document.createElement("div");
+        //div f�r spieler
+        let scoreField = document.createElement("div");
+        //div f�r Punktzahl
+        let n = _score.toString(); //.toString wandelt number in string um
+        player.innerText = _name;
+        scoreField.innerText = n; //score ist die number n als string
+        playerInfo.appendChild(player); //spieler in die playerinfo anh�ngen
+        playerInfo.appendChild(scoreField); //score in die playerinfo anh�ngen
+    }
     function main() {
         // Spieler soll Anzahl der Kartenpaare eingeben
         numPairs = parseInt(prompt("Bitte die Anzahl der Kartenpaare eingeben", "5 - 10 Kartenpaare"), 10);
@@ -83,11 +80,15 @@ var Memory;
         // DOM abh�ngige Varaiblen deklarieren
         playerInfo = document.getElementById("player-info");
         cardField = document.getElementById("card-div");
-        // Spielkarten erzeugen
+        // Spielkarten + spielerinfo erzeugen
         for (let i = 0; i < numPairs; i++) {
             createCard(cardContent[i], randomState());
             // word an der Stelle i - wird als �bergabeparameter mitgegeben
             createCard(cardContent[i], randomState());
+        }
+        //Spielerinfo erzeugen
+        for (let i = 0; i < numPlayers; i++) {
+            createPlayer(score, name + [i + 1]);
         }
         // Karten mischen
         randomMix(cardArray);
@@ -95,12 +96,6 @@ var Memory;
         for (let i = 0; i < cardArray.length; i++) {
             cardField.appendChild(cardArray[i]);
         }
-        // Spieler Anzeige generieren
-        for (let i = 0; i < numPlayers; i++) {
-            let player = new Player("Spieler " + (i + 1));
-            player.show();
-        }
     }
-    document.addEventListener("DOMContentLoaded", main);
 })(Memory || (Memory = {}));
 //# sourceMappingURL=memory.js.map
