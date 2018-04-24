@@ -100,6 +100,10 @@ h2 {
 	color: #d00000;
 }
 
+.hidden span {
+	display: none;
+}
+
 .taken {
 	height: 175px;
 	width: 175px;
