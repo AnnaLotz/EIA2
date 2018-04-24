@@ -13,12 +13,13 @@ namespace Aufg3Memory {
 
     // Variablen deklarieren ***************************
 
-    let cardContent: string[] = ["Tetris", "Pong", "Mario", "Zelda", "Minecraft", "Sims",  "Portal", "SimCity", "Sonic",  "Assassins Creed"];
+    let cardContent: string[] = ["Tetris", "Pong", "Mario", "Zelda", "Minecraft", "Sims", "Portal", "SimCity", "Sonic", "Assassins Creed"];
 
     let cardArray: HTMLElement[] = []; //Divs für Karten, leeres Array, in das die letztendlich für das Spiel benötigten Karten als divs hineingespeichert werden
 
-   // let openArray: string[] = [];     //leeres Array um später den karteninhalt vergleichen zu können
+    // let openArray: string[] = [];     //leeres Array um später den karteninhalt vergleichen zu können
     let openCards: number = 0;      //später hochzählen, wie viele karten offen sind um nicht mehr als 2 karten offen zu haben
+    let openArray: string[] = [];
 
     let numPairs: number;
     let numPlayers: number;
@@ -117,12 +118,19 @@ namespace Aufg3Memory {
         let cardClass: HTMLElement = <HTMLElement>_event.target;    //auf das HTML element zugreifen, dass das event auslöst
         if (cardClass.classList.contains("card")) {          //.classList gibt die Klasse zurück
             openCards++;
-            //console.log("ClickHandler - Klasse enthaelt card = true");
+            // console.log("ClickHandler - Klasse enthaelt card = true");
             if (cardClass.classList.contains("hidden")) {
                 //wenn Klasse hidden ist, mache das:   
-                //console.log("ClickHandler - Klasse Hidden=true => Karte aufgedeckt"); 
+                // console.log("ClickHandler - Klasse Hidden=true => Karte aufgedeckt"); 
                 cardClass.classList.remove("hidden"); //remove klasse hidden
                 cardClass.classList.add("visible");     //karte visible
+               // console.log(cardClass.classList);
+
+            }
+
+            else if (cardClass.classList.contains("visible")) {
+               // console.log("Die gleiche Karte wurde 2 mal angeklickt");
+                openCards = 1;
             }
         }
         if (openCards == 2) {
@@ -157,11 +165,11 @@ namespace Aufg3Memory {
         }
 
         let cardsTaken: HTMLElement[] = filterCardsByClass("hidden");
-        if (cardsTaken.length == 0) {   
+        if (cardsTaken.length == 0) {
             console.log("Spiel gewonnen");                                     //Pop up mit "Win" wenn alle karten Taken sind
             alert("Glueckwunsch! Du hast gewonnen.");
         }
-        
+
         openArray = []; // Array leeren
         openCards = 0; //zähler auf 0 setzen
     }

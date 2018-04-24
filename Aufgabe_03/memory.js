@@ -13,6 +13,7 @@ var Aufg3Memory;
     let cardArray = []; //Divs f�r Karten, leeres Array, in das die letztendlich f�r das Spiel ben�tigten Karten als divs hineingespeichert werden
     // let openArray: string[] = [];     //leeres Array um sp�ter den karteninhalt vergleichen zu k�nnen
     let openCards = 0; //sp�ter hochz�hlen, wie viele karten offen sind um nicht mehr als 2 karten offen zu haben
+    let openArray = [];
     let numPairs;
     let numPlayers;
     let name = "Spieler ";
@@ -85,12 +86,16 @@ var Aufg3Memory;
         let cardClass = _event.target; //auf das HTML element zugreifen, dass das event ausl�st
         if (cardClass.classList.contains("card")) {
             openCards++;
-            //console.log("ClickHandler - Klasse enthaelt card = true");
+            // console.log("ClickHandler - Klasse enthaelt card = true");
             if (cardClass.classList.contains("hidden")) {
                 //wenn Klasse hidden ist, mache das:   
-                //console.log("ClickHandler - Klasse Hidden=true => Karte aufgedeckt"); 
+                // console.log("ClickHandler - Klasse Hidden=true => Karte aufgedeckt"); 
                 cardClass.classList.remove("hidden"); //remove klasse hidden
                 cardClass.classList.add("visible"); //karte visible
+            }
+            else if (cardClass.classList.contains("visible")) {
+                // console.log("Die gleiche Karte wurde 2 mal angeklickt");
+                openCards = 1;
             }
         }
         if (openCards == 2) {
