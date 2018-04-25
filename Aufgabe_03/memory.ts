@@ -19,7 +19,7 @@ namespace Aufg3Memory {
 
     // let openArray: string[] = [];     //leeres Array um später den karteninhalt vergleichen zu können
     let openCards: number = 0;      //später hochzählen, wie viele karten offen sind um nicht mehr als 2 karten offen zu haben
-    let openArray: string[] = [];
+    let openArray: string[] = [];   //warum sagt de unused? wird ab Zeile 150 genutzt!
 
     let numPairs: number;
     let numPlayers: number;
