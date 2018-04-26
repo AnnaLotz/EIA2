@@ -114,3 +114,7 @@ h2 {
 	position: relative;
 	background: black;
 }
+
+.taken span {
+	display: none;
+}
