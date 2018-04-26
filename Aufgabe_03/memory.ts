@@ -117,9 +117,10 @@ namespace Aufg3Memory {
         console.log("ClickHandler aktiviert");
         let cardClass: HTMLElement = <HTMLElement>_event.target;    //auf das HTML element zugreifen, dass das event auslöst
         if (cardClass.classList.contains("card")) {          //.classList gibt die Klasse zurück
-            openCards++;
+           
             // console.log("ClickHandler - Klasse enthaelt card = true");
             if (cardClass.classList.contains("hidden")) {
+                openCards++;
                 //wenn Klasse hidden ist, mache das:   
                 // console.log("ClickHandler - Klasse Hidden=true => Karte aufgedeckt"); 
                 cardClass.classList.remove("hidden"); //remove klasse hidden
@@ -128,10 +129,6 @@ namespace Aufg3Memory {
 
             }
 
-            else if (cardClass.classList.contains("visible")) {
-               // console.log("Die gleiche Karte wurde 2 mal angeklickt");
-                openCards = 1;
-            }
         }
         if (openCards == 2) {
             console.log("2 Karten sind offen und werden verglichen");
@@ -180,4 +177,4 @@ namespace Aufg3Memory {
     }
 
 
-}//Namespace zu
+} //Namespace zu

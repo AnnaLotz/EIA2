@@ -85,17 +85,13 @@ var Aufg3Memory;
         console.log("ClickHandler aktiviert");
         let cardClass = _event.target; //auf das HTML element zugreifen, dass das event ausl�st
         if (cardClass.classList.contains("card")) {
-            openCards++;
             // console.log("ClickHandler - Klasse enthaelt card = true");
             if (cardClass.classList.contains("hidden")) {
+                openCards++;
                 //wenn Klasse hidden ist, mache das:   
                 // console.log("ClickHandler - Klasse Hidden=true => Karte aufgedeckt"); 
                 cardClass.classList.remove("hidden"); //remove klasse hidden
                 cardClass.classList.add("visible"); //karte visible
-            }
-            else if (cardClass.classList.contains("visible")) {
-                // console.log("Die gleiche Karte wurde 2 mal angeklickt");
-                openCards = 1;
             }
         }
         if (openCards == 2) {
