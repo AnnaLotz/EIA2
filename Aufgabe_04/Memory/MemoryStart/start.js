@@ -10,14 +10,21 @@ var Aufg4Start;
     function init() {
         console.log("init");
         let addButton = document.getElementById("addPlayer");
-        addButton.addEventListener("click", add);
+        let removeButton = document.getElementById("removePlayer");
+        addButton.addEventListener("click", addPl);
+        removeButton.addEventListener("click", removePl);
     } //init funktion zu
-    function add() {
+    function addPl() {
         console.log("new player");
         var node = document.getElementById("player");
         var inhalt = "";
         inhalt += "<input type='text' name='Name' placeholder='Spielername' required/>";
+        inhalt += "<button type='button' id='addPlayer'>+</button>";
+        inhalt += "<button type='button' id='removePlayer'>-</button>";
         node.innerHTML += inhalt;
-    }
+    } //add funktion zu
+    function removePl() {
+        console.log("removePlayer");
+    } //removePl Funktion zu
 })(Aufg4Start || (Aufg4Start = {})); //namespace zu
 //# sourceMappingURL=start.js.map
