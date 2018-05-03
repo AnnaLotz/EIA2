@@ -1,7 +1,8 @@
 var Aufg4Memory;
 (function (Aufg4Memory) {
-    let decks = {};
-    decks["games"] = {
+    //assoziatives Array zur speicherung 
+    Aufg4Memory.decks = {};
+    Aufg4Memory.decks["games"] = {
         name: "Videospiele",
         content: ["Tetris", "Pong", "Mario", "Zelda", "Minecraft", "Sims", "Portal", "SimCity", "Sonic", "Assassins Creed"],
         color: "blue",
@@ -14,16 +15,15 @@ var Aufg4Memory;
         content: ["Tetris", "Pong", "Mario", "Zelda", "Minecraft", "Sims", "Portal", "SimCity", "Sonic", "Assassins Creed"],
         css-class: "gameclass"
     };
-        
         */
-    decks["animals"] = {
+    Aufg4Memory.decks["animals"] = {
         name: "Tiere",
         content: ["Katze", "Hund", "Maus", "Tiger", "Ente", "Dachs", "Elefant", "Giraffe", "Affe", "Adler", "Fisch", "Zebra"],
         color: "gruen",
         font: "times new roman",
         size: 20
     };
-    decks["music"] = {
+    Aufg4Memory.decks["music"] = {
         name: "Musik",
         content: ["Note", "Instrument", "Ton", "Orchester", "Band", "CD", "Schallplatte"],
         color: "grey",

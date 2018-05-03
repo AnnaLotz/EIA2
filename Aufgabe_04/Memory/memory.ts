@@ -4,7 +4,6 @@
   Datum: 01.05.18
   Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
   */
-
 //Aufbau immer so bitte! : DOM, eventListener, alle Variablen benennen, alle Funtionen
 
 namespace Aufg4Memory {
@@ -13,24 +12,20 @@ namespace Aufg4Memory {
 
 /************* Variablen deklarieren *******************/
 
-    let cardContent1: string[] = ["Tetris", "Pong", "Mario", "Zelda", "Minecraft", "Sims", "Portal", "SimCity", "Sonic", "Assassins Creed"]; //10
-    let cardContent2: string[] = ["Katze", "Hund", "Maus", "Tiger", "Ente", "Dachs", "Elefant", "Giraffe", "Affe", "Adler", "Fisch", "Zebra"]; //12
-    let cardContent3: string[] = ["Note", "Instrument", "Ton", "Orchester", "Band", "CD", "Schallplatte"]; //7
-
     let cardArray: HTMLElement[] = []; //Divs für Karten, leeres Array, in das die letztendlich für das Spiel benötigten Karten als divs hineingespeichert werden
-
-    // let openArray: string[] = [];     //leeres Array um später den karteninhalt vergleichen zu können
     let openCards: number = 0;      //später hochzählen, wie viele karten offen sind um nicht mehr als 2 karten offen zu haben
-    let openArray: string[] = [];   //warum sagt de unused? wird ab Zeile 150 genutzt!
-
-    let numPairs: number;
-    let numPlayers: number;
-
-    let name: string = "Spieler ";
-    let score: number = 0;
-
+    let numPairs: number;     //Anzahl der kartenpaare
+    let numPlayers: number;   //Anzahl der Spieler
+    let name: string = "Spieler ";   //Name der Spieler
+    let score: number = 0;          //Punktzahl
     let playerInfo: HTMLElement;
     let cardField: HTMLElement;
+    
+    let currentCardDeck: Deck = undefined;
+    let counter: number = 0;
+    let playerNames: string[] = [];
+    let i: number = cardArray.lenght;
+
 
 /************* Menu ******************/
 
@@ -78,9 +73,9 @@ namespace Aufg4Memory {
 
         // Spielkarten erzeugen
         for (let i: number = 0; i < numPairs; i++) {
-            createCard(cardContent1[i]);
+            createCard(decks[content].[i]);
             // cardContent an der Stelle i - wird als übergabeparameter mitgegeben
-            createCard(cardContent1[i]);
+            createCard(decks[content].s[i]);
             // cardContent an der Stelle i - wird als übergabeparameter mitgegeben
         }
 

@@ -8,11 +8,13 @@ export interface Deck {
     size: number;    
 }
 
+//homogenes assoziatives Array, bei dem ein datensatz dem decknamen zugeordnet ist
 export interface Decks {
     [deckname: string]: Deck;
 }
-    
-let decks: Decks = {};
+   
+//assoziatives Array zur speicherung 
+export let decks: Decks = {};
     
 decks["games"] = {
     name: "Videospiele",
@@ -28,7 +30,6 @@ decks["games"] = {
     content: ["Tetris", "Pong", "Mario", "Zelda", "Minecraft", "Sims", "Portal", "SimCity", "Sonic", "Assassins Creed"],
     css-class: "gameclass"
 };   
-    
     */
     
 decks["animals"] = {
