@@ -9,7 +9,9 @@ var Aufg4Memory;
 (function (Aufg4Memory) {
     window.addEventListener("DOMContentLoaded", init);
     /************* Variablen deklarieren *******************/
-    let cardContent = ["Tetris", "Pong", "Mario", "Zelda", "Minecraft", "Sims", "Portal", "SimCity", "Sonic", "Assassins Creed"];
+    let cardContent1 = ["Tetris", "Pong", "Mario", "Zelda", "Minecraft", "Sims", "Portal", "SimCity", "Sonic", "Assassins Creed"]; //10
+    let cardContent2 = ["Katze", "Hund", "Maus", "Tiger", "Ente", "Dachs", "Elefant", "Giraffe", "Affe", "Adler", "Fisch", "Zebra"]; //12
+    let cardContent3 = ["Note", "Instrument", "Ton", "Orchester", "Band", "CD", "Schallplatte"]; //7
     let cardArray = []; //Divs f�r Karten, leeres Array, in das die letztendlich f�r das Spiel ben�tigten Karten als divs hineingespeichert werden
     // let openArray: string[] = [];     //leeres Array um sp�ter den karteninhalt vergleichen zu k�nnen
     let openCards = 0; //sp�ter hochz�hlen, wie viele karten offen sind um nicht mehr als 2 karten offen zu haben
@@ -54,9 +56,9 @@ var Aufg4Memory;
         cardField = document.getElementById("card-div");
         // Spielkarten erzeugen
         for (let i = 0; i < numPairs; i++) {
-            createCard(cardContent[i]);
+            createCard(cardContent1[i]);
             // cardContent an der Stelle i - wird als �bergabeparameter mitgegeben
-            createCard(cardContent[i]);
+            createCard(cardContent1[i]);
         }
         //Spielerinfo erzeugen
         for (let i = 0; i < numPlayers; i++) {

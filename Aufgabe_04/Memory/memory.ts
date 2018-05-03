@@ -13,7 +13,9 @@ namespace Aufg4Memory {
 
 /************* Variablen deklarieren *******************/
 
-    let cardContent: string[] = ["Tetris", "Pong", "Mario", "Zelda", "Minecraft", "Sims", "Portal", "SimCity", "Sonic", "Assassins Creed"];
+    let cardContent1: string[] = ["Tetris", "Pong", "Mario", "Zelda", "Minecraft", "Sims", "Portal", "SimCity", "Sonic", "Assassins Creed"]; //10
+    let cardContent2: string[] = ["Katze", "Hund", "Maus", "Tiger", "Ente", "Dachs", "Elefant", "Giraffe", "Affe", "Adler", "Fisch", "Zebra"]; //12
+    let cardContent3: string[] = ["Note", "Instrument", "Ton", "Orchester", "Band", "CD", "Schallplatte"]; //7
 
     let cardArray: HTMLElement[] = []; //Divs für Karten, leeres Array, in das die letztendlich für das Spiel benötigten Karten als divs hineingespeichert werden
 
@@ -76,9 +78,9 @@ namespace Aufg4Memory {
 
         // Spielkarten erzeugen
         for (let i: number = 0; i < numPairs; i++) {
-            createCard(cardContent[i]);
+            createCard(cardContent1[i]);
             // cardContent an der Stelle i - wird als übergabeparameter mitgegeben
-            createCard(cardContent[i]);
+            createCard(cardContent1[i]);
             // cardContent an der Stelle i - wird als übergabeparameter mitgegeben
         }
 

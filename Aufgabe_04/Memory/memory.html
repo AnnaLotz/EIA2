@@ -8,36 +8,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<title>Memory Anna Lotz EIA2</title>
-	<link rel="stylesheet" type="text/css" href="memory.css">
-	<script src="memory.js"></script>
+<meta charset="utf-8">
+<title>Memory Anna Lotz EIA2</title>
+<link rel="stylesheet" type="text/css" href="memory.css">
+<script src="memory.js"></script>
+<script src="decks.js"></script>
 </head>
 <body>
 	<!-- ******Menue******* -->
 	<fieldset id="menu">
 		<legend>Memory</legend>
-		Spieler <br> <input type="text" name="Name"
-			placeholder="Spielername" required />
+		Spieler <br> <input type="text" name="Name" placeholder="Spielername" required />
 		<button type="button" id="addPlayer">+</button>
 		<button type="button" id="removePlayer">-</button>
 		<div id="player"></div>
-		<br>
-		<br> Kartensatz <br> <input type="radio" name="Cardset"
-			value="set1" id="radio1" /> <label for="radio1">Videospiele</label>
-		<input type="radio" name="Cardset" value="set2" id="radio2" /> <label
-			for="radio2">Tiere</label> <input type="radio" name="Cardset"
-			value="set3" id="radio3" /> <label for="radio3">Musik</label> <br>
-		<br> Kartenanzahl <br> <input type="number" name="Stepper"
-			step="1" min="2" max="10" value="5" />
+		<br> <br> Kartensatz <br> <input type="radio" name="Cardset" value="set1" id="radio1" /> <label for="radio1">Videospiele</label>
+		<input type="radio" name="Cardset" value="set2" id="radio2"/>
+		<label for="radio2">Tiere</label>
+		<input type="radio" name="Cardset" value="set3" id="radio3"/>
+		<label for="radio3">Musik</label> <br>
+		<br> Kartenanzahl <br> <input type="number" name="Stepper"step="1" min="2" max="10" value="5" />
 		<!-- stepper-max wert variabel setzen -->
 		<br> <br>
 		<button type="button" id="startButton">Start</button>
 
 	</fieldset>
-	
+
 	<!-- ******Spiel******* -->
-	 <div id="gamefield">
+	<div id="gamefield">
 		<section id="player-info">
 			<h2>Spielinfo</h2>
 		</section>
@@ -45,6 +43,6 @@
 			<h2>Spielbrett</h2>
 			<div id="card-div"></div>
 		</section>
-	</div> 
+	</div>
 </body>
 </html>
