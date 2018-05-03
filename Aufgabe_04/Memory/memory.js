@@ -7,8 +7,8 @@
 //Aufbau immer so bitte! : DOM, eventListener, alle Variablen benennen, alle Funtionen
 var Aufg4Memory;
 (function (Aufg4Memory) {
-    document.addEventListener("DOMContentLoaded", main);
-    // Variablen deklarieren ***************************
+    window.addEventListener("DOMContentLoaded", init);
+    /************* Variablen deklarieren *******************/
     let cardContent = ["Tetris", "Pong", "Mario", "Zelda", "Minecraft", "Sims", "Portal", "SimCity", "Sonic", "Assassins Creed"];
     let cardArray = []; //Divs f�r Karten, leeres Array, in das die letztendlich f�r das Spiel ben�tigten Karten als divs hineingespeichert werden
     // let openArray: string[] = [];     //leeres Array um sp�ter den karteninhalt vergleichen zu k�nnen
@@ -20,13 +20,35 @@ var Aufg4Memory;
     let score = 0;
     let playerInfo;
     let cardField;
-    // Hauptfunktion *******************************
-    function main() {
-        numPairs = parseInt(prompt("Bitte Anzahl Kartenpaare eingeben (5 bis 10)", "7"), 10);
+    /************* Menu ******************/
+    function init() {
+        console.log("init");
+        let addButton = document.getElementById("addPlayer");
+        let removeButton = document.getElementById("removePlayer");
+        let startButton = document.getElementById("startButton");
+        addButton.addEventListener("click", addPl);
+        removeButton.addEventListener("click", removePl);
+        startButton.addEventListener("click", startGame);
+    } //init funktion zu
+    function addPl() {
+        console.log("new player");
+        let node = document.getElementById("player");
+        let inhalt = "";
+        inhalt += "<input type='text' name='Name' placeholder='Spielername' required/>";
+        inhalt += "<button type='button' id='addPlayer'>+</button>";
+        inhalt += "<button type='button' id='removePlayer'>-</button>";
+        node.innerHTML += inhalt;
+    } //add funktion zu
+    function removePl() {
+        console.log("removePlayer");
+    }
+    /************* Hauptfunktion ***************/
+    function startGame() {
+        numPairs = 7;
         if (numPairs < 5 || numPairs > 10) {
             numPairs = 8;
         } //Pop-up abfrage kartenpaare
-        numPlayers = parseInt(prompt("Bitte Anzahl der Spieler eingeben (1 bis 4)", "2"), 10);
+        numPlayers = 3;
         numPlayers > 4 ? numPlayers = 4 : numPlayers = numPlayers; //Pop-up spielerzahl
         playerInfo = document.getElementById("player-info"); // DOM abh�ngige Varaiblen deklarieren
         cardField = document.getElementById("card-div");

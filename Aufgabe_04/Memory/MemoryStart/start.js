@@ -11,13 +11,14 @@ var Aufg4Start;
         console.log("init");
         let addButton = document.getElementById("addPlayer");
         let removeButton = document.getElementById("removePlayer");
+        let startButton = document.getElementById("startGame");
         addButton.addEventListener("click", addPl);
         removeButton.addEventListener("click", removePl);
     } //init funktion zu
     function addPl() {
         console.log("new player");
-        var node = document.getElementById("player");
-        var inhalt = "";
+        let node = document.getElementById("player");
+        let inhalt = "";
         inhalt += "<input type='text' name='Name' placeholder='Spielername' required/>";
         inhalt += "<button type='button' id='addPlayer'>+</button>";
         inhalt += "<button type='button' id='removePlayer'>-</button>";

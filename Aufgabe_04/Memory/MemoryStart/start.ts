@@ -11,8 +11,10 @@ namespace Aufg4Start {
         console.log("init");
         let addButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("addPlayer");
         let removeButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("removePlayer");
+        let startButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("startButton");
         addButton.addEventListener("click", addPl);
         removeButton.addEventListener("click", removePl);
+        startButton.addEventListener("click", startGame);
 
 
     } //init funktion zu
@@ -20,8 +22,8 @@ namespace Aufg4Start {
     function addPl(): void {
         console.log("new player");
         
-        var node: any = document.getElementById("player");
-        var inhalt: string = "";
+        let node: any = document.getElementById("player");
+        let inhalt: string = "";
        
         inhalt += "<input type='text' name='Name' placeholder='Spielername' required/>";
         inhalt += "<button type='button' id='addPlayer'>+</button>";

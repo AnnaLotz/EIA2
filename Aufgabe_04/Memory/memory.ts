@@ -9,9 +9,9 @@
 
 namespace Aufg4Memory {
 
-    document.addEventListener("DOMContentLoaded", main);
+     window.addEventListener("DOMContentLoaded", init);
 
-    // Variablen deklarieren ***************************
+/************* Variablen deklarieren *******************/
 
     let cardContent: string[] = ["Tetris", "Pong", "Mario", "Zelda", "Minecraft", "Sims", "Portal", "SimCity", "Sonic", "Assassins Creed"];
 
@@ -30,19 +30,45 @@ namespace Aufg4Memory {
     let playerInfo: HTMLElement;
     let cardField: HTMLElement;
 
+/************* Menu ******************/
 
+    function init(): void {
+        console.log("init");
+        let addButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("addPlayer");
+        let removeButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("removePlayer");
+        let startButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("startButton");
+        addButton.addEventListener("click", addPl);
+        removeButton.addEventListener("click", removePl);
+        startButton.addEventListener("click", startGame);
+    } //init funktion zu
 
+    function addPl(): void {
+        console.log("new player");
+        
+        let node: any = document.getElementById("player");
+        let inhalt: string = "";
+       
+        inhalt += "<input type='text' name='Name' placeholder='Spielername' required/>";
+        inhalt += "<button type='button' id='addPlayer'>+</button>";
+        inhalt += "<button type='button' id='removePlayer'>-</button>";
+        node.innerHTML += inhalt;
+    } //add funktion zu
+    
+    function removePl(): void {
+        console.log("removePlayer");
+        
+    }
 
-    // Hauptfunktion *******************************
+/************* Hauptfunktion ***************/
 
-    function main(): void {
+    function startGame(): void {
 
-        numPairs = parseInt(prompt("Bitte Anzahl Kartenpaare eingeben (5 bis 10)", "7"), 10);
+        numPairs = 7;
         if (numPairs < 5 || numPairs > 10) {
             numPairs = 8;
         } //Pop-up abfrage kartenpaare
 
-        numPlayers = parseInt(prompt("Bitte Anzahl der Spieler eingeben (1 bis 4)", "2"), 10);
+        numPlayers = 3;
         numPlayers > 4 ? numPlayers = 4 : numPlayers = numPlayers; //Pop-up spielerzahl
 
         playerInfo = document.getElementById("player-info");  // DOM abhängige Varaiblen deklarieren

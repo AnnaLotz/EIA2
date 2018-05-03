@@ -22,7 +22,22 @@ h2 {
 	margin-bottom: 20px;
 }
 
-/* Spielinfo */
+/*----------Menu----------*/
+
+fieldset {
+	margin-left: 25%;
+}
+
+#menu {
+	background-color: white;
+}
+
+/* ---------Spielinfo----------*/
+
+gamefield {
+	display: none;
+}
+
 #player-info {
 	height: 100vh;
 	width: 22%;
