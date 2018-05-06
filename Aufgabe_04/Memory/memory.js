@@ -12,13 +12,13 @@ var Aufg4Memory;
     let cardContent = ["Tetris", "Pong", "Mario", "Zelda", "Minecraft", "Sims", "Portal", "SimCity", "Sonic", "Assassins Creed"];
     let cardArray = []; //Divs für Karten, leeres Array, in das die letztendlich für das Spiel benötigten Karten als divs hineingespeichert werden
     let openCards = 0; //später hochzählen, wie viele karten offen sind um nicht mehr als 2 karten offen zu haben
-    let numPairs; //Anzahl der kartenpaare
     let score = 0; //Punktzahl
+    let numPairs = 5; //sollte variabel sein durch folgende Zeile
+    // das funktioniert irgendwie leider nicht: let numPairs: number = parseInt((<HTMLInputElement>document.getElementById("cardStepper")).value); //Anzahl Kartenpaare
     let playerInfo;
     let cardField;
     let playerCounter = 1;
     let stepperAmount = 1;
-    let menu = document.getElementById("menu");
     let inputs = document.getElementsByTagName("input");
     /************* Menu ******************/
     function init() {
@@ -27,10 +27,11 @@ var Aufg4Memory;
         let addButton = document.getElementById("addPlayer");
         let removeButton = document.getElementById("removePlayer");
         let startButton = document.getElementById("startButton");
-        // document.getElementById("stepperinfo").addEventListener("change", createStepper);
+        let kartensatz = document.getElementById("kartensatz");
         addButton.addEventListener("click", addPl);
         removeButton.addEventListener("click", removePl);
         startButton.addEventListener("click", startGame);
+        kartensatz.addEventListener("click", createStepper);
     } //init funktion zu
     function addPl() {
         console.log("new player");
@@ -47,36 +48,43 @@ var Aufg4Memory;
             console.log("removePlayer");
             playerCounter--;
         }
-    }
-    /* function createStepper(): void {
+    } //remove Funktion zu
+    function createStepper() {
+        console.log("create Stepper aktiviert");
         if (stepperAmount == 1) {
             // wenn stepperAmount 1 entspricht, dann:
-            let stepper: HTMLElement = document.createElement("input");
+            let stepper = document.createElement("input");
             // Erzeugen eines input-Elements mit den folgenden Eigenschaften:
             stepper.setAttribute("type", "number");
             stepper.setAttribute("value", "8");
             stepper.setAttribute("min", "4");
-            stepper.setAttribute("max", decks[document.getElementsByTagName("select")].length);
-            // die maximale mögliche Anzahl an Karten (unterschiedlich je Kartendeck) wird eingefügt
+            //   stepper.setAttribute("max", decks[document.getElementById("kartensatz")].length); //hier sollte eigentlich auf die Länge des Array zugegriffen werden
             stepper.setAttribute("step", "1");
             stepper.setAttribute("id", "stepper");
-            document.getElementById("stepperbox").appendChild(stepper);
+            document.getElementById("cardStepper").appendChild(stepper);
             stepperAmount++;
-            // stepperAmount wird hochgezählt
         }
-//    } */
+        else {
+            stepperUpdate();
+        }
+    } //createStepper zu
+    function stepperUpdate() {
+        document.getElementById("stepper").remove();
+        stepperAmount--;
+        createStepper();
+    } //stepperUpdate zu
     /************* Hauptfunktion ***************/
     function startGame() {
         document.getElementById("menu").style.display = "none"; //menu unsichtbar machen
         document.getElementById("gamefield").style.display = "initial"; //spielbrett sichtbar machen
         playerInfo = document.getElementById("player-info"); // DOM abhängige Varaiblen deklarieren
         cardField = document.getElementById("card-div");
-        numPairs = 7;
         // Spielkarten erzeugen
         for (let i = 0; i < numPairs; i++) {
-            //irgendwas funktioniert hier nicht:
+            //irgendwas funktioniert hier nicht, sollte eigentlich auf das assoziative array zugreifen:
             //createCard(decks[document.getElementById("kartensatz").item(0).value].content[i]);
             //createCard(decks[document.getElementById("kartensatz").item(0).value].content[i]);
+            //deswegen, damit überhaupt karten entstehen:
             createCard(cardContent[i]);
             createCard(cardContent[i]);
         }
@@ -93,7 +101,7 @@ var Aufg4Memory;
             cardField.appendChild(cardArray[i]);
         }
         cardField.addEventListener("click", clickHandler);
-    }
+    } //startGame zu
     // Funktionen *************************************************    
     function createCard(_textDerAufDieKarteSoll) {
         let card = document.createElement("div");
@@ -104,7 +112,7 @@ var Aufg4Memory;
         // Attribut hinzufügen: class = Welches Attribut (hier eine Klasse); card = zugehöriger Wert (Hidden, taken, open)
         cardArray.push(card);
         // cardArray = Array vom Anfang; Speicher für alle erzeugten Karten; pusht die Karte hoch
-    }
+    } //createCard zu
     function randomMix(_array) {
         // _array = das Array, das durchmischt werden soll
         for (let i = _array.length - 1; i > 0; i--) {
@@ -113,7 +121,7 @@ var Aufg4Memory;
         }
         return _array;
         // Ausgabe = das Array ist jetzt durchmischt
-    }
+    } //randomMix zu
     // Spielbarkeit *************************************************
     function clickHandler(_event) {
         //console.log("ClickHandler aktiviert");
@@ -137,7 +145,7 @@ var Aufg4Memory;
             cardClass.classList.remove("visible");
             cardClass.classList.add("hidden");
         }
-    }
+    } //clickHandler zu
     function compareCards() {
         let openArray = filterCardsByClass("visible");
         if (openArray[0].children[0].innerHTML == openArray[1].children[0].innerHTML) {
@@ -161,7 +169,7 @@ var Aufg4Memory;
         }
         openArray = []; // Array leeren
         openCards = 0; //zähler auf 0 setzen
-    }
+    } //compareCards zu
     function filterCardsByClass(_visibleFilter) {
         return cardArray.filter(card => card.classList.contains(_visibleFilter));
     }
