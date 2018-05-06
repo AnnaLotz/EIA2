@@ -1,7 +1,7 @@
 <!-- Aufgabe: Aufgabe 4: FormElements and Interfaces
   Name: Anna Lotz
   Matrikel: 257449
-  Datum: 01.05.18
+  Datum: 06.05.18
   Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
   -->
 
@@ -18,18 +18,21 @@
 	<!-- ******Menue******* -->
 	<fieldset id="menu">
 		<legend>Memory</legend>
-		Spieler <br> <input type="text" name="Name" placeholder="Spielername" required />
+		<div id="buttons">Spieler<br>
 		<button type="button" id="addPlayer">+</button>
-		<button type="button" id="removePlayer">-</button>
-		<div id="player"></div>
-		<br> <br> Kartensatz <br> <input type="radio" name="Cardset" value="set1" id="radio1" /> <label for="radio1">Videospiele</label>
+		<button type="button" id="removePlayer">-</button></div>
+		<div id="player"><input type="text" name="Name" placeholder="Spielername" required />
+		</div><br>
+		<div id="kartensatz">Kartensatz <br> <input type="radio" name="Cardset" value="set1" id="radio1" /> <label for="radio1">Videospiele</label>
 		<input type="radio" name="Cardset" value="set2" id="radio2"/>
 		<label for="radio2">Tiere</label>
 		<input type="radio" name="Cardset" value="set3" id="radio3"/>
-		<label for="radio3">Musik</label> <br>
-		<br> Kartenanzahl <br> <input type="number" name="Stepper"step="1" min="2" max="10" value="5" />
+		<label for="radio3">Musik</label> 
+		</div><br>
+		<div id="cardStepper">Kartenanzahl <br> <input type="number" name="Stepper"step="1" min="2" max="10" value="5" />
+		</div>
 		<!-- stepper-max wert variabel setzen -->
-		<br> <br>
+		<br>
 		<button type="button" id="startButton">Start</button>
 
 	</fieldset>

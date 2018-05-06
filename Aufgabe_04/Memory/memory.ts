@@ -1,39 +1,41 @@
 /*Aufgabe: Aufgabe 4: FormElements and Interfaces
   Name: Anna Lotz
   Matrikel: 257449
-  Datum: 01.05.18
+  Datum: 06.05.18
   Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
   */
 //Aufbau immer so bitte! : DOM, eventListener, alle Variablen benennen, alle Funtionen
-
 namespace Aufg4Memory {
 
-     window.addEventListener("DOMContentLoaded", init);
+    window.addEventListener("DOMContentLoaded", init);
 
-/************* Variablen deklarieren *******************/
+    /************* Variablen deklarieren *******************/
 
-    let cardArray: HTMLElement[] = []; //Divs für Karten, leeres Array, in das die letztendlich für das Spiel benötigten Karten als divs hineingespeichert werden
-    let openCards: number = 0;      //später hochzählen, wie viele karten offen sind um nicht mehr als 2 karten offen zu haben
+    let cardContent: string[] = ["Tetris", "Pong", "Mario", "Zelda", "Minecraft", "Sims", "Portal", "SimCity", "Sonic", "Assassins Creed"];
+    let cardArray: HTMLElement[] = []; //Divs fÃ¼r Karten, leeres Array, in das die letztendlich fÃ¼r das Spiel benÃ¶tigten Karten als divs hineingespeichert werden
+    let openCards: number = 0;      //spÃ¤ter hochzÃ¤hlen, wie viele karten offen sind um nicht mehr als 2 karten offen zu haben
     let numPairs: number;     //Anzahl der kartenpaare
-    let numPlayers: number;   //Anzahl der Spieler
-    let name: string = "Spieler ";   //Name der Spieler
     let score: number = 0;          //Punktzahl
     let playerInfo: HTMLElement;
     let cardField: HTMLElement;
-    
-    let currentCardDeck: Deck = undefined;
-    let counter: number = 0;
-    let playerNames: string[] = [];
-    let i: number = cardArray.lenght;
+    let playerCounter: number = 1;
+    let stepperAmount: number = 1;
+    let menu: HTMLElement = <HTMLButtonElement>document.getElementById("menu");
+    let inputs: NodeListOf<HTMLInputElement> = document.getElementsByTagName("input");
 
 
-/************* Menu ******************/
+
+
+    /************* Menu ******************/
 
     function init(): void {
         console.log("init");
+        document.getElementById("gamefield").style.display = "none"; //spielbrett unsichtbar machen
+
         let addButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("addPlayer");
         let removeButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("removePlayer");
         let startButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("startButton");
+       // document.getElementById("stepperinfo").addEventListener("change", createStepper);
         addButton.addEventListener("click", addPl);
         removeButton.addEventListener("click", removePl);
         startButton.addEventListener("click", startGame);
@@ -41,76 +43,86 @@ namespace Aufg4Memory {
 
     function addPl(): void {
         console.log("new player");
-        
-        let node: any = document.getElementById("player");
-        let inhalt: string = "";
-       
-        inhalt += "<input type='text' name='Name' placeholder='Spielername' required/>";
-        inhalt += "<button type='button' id='addPlayer'>+</button>";
-        inhalt += "<button type='button' id='removePlayer'>-</button>";
-        node.innerHTML += inhalt;
+
+        let node: HTMLElement = document.createElement("input");
+        node.setAttribute("type", "text");
+        node.setAttribute("name", "Name");
+        node.setAttribute("placeholder", "Spielername");
+        document.getElementById("player").appendChild(node);
+
+        playerCounter++;
     } //add funktion zu
-    
+
     function removePl(): void {
-        console.log("removePlayer");
-        
+        if (playerCounter > 1) {
+            document.getElementById("player").remove();
+            console.log("removePlayer");
+            playerCounter--;
+        }
+
     }
 
-/************* Hauptfunktion ***************/
+    /* function createStepper(): void {
+        if (stepperAmount == 1) {
+            // wenn stepperAmount 1 entspricht, dann:
+            let stepper: HTMLElement = document.createElement("input");
+            // Erzeugen eines input-Elements mit den folgenden Eigenschaften:
+            stepper.setAttribute("type", "number");
+            stepper.setAttribute("value", "8");
+            stepper.setAttribute("min", "4");
+            stepper.setAttribute("max", decks[document.getElementsByTagName("select")].length);
+            // die maximale mÃ¶gliche Anzahl an Karten (unterschiedlich je Kartendeck) wird eingefÃ¼gt
+            stepper.setAttribute("step", "1");
+            stepper.setAttribute("id", "stepper");
+            document.getElementById("stepperbox").appendChild(stepper);
+            stepperAmount++;
+            // stepperAmount wird hochgezÃ¤hlt
+        }
+//    } */
+
+    /************* Hauptfunktion ***************/
 
     function startGame(): void {
 
-        numPairs = 7;
-        if (numPairs < 5 || numPairs > 10) {
-            numPairs = 8;
-        } //Pop-up abfrage kartenpaare
+        document.getElementById("menu").style.display = "none"; //menu unsichtbar machen
+        document.getElementById("gamefield").style.display = "initial"; //spielbrett sichtbar machen
 
-        numPlayers = 3;
-        numPlayers > 4 ? numPlayers = 4 : numPlayers = numPlayers; //Pop-up spielerzahl
-
-        playerInfo = document.getElementById("player-info");  // DOM abhängige Varaiblen deklarieren
+        playerInfo = document.getElementById("player-info");  // DOM abhÃ¤ngige Varaiblen deklarieren
         cardField = document.getElementById("card-div");
+
+        numPairs = 7;
 
         // Spielkarten erzeugen
         for (let i: number = 0; i < numPairs; i++) {
-            createCard(decks[content].[i]);
-            // cardContent an der Stelle i - wird als übergabeparameter mitgegeben
-            createCard(decks[content].s[i]);
-            // cardContent an der Stelle i - wird als übergabeparameter mitgegeben
+            //irgendwas funktioniert hier nicht:
+            //createCard(decks[document.getElementById("kartensatz").item(0).value].content[i]);
+            //createCard(decks[document.getElementById("kartensatz").item(0).value].content[i]);
+            createCard(cardContent[i]);
+            createCard(cardContent[i]);
         }
 
         //Spielerinfo erzeugen
-        for (let i: number = 0; i < numPlayers; i++) {
-            createPlayer(score, name + [i + 1]);
+
+        for (let i: number = 0; i < playerCounter; i++) {
+            let playerDiv: HTMLDivElement = document.createElement("div");
+            document.getElementById("player-info").appendChild(playerDiv);
+            playerDiv.innerHTML = inputs[i].value + ": " + score + " Punkte";
         }
 
         // Karten mischen
         randomMix(cardArray);
 
-        // Karten dem Spielbrett hinzufügen
+        // Karten dem Spielbrett hinzufÃ¼gen
         for (let i: number = 0; i < cardArray.length; i++) {
             cardField.appendChild(cardArray[i]);
-            // dem Spielbrett hinzufügen
+            // dem Spielbrett hinzufÃ¼gen
         }
 
         cardField.addEventListener("click", clickHandler);
 
     }
 
-    // Funktionen ***************************************************
-
-    function createPlayer(_score: number, _name: string): void {
-        //div für anzeige pro spieler
-        let player: HTMLElement = document.createElement("div");
-        //div für spieler
-        let scoreField: HTMLElement = document.createElement("div");
-        //div für Punktzahl
-        let n: string = _score.toString(); //.toString wandelt number in string um
-        player.innerText = _name;
-        scoreField.innerText = n; //score ist die number n als string
-        playerInfo.appendChild(player); //spieler in die playerinfo anhängen
-        playerInfo.appendChild(scoreField); //score in die playerinfo anhängen
-    }
+    // Funktionen *************************************************    
 
     function createCard(_textDerAufDieKarteSoll: string): void {
         let card: HTMLElement = document.createElement("div");
@@ -118,9 +130,9 @@ namespace Aufg4Memory {
         card.innerHTML = `<span>${_textDerAufDieKarteSoll}</span>`; //Funktion wird auf die Karte gegeben
         // Text aus dem Array soll auf eine Karte
         card.setAttribute("class", "card hidden");
-        // Attribut hinzufügen: class = Welches Attribut (hier eine Klasse); card = zugehöriger Wert (Hidden, taken, open)
+        // Attribut hinzufÃ¼gen: class = Welches Attribut (hier eine Klasse); card = zugehÃ¶riger Wert (Hidden, taken, open)
         cardArray.push(card);
-        // cardArray = Array vom Anfang; Speicher für alle erzeugten Karten; pusht die Karte hoch
+        // cardArray = Array vom Anfang; Speicher fÃ¼r alle erzeugten Karten; pusht die Karte hoch
     }
 
 
@@ -135,12 +147,11 @@ namespace Aufg4Memory {
     }
 
     // Spielbarkeit *************************************************
-
     function clickHandler(_event: MouseEvent): void {
         //console.log("ClickHandler aktiviert");
-        let cardClass: HTMLElement = <HTMLElement>_event.target;    //auf das HTML element zugreifen, dass das event auslöst
-        if (cardClass.classList.contains("card")) {          //.classList gibt die Klasse zurück
-           
+        let cardClass: HTMLElement = <HTMLElement>_event.target;    //auf das HTML element zugreifen, dass das event auslÃ¶st
+        if (cardClass.classList.contains("card")) {          //.classList gibt die Klasse zurÃ¼ck
+
             // console.log("ClickHandler - Klasse enthaelt card = true");
             if (cardClass.classList.contains("hidden")) {
                 openCards++;
@@ -148,8 +159,7 @@ namespace Aufg4Memory {
                 // console.log("ClickHandler - Klasse Hidden=true => Karte aufgedeckt"); 
                 cardClass.classList.remove("hidden"); //remove klasse hidden
                 cardClass.classList.add("visible");     //karte visible
-               // console.log(cardClass.classList);
-
+                // console.log(cardClass.classList);
             }
 
         }
@@ -159,7 +169,7 @@ namespace Aufg4Memory {
         }
 
         if (openCards > 2) {
-            //console.log("2 Karten sind schon offen, keine weitere öffnen");
+            //console.log("2 Karten sind schon offen, keine weitere Ã¶ffnen");
             cardClass.classList.remove("visible");
             cardClass.classList.add("hidden");
         }
@@ -191,7 +201,7 @@ namespace Aufg4Memory {
         }
 
         openArray = []; // Array leeren
-        openCards = 0; //zähler auf 0 setzen
+        openCards = 0; //zÃ¤hler auf 0 setzen
     }
 
 

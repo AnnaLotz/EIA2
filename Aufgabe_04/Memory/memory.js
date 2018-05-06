@@ -1,7 +1,7 @@
 /*Aufgabe: Aufgabe 4: FormElements and Interfaces
   Name: Anna Lotz
   Matrikel: 257449
-  Datum: 01.05.18
+  Datum: 06.05.18
   Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
   */
 //Aufbau immer so bitte! : DOM, eventListener, alle Variablen benennen, alle Funtionen
@@ -9,88 +9,101 @@ var Aufg4Memory;
 (function (Aufg4Memory) {
     window.addEventListener("DOMContentLoaded", init);
     /************* Variablen deklarieren *******************/
-    let cardArray = []; //Divs f�r Karten, leeres Array, in das die letztendlich f�r das Spiel ben�tigten Karten als divs hineingespeichert werden
-    // let openArray: string[] = [];     //leeres Array um sp�ter den karteninhalt vergleichen zu k�nnen
-    let openCards = 0; //sp�ter hochz�hlen, wie viele karten offen sind um nicht mehr als 2 karten offen zu haben
-    let openArray = []; //warum sagt de unused? wird ab Zeile 150 genutzt!
-    let numPairs;
-    let numPlayers;
-    let name = "Spieler ";
-    let score = 0;
+    let cardContent = ["Tetris", "Pong", "Mario", "Zelda", "Minecraft", "Sims", "Portal", "SimCity", "Sonic", "Assassins Creed"];
+    let cardArray = []; //Divs für Karten, leeres Array, in das die letztendlich für das Spiel benötigten Karten als divs hineingespeichert werden
+    let openCards = 0; //später hochzählen, wie viele karten offen sind um nicht mehr als 2 karten offen zu haben
+    let numPairs; //Anzahl der kartenpaare
+    let score = 0; //Punktzahl
     let playerInfo;
     let cardField;
+    let playerCounter = 1;
+    let stepperAmount = 1;
+    let menu = document.getElementById("menu");
+    let inputs = document.getElementsByTagName("input");
     /************* Menu ******************/
     function init() {
         console.log("init");
+        document.getElementById("gamefield").style.display = "none"; //spielbrett unsichtbar machen
         let addButton = document.getElementById("addPlayer");
         let removeButton = document.getElementById("removePlayer");
         let startButton = document.getElementById("startButton");
+        // document.getElementById("stepperinfo").addEventListener("change", createStepper);
         addButton.addEventListener("click", addPl);
         removeButton.addEventListener("click", removePl);
         startButton.addEventListener("click", startGame);
     } //init funktion zu
     function addPl() {
         console.log("new player");
-        let node = document.getElementById("player");
-        let inhalt = "";
-        inhalt += "<input type='text' name='Name' placeholder='Spielername' required/>";
-        inhalt += "<button type='button' id='addPlayer'>+</button>";
-        inhalt += "<button type='button' id='removePlayer'>-</button>";
-        node.innerHTML += inhalt;
+        let node = document.createElement("input");
+        node.setAttribute("type", "text");
+        node.setAttribute("name", "Name");
+        node.setAttribute("placeholder", "Spielername");
+        document.getElementById("player").appendChild(node);
+        playerCounter++;
     } //add funktion zu
     function removePl() {
-        console.log("removePlayer");
+        if (playerCounter > 1) {
+            document.getElementById("player").remove();
+            console.log("removePlayer");
+            playerCounter--;
+        }
     }
+    /* function createStepper(): void {
+        if (stepperAmount == 1) {
+            // wenn stepperAmount 1 entspricht, dann:
+            let stepper: HTMLElement = document.createElement("input");
+            // Erzeugen eines input-Elements mit den folgenden Eigenschaften:
+            stepper.setAttribute("type", "number");
+            stepper.setAttribute("value", "8");
+            stepper.setAttribute("min", "4");
+            stepper.setAttribute("max", decks[document.getElementsByTagName("select")].length);
+            // die maximale mögliche Anzahl an Karten (unterschiedlich je Kartendeck) wird eingefügt
+            stepper.setAttribute("step", "1");
+            stepper.setAttribute("id", "stepper");
+            document.getElementById("stepperbox").appendChild(stepper);
+            stepperAmount++;
+            // stepperAmount wird hochgezählt
+        }
+//    } */
     /************* Hauptfunktion ***************/
     function startGame() {
-        numPairs = 7;
-        if (numPairs < 5 || numPairs > 10) {
-            numPairs = 8;
-        } //Pop-up abfrage kartenpaare
-        numPlayers = 3;
-        numPlayers > 4 ? numPlayers = 4 : numPlayers = numPlayers; //Pop-up spielerzahl
-        playerInfo = document.getElementById("player-info"); // DOM abh�ngige Varaiblen deklarieren
+        document.getElementById("menu").style.display = "none"; //menu unsichtbar machen
+        document.getElementById("gamefield").style.display = "initial"; //spielbrett sichtbar machen
+        playerInfo = document.getElementById("player-info"); // DOM abhängige Varaiblen deklarieren
         cardField = document.getElementById("card-div");
+        numPairs = 7;
         // Spielkarten erzeugen
         for (let i = 0; i < numPairs; i++) {
-            createCard("animals.content[]"[i]);
-            // cardContent an der Stelle i - wird als �bergabeparameter mitgegeben
-            createCard("animals.content[]"[i]);
+            //irgendwas funktioniert hier nicht:
+            //createCard(decks[document.getElementById("kartensatz").item(0).value].content[i]);
+            //createCard(decks[document.getElementById("kartensatz").item(0).value].content[i]);
+            createCard(cardContent[i]);
+            createCard(cardContent[i]);
         }
         //Spielerinfo erzeugen
-        for (let i = 0; i < numPlayers; i++) {
-            createPlayer(score, name + [i + 1]);
+        for (let i = 0; i < playerCounter; i++) {
+            let playerDiv = document.createElement("div");
+            document.getElementById("player-info").appendChild(playerDiv);
+            playerDiv.innerHTML = inputs[i].value + ": " + score + " Punkte";
         }
         // Karten mischen
         randomMix(cardArray);
-        // Karten dem Spielbrett hinzuf�gen
+        // Karten dem Spielbrett hinzufügen
         for (let i = 0; i < cardArray.length; i++) {
             cardField.appendChild(cardArray[i]);
         }
         cardField.addEventListener("click", clickHandler);
     }
-    // Funktionen ***************************************************
-    function createPlayer(_score, _name) {
-        //div f�r anzeige pro spieler
-        let player = document.createElement("div");
-        //div f�r spieler
-        let scoreField = document.createElement("div");
-        //div f�r Punktzahl
-        let n = _score.toString(); //.toString wandelt number in string um
-        player.innerText = _name;
-        scoreField.innerText = n; //score ist die number n als string
-        playerInfo.appendChild(player); //spieler in die playerinfo anh�ngen
-        playerInfo.appendChild(scoreField); //score in die playerinfo anh�ngen
-    }
+    // Funktionen *************************************************    
     function createCard(_textDerAufDieKarteSoll) {
         let card = document.createElement("div");
         // div erzeugen
         card.innerHTML = `<span>${_textDerAufDieKarteSoll}</span>`; //Funktion wird auf die Karte gegeben
         // Text aus dem Array soll auf eine Karte
         card.setAttribute("class", "card hidden");
-        // Attribut hinzuf�gen: class = Welches Attribut (hier eine Klasse); card = zugeh�riger Wert (Hidden, taken, open)
+        // Attribut hinzufügen: class = Welches Attribut (hier eine Klasse); card = zugehöriger Wert (Hidden, taken, open)
         cardArray.push(card);
-        // cardArray = Array vom Anfang; Speicher f�r alle erzeugten Karten; pusht die Karte hoch
+        // cardArray = Array vom Anfang; Speicher für alle erzeugten Karten; pusht die Karte hoch
     }
     function randomMix(_array) {
         // _array = das Array, das durchmischt werden soll
@@ -104,7 +117,7 @@ var Aufg4Memory;
     // Spielbarkeit *************************************************
     function clickHandler(_event) {
         //console.log("ClickHandler aktiviert");
-        let cardClass = _event.target; //auf das HTML element zugreifen, dass das event ausl�st
+        let cardClass = _event.target; //auf das HTML element zugreifen, dass das event auslöst
         if (cardClass.classList.contains("card")) {
             // console.log("ClickHandler - Klasse enthaelt card = true");
             if (cardClass.classList.contains("hidden")) {
@@ -120,7 +133,7 @@ var Aufg4Memory;
             setTimeout(compareCards, 1300);
         }
         if (openCards > 2) {
-            //console.log("2 Karten sind schon offen, keine weitere �ffnen");
+            //console.log("2 Karten sind schon offen, keine weitere öffnen");
             cardClass.classList.remove("visible");
             cardClass.classList.add("hidden");
         }
@@ -147,7 +160,7 @@ var Aufg4Memory;
             alert("Glueckwunsch! Du hast gewonnen.");
         }
         openArray = []; // Array leeren
-        openCards = 0; //z�hler auf 0 setzen
+        openCards = 0; //zähler auf 0 setzen
     }
     function filterCardsByClass(_visibleFilter) {
         return cardArray.filter(card => card.classList.contains(_visibleFilter));
