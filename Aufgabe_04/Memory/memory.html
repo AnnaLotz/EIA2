@@ -11,8 +11,10 @@
 <meta charset="utf-8">
 <title>Memory Anna Lotz EIA2</title>
 <link rel="stylesheet" type="text/css" href="memory.css">
-<script type="text/javascript" src="memory.js"></script>
+<!-- Erst die Interfaces verlinken, dann die JS mit den Funktionen -->
 <script type="text/javascript" src="decks.js"></script>
+<script type="text/javascript" src="memory.js"></script>
+
 </head>
 <body>
 	<!-- ******Menue******* -->
@@ -23,10 +25,15 @@
 		<button type="button" id="removePlayer">-</button></div>
 		<div id="player"><input type="text" name="Name" placeholder="Spielername" required />
 		</div><br>
-		<div id="kartensatz">Kartensatz <br> <input type="radio" name="Cardset" value="set1" id="radio1" /> <label for="radio1">Videospiele</label>
-		<input type="radio" name="Cardset" value="set2" id="radio2"/>
+		
+		<!-- *****Kartensatz sollte über ts erzeugt werden***** -->
+		
+		<div id="kartensatz">Kartensatz <br>
+		<input type="radio" name="Cardset" value="games" id="radio1" />
+		<label for="radio1">Videospiele</label>
+		<input type="radio" name="Cardset" value="animals" id="radio2"/>
 		<label for="radio2">Tiere</label>
-		<input type="radio" name="Cardset" value="set3" id="radio3"/>
+		<input type="radio" name="Cardset" value="music" id="radio3"/>
 		<label for="radio3">Musik</label> 
 		</div><br>
 		<div id="cardStepper">Kartenanzahl <br>

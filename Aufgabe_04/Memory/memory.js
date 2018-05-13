@@ -13,8 +13,8 @@ var Aufg4Memory;
     let cardArray = []; //Divs für Karten, leeres Array, in das die letztendlich für das Spiel benötigten Karten als divs hineingespeichert werden
     let openCards = 0; //später hochzählen, wie viele karten offen sind um nicht mehr als 2 karten offen zu haben
     let score = 0; //Punktzahl
-    let numPairs = 5; //sollte variabel sein durch folgende Zeile
-    // das funktioniert irgendwie leider nicht: let numPairs: number = parseInt((<HTMLInputElement>document.getElementById("cardStepper")).value); //Anzahl Kartenpaare
+    //   let numPairs: number = 5; //sollte variabel sein durch folgende Zeile
+    let numPairs = parseInt(document.getElementById("cardStepper").value); //Anzahl Kartenpaare
     let playerInfo;
     let cardField;
     let playerCounter = 1;

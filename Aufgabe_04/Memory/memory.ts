@@ -11,16 +11,16 @@ namespace Aufg4Memory {
 
     /************* Variablen deklarieren *******************/
 
-    let cardContent: string[] = ["Tetris", "Pong", "Mario", "Zelda", "Minecraft", "Sims", "Portal", "SimCity", "Sonic", "Assassins Creed"];
+    //let cardContent: string[] = ["Tetris", "Pong", "Mario", "Zelda", "Minecraft", "Sims", "Portal", "SimCity", "Sonic", "Assassins Creed"];
     let cardArray: HTMLElement[] = []; //Divs für Karten, leeres Array, in das die letztendlich für das Spiel benötigten Karten als divs hineingespeichert werden
     let openCards: number = 0;      //später hochzählen, wie viele karten offen sind um nicht mehr als 2 karten offen zu haben
     let score: number = 0;          //Punktzahl
     let numPairs: number = 5; //sollte variabel sein durch folgende Zeile
-    // das funktioniert irgendwie leider nicht: let numPairs: number = parseInt((<HTMLInputElement>document.getElementById("cardStepper")).value); //Anzahl Kartenpaare
+    //let numPairs: number = parseInt((<HTMLInputElement>document.getElementById("cardStepper")).value); //Anzahl Kartenpaare
     let playerInfo: HTMLElement;
     let cardField: HTMLElement;
     let playerCounter: number = 1;
-    let stepperAmount: number = 1;
+    
     let inputs: NodeListOf<HTMLInputElement> = document.getElementsByTagName("input");
 
 
@@ -64,14 +64,15 @@ namespace Aufg4Memory {
 
     function createStepper(): void {
         console.log("create Stepper aktiviert");
+        let stepperAmount: number = 1;
         if (stepperAmount == 1) {
-            // wenn stepperAmount 1 entspricht, dann:
+            // wenn es nur einen Stepper gibt:
             let stepper: HTMLElement = document.createElement("input");
             // Erzeugen eines input-Elements mit den folgenden Eigenschaften:
             stepper.setAttribute("type", "number");
             stepper.setAttribute("value", "8");
             stepper.setAttribute("min", "4");
-         //   stepper.setAttribute("max", decks[document.getElementById("kartensatz")].length); //hier sollte eigentlich auf die Länge des Array zugegriffen werden
+            //stepper.setAttribute("max", decks[document.getElementById("kartensatz")].length); //hier sollte eigentlich auf die Länge des Array zugegriffen werden
             stepper.setAttribute("step", "1");
             stepper.setAttribute("id", "stepper");
             document.getElementById("cardStepper").appendChild(stepper);
@@ -104,11 +105,11 @@ namespace Aufg4Memory {
         // Spielkarten erzeugen
         for (let i: number = 0; i < numPairs; i++) {
             //irgendwas funktioniert hier nicht, sollte eigentlich auf das assoziative array zugreifen:
-            //createCard(decks[document.getElementById("kartensatz").item(0).value].content[i]);
-            //createCard(decks[document.getElementById("kartensatz").item(0).value].content[i]);
+            createCard(decks[document.getElementById("kartensatz").item(0).value].content[i]);
+            createCard(decks[document.getElementById("kartensatz").item(0).value].content[i]);
             //deswegen, damit überhaupt karten entstehen:
-            createCard(cardContent[i]);
-            createCard(cardContent[i]);
+            //createCard(cardContent[i]);
+            //createCard(cardContent[i]);
         }
 
         //Spielerinfo erzeugen
