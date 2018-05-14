@@ -28,14 +28,26 @@
 		
 		<!-- *****Kartensatz sollte über ts erzeugt werden***** -->
 		
-		<div id="kartensatz">Kartensatz <br>
-		<input type="radio" name="Cardset" value="games" id="radio1" />
+		<!--<div id="kartensatz">Kartensatz <br>
+		<input type="radio" name="Cardset" value="games" id="radio1" class="radio" />
 		<label for="radio1">Videospiele</label>
-		<input type="radio" name="Cardset" value="animals" id="radio2"/>
+		<input type="radio" name="Cardset" value="animals" id="radio2" class="radio"/>
 		<label for="radio2">Tiere</label>
-		<input type="radio" name="Cardset" value="music" id="radio3"/>
+		<input type="radio" name="Cardset" value="music" id="radio3" class="radio"/>
 		<label for="radio3">Musik</label> 
-		</div><br>
+		</div>-->
+		
+		<div id="kartensatz"> Kartensatz <br>
+		<select id="stepperinfo" name="carddeck" onchange="createStepper()">
+			<option disabled selected>Kartendeck wählen</option>
+			<option value="games">Videospiele</option>
+			<option value="animals">Tiere</option>
+			<option value="music">Musik</option>
+		</select>
+		
+		</div>
+		
+		<br>
 		<div id="cardStepper">Kartenanzahl <br>
 		</div>
 		<br>
