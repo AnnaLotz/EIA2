@@ -1,3 +1,9 @@
+/*Aufgabe: Aufgabe 4: FormElements and Interfaces
+  Name: Anna Lotz
+  Matrikel: 257449
+  Datum: 16.05.18
+  Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
+  */
 var Aufg4MemoryBackup;
 (function (Aufg4MemoryBackup) {
     //assoziatives Array zur speicherung 
