@@ -184,7 +184,7 @@ var Aufg4MemoryBackup;
         let cardsTaken = filterCardsByClass("hidden");
         if (cardsTaken.length == 0) {
             //console.log("Spiel gewonnen");                                     //Pop up mit "Win" wenn alle karten Taken sind
-            alert("Glückwunsch! Du hast gewonnen.");
+            alert("GlÜckwunsch! Du hast gewonnen.");
         }
         openArray = []; // Array leeren
         openCards = 0; //zähler auf 0 setzen
