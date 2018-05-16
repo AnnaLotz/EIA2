@@ -13,9 +13,7 @@ var Aufg4MemoryBackup;
     let cardArray = []; //Divs für Karten, leeres Array, in das die letztendlich für das Spiel benötigten Karten als divs hineingespeichert werden
     let openCards = 0; //später hochzählen, wie viele karten offen sind um nicht mehr als 2 karten offen zu haben
     let score = 0; //Punktzahl
-    //let numPairs: number = 5; //sollte variabel sein durch folgende Zeile
-    var numPairs = parseInt(document.getElementById("stepper").value); //Anzahl Kartenpaare
-    let playerInfo;
+    var playerInfo;
     let cardField;
     let stepperAmount = 1;
     var playerCounter = 1;
@@ -97,21 +95,23 @@ var Aufg4MemoryBackup;
     function startGame() {
         document.getElementById("menu").style.display = "none"; //menu unsichtbar machen
         document.getElementById("gamefield").style.display = "initial"; //spielbrett sichtbar machen
-        let playerInfo = document.getElementById("player-info"); // DOM abhängige Varaiblen deklarieren
+        var playerInfo = document.getElementById("player-info"); // DOM abhängige Varaiblen deklarieren
         let cardField = document.getElementById("card-div");
         let numPairs = parseInt(document.getElementById("stepper").value);
         let currentDeck = document.getElementById("options");
         console.log(currentDeck);
         // Spielkarten erzeugen
         for (let i = 0; i < numPairs; i++) {
-            //irgendwas funktioniert hier nicht, sollte eigentlich auf das assoziative array zugreifen:
             createCard(Aufg4MemoryBackup.decks[document.getElementsByTagName("select").item(0).value].content[i]);
             createCard(Aufg4MemoryBackup.decks[document.getElementsByTagName("select").item(0).value].content[i]);
         }
         //Spielerinfo erzeugen
+        console.log("Spieler sollte erzeugt werden");
+        console.log("playerCounter: " + playerCounter);
         for (let i = 0; i < playerCounter; i++) {
             let playerDiv = document.createElement("div");
-            document.getElementById("player-info").appendChild(playerDiv);
+            //document.getElementById("player-info").appendChild(playerDiv);
+            playerInfo.appendChild(playerDiv);
             playerDiv.innerHTML = inputs[i].value + ": " + score + " Punkte";
         }
         // Karten mischen
@@ -129,7 +129,6 @@ var Aufg4MemoryBackup;
         card.innerHTML = `<span>${_textDerAufDieKarteSoll}</span>`; //Funktion wird auf die Karte gegeben
         // Text aus dem Array soll auf eine Karte
         card.setAttribute("class", "card hidden");
-        // Attribut hinzufügen: class = Welches Attribut (hier eine Klasse); card = zugehöriger Wert (Hidden, taken, open)
         cardArray.push(card);
         // cardArray = Array vom Anfang; Speicher für alle erzeugten Karten; pusht die Karte hoch
     } //createCard zu
@@ -185,7 +184,7 @@ var Aufg4MemoryBackup;
         let cardsTaken = filterCardsByClass("hidden");
         if (cardsTaken.length == 0) {
             //console.log("Spiel gewonnen");                                     //Pop up mit "Win" wenn alle karten Taken sind
-            alert("Glueckwunsch! Du hast gewonnen.");
+            alert("Glückwunsch! Du hast gewonnen.");
         }
         openArray = []; // Array leeren
         openCards = 0; //zähler auf 0 setzen
