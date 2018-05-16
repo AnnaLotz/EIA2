@@ -5,8 +5,8 @@
   Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
   */
 //Aufbau immer so bitte! : DOM, eventListener, alle Variablen benennen, alle Funtionen
-var Aufg4MemoryBackup;
-(function (Aufg4MemoryBackup) {
+var Aufg4Memory;
+(function (Aufg4Memory) {
     window.addEventListener("DOMContentLoaded", init);
     /************* Variablen deklarieren *******************/
     //let cardContent: string[] = ["Tetris", "Pong", "Mario", "Zelda", "Minecraft", "Sims", "Portal", "SimCity", "Sonic", "Assassins Creed"];
@@ -68,8 +68,8 @@ var Aufg4MemoryBackup;
             //let inputFeld: HTMLInputElement = <HTMLInputElement> document.getElementsByTagName("input")[0];
             //hier sollte eigentlich auf die Länge des Array zugegriffen werden
             //stepper.setAttribute("max", "10");
-            stepper.setAttribute("max", Aufg4MemoryBackup.decks[document.getElementsByTagName("select").item(0).value].decklength);
-            console.log(Aufg4MemoryBackup.decks[document.getElementsByTagName("select").item(0).value]);
+            stepper.setAttribute("max", Aufg4Memory.decks[document.getElementsByTagName("select").item(0).value].decklength);
+            console.log(Aufg4Memory.decks[document.getElementsByTagName("select").item(0).value]);
             stepper.setAttribute("step", "1");
             stepper.setAttribute("id", "stepper");
             document.getElementById("cardStepper").appendChild(stepper);
@@ -105,8 +105,8 @@ var Aufg4MemoryBackup;
         // Spielkarten erzeugen
         for (let i = 0; i < numPairs; i++) {
             //irgendwas funktioniert hier nicht, sollte eigentlich auf das assoziative array zugreifen:
-            createCard(Aufg4MemoryBackup.decks[document.getElementsByTagName("select").item(0).value].content[i]);
-            createCard(Aufg4MemoryBackup.decks[document.getElementsByTagName("select").item(0).value].content[i]);
+            createCard(Aufg4Memory.decks[document.getElementsByTagName("select").item(0).value].content[i]);
+            createCard(Aufg4Memory.decks[document.getElementsByTagName("select").item(0).value].content[i]);
         }
         //Spielerinfo erzeugen
         for (let i = 0; i < playerCounter; i++) {
@@ -193,5 +193,5 @@ var Aufg4MemoryBackup;
     function filterCardsByClass(_visibleFilter) {
         return cardArray.filter(card => card.classList.contains(_visibleFilter));
     }
-})(Aufg4MemoryBackup || (Aufg4MemoryBackup = {})); //Namespace zu
+})(Aufg4Memory || (Aufg4Memory = {})); //Namespace zu
 //# sourceMappingURL=memory.js.map

@@ -1,0 +1,69 @@
+<!-- Aufgabe: Aufgabe 4: FormElements and Interfaces
+  Name: Anna Lotz
+  Matrikel: 257449
+  Datum: 06.05.18
+  Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
+  -->
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Memory Anna Lotz EIA2</title>
+<link rel="stylesheet" type="text/css" href="memory.css">
+<!-- Erst die Interfaces verlinken, dann die JS mit den Funktionen -->
+<script type="text/javascript" src="decks.js"></script>
+<script type="text/javascript" src="memory.js"></script>
+
+</head>
+<body>
+	<!-- ******Menue******* -->
+	<fieldset id="menu">
+		<legend>Memory</legend>
+		<div id="buttons">Spieler<br>
+		<button type="button" id="addPlayer">+</button>
+		<button type="button" id="removePlayer">-</button></div>
+		<div id="player"><input type="text" name="Name" placeholder="Spielername" required />
+		</div><br>
+		
+		<!-- *****Kartensatz sollte über ts erzeugt werden***** -->
+		
+		<!--<div id="kartensatz">Kartensatz <br>
+		<input type="radio" name="Cardset" value="games" id="radio1" class="radio" />
+		<label for="radio1">Videospiele</label>
+		<input type="radio" name="Cardset" value="animals" id="radio2" class="radio"/>
+		<label for="radio2">Tiere</label>
+		<input type="radio" name="Cardset" value="music" id="radio3" class="radio"/>
+		<label for="radio3">Musik</label> 
+		</div>-->
+		
+		<div id="kartensatz"> Kartensatz <br>
+		<select id="stepperinfo" name="carddeck" id="options" onchange="createStepper()">
+			<option disabled selected>Kartendeck wählen</option>
+			<option value="games">Videospiele</option>
+			<option value="animals">Tiere</option>
+			<option value="music">Musik</option>
+		</select>
+		
+		</div>
+		
+		<br>
+		<div id="cardStepper">Kartenanzahl <br>
+		</div>
+		<br>
+		<button type="button" id="startButton">Start</button>
+
+	</fieldset>
+
+	<!-- ******Spiel******* -->
+	<div id="gamefield">
+		<section id="player-info">
+			<h2>Spielinfo</h2>
+		</section>
+		<section id="card-field">
+			<h2>Spielbrett</h2>
+			<div id="card-div"></div>
+		</section>
+	</div>
+</body>
+</html>

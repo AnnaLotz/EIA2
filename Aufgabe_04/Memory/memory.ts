@@ -5,7 +5,7 @@
   Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
   */
 //Aufbau immer so bitte! : DOM, eventListener, alle Variablen benennen, alle Funtionen
-namespace Aufg4Memory {
+namespace Aufg4MemoryBackup {
 
     window.addEventListener("DOMContentLoaded", init);
 

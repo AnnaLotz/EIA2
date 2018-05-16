@@ -1,4 +1,4 @@
-namespace Aufg4MemoryBackup {
+namespace Aufg4Memory {
 
 export interface Deck {
     name: string;
