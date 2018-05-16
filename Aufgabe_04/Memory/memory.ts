@@ -15,12 +15,12 @@ namespace Aufg4Memory {
     let cardArray: HTMLElement[] = []; //Divs für Karten, leeres Array, in das die letztendlich für das Spiel benötigten Karten als divs hineingespeichert werden
     let openCards: number = 0;      //später hochzählen, wie viele karten offen sind um nicht mehr als 2 karten offen zu haben
     let score: number = 0;          //Punktzahl
-    let numPairs: number = 5; //sollte variabel sein durch folgende Zeile
-    //let numPairs: number = parseInt((<HTMLInputElement>document.getElementById("cardStepper")).value); //Anzahl Kartenpaare
+    //let numPairs: number = 5; //sollte variabel sein durch folgende Zeile
+    var numPairs: number = parseInt((<HTMLInputElement>document.getElementById("stepper")).value); //Anzahl Kartenpaare
     let playerInfo: HTMLElement;
     let cardField: HTMLElement;
-    let playerCounter: number = 1;
     let stepperAmount: number = 1;
+    var playerCounter: number = 1;
 
     let inputs: NodeListOf<HTMLInputElement> = document.getElementsByTagName("input");
 
@@ -65,6 +65,7 @@ namespace Aufg4Memory {
 
     function createStepper(): void {
         console.log("create Stepper aktiviert");
+        let stepperAmount: number = 1;
 
         if (stepperAmount == 1) {
             // wenn es nur einen Stepper gibt:
@@ -83,6 +84,7 @@ namespace Aufg4Memory {
             //hier sollte eigentlich auf die Länge des Array zugegriffen werden
             //stepper.setAttribute("max", "10");
             stepper.setAttribute("max", decks[document.getElementsByTagName("select").item(0).value].decklength);
+            console.log(decks[document.getElementsByTagName("select").item(0).value]);
             stepper.setAttribute("step", "1");
             stepper.setAttribute("id", "stepper");
             document.getElementById("cardStepper").appendChild(stepper);
@@ -94,15 +96,15 @@ namespace Aufg4Memory {
         }
     } //createStepper zu
 
-   /* function createStepper2(): void {
-        console.log("test");
-        let stepper: HTMLElement = document.createElement("input");
-        let currentDeck: HTMLDataListElement = <HTMLDataListElement>document.getElementById("options");
-        console.log(currentDeck);
-        let test: string = String(currentDeck.options);
-        console.log(test);
-        stepper.setAttribute("max", String(decks[test].content.length));
-    } */
+    /* function createStepper2(): void {
+         console.log("test");
+         let stepper: HTMLElement = document.createElement("input");
+         let currentDeck: HTMLDataListElement = <HTMLDataListElement>document.getElementById("options");
+         console.log(currentDeck);
+         let test: string = String(currentDeck.options);
+         console.log(test);
+         stepper.setAttribute("max", String(decks[test].content.length));
+     } */
 
     function stepperUpdate(): void {
         document.getElementById("stepper").remove();
@@ -118,15 +120,17 @@ namespace Aufg4Memory {
         document.getElementById("menu").style.display = "none"; //menu unsichtbar machen
         document.getElementById("gamefield").style.display = "initial"; //spielbrett sichtbar machen
 
-        playerInfo = document.getElementById("player-info");  // DOM abhängige Varaiblen deklarieren
-        cardField = document.getElementById("card-div");
-
+        let playerInfo = document.getElementById("player-info");  // DOM abhängige Varaiblen deklarieren
+        let cardField = document.getElementById("card-div");
+        let numPairs: number = parseInt((<HTMLInputElement>document.getElementById("stepper")).value);
+        let currentDeck: HTMLDataListElement = <HTMLDataListElement>document.getElementById("options");
+        console.log(currentDeck);
 
         // Spielkarten erzeugen
         for (let i: number = 0; i < numPairs; i++) {
             //irgendwas funktioniert hier nicht, sollte eigentlich auf das assoziative array zugreifen:
-            createCard(decks[document.getElementsByTagName("input").item(3).value].content[i]);
-            createCard(decks[document.getElementsByTagName("input").item(3).value].content[i]);
+            createCard(decks[document.getElementsByTagName("select").item(0).value].content[i]);
+            createCard(decks[document.getElementsByTagName("select").item(0).value].content[i]);
             //deswegen, damit überhaupt karten entstehen:
             //createCard(cardContent[i]);
             //createCard(cardContent[i]);

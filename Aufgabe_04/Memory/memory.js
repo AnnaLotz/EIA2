@@ -13,12 +13,12 @@ var Aufg4Memory;
     let cardArray = []; //Divs für Karten, leeres Array, in das die letztendlich für das Spiel benötigten Karten als divs hineingespeichert werden
     let openCards = 0; //später hochzählen, wie viele karten offen sind um nicht mehr als 2 karten offen zu haben
     let score = 0; //Punktzahl
-    let numPairs = 5; //sollte variabel sein durch folgende Zeile
-    //let numPairs: number = parseInt((<HTMLInputElement>document.getElementById("cardStepper")).value); //Anzahl Kartenpaare
+    //let numPairs: number = 5; //sollte variabel sein durch folgende Zeile
+    var numPairs = parseInt(document.getElementById("stepper").value); //Anzahl Kartenpaare
     let playerInfo;
     let cardField;
-    let playerCounter = 1;
     let stepperAmount = 1;
+    var playerCounter = 1;
     let inputs = document.getElementsByTagName("input");
     /************* Menu ******************/
     function init() {
@@ -51,6 +51,7 @@ var Aufg4Memory;
     } //remove Funktion zu
     function createStepper() {
         console.log("create Stepper aktiviert");
+        let stepperAmount = 1;
         if (stepperAmount == 1) {
             // wenn es nur einen Stepper gibt:
             let stepper = document.createElement("input");
@@ -68,6 +69,7 @@ var Aufg4Memory;
             //hier sollte eigentlich auf die Länge des Array zugegriffen werden
             //stepper.setAttribute("max", "10");
             stepper.setAttribute("max", Aufg4Memory.decks[document.getElementsByTagName("select").item(0).value].decklength);
+            console.log(Aufg4Memory.decks[document.getElementsByTagName("select").item(0).value]);
             stepper.setAttribute("step", "1");
             stepper.setAttribute("id", "stepper");
             document.getElementById("cardStepper").appendChild(stepper);
@@ -95,13 +97,16 @@ var Aufg4Memory;
     function startGame() {
         document.getElementById("menu").style.display = "none"; //menu unsichtbar machen
         document.getElementById("gamefield").style.display = "initial"; //spielbrett sichtbar machen
-        playerInfo = document.getElementById("player-info"); // DOM abhängige Varaiblen deklarieren
-        cardField = document.getElementById("card-div");
+        let playerInfo = document.getElementById("player-info"); // DOM abhängige Varaiblen deklarieren
+        let cardField = document.getElementById("card-div");
+        let numPairs = parseInt(document.getElementById("stepper").value);
+        let currentDeck = document.getElementById("options");
+        console.log(currentDeck);
         // Spielkarten erzeugen
         for (let i = 0; i < numPairs; i++) {
             //irgendwas funktioniert hier nicht, sollte eigentlich auf das assoziative array zugreifen:
-            createCard(Aufg4Memory.decks[document.getElementsByTagName("input").item(3).value].content[i]);
-            createCard(Aufg4Memory.decks[document.getElementsByTagName("input").item(3).value].content[i]);
+            createCard(Aufg4Memory.decks[document.getElementsByTagName("select").item(0).value].content[i]);
+            createCard(Aufg4Memory.decks[document.getElementsByTagName("select").item(0).value].content[i]);
         }
         //Spielerinfo erzeugen
         for (let i = 0; i < playerCounter; i++) {
