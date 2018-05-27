@@ -53,7 +53,6 @@ var L04_Interfaces;
             line += studi.curriculum;
             output.value += line + "\n";
         }
-        ;
         // zusätzliche Konsolenausgaben zur Demonstration
         /*    console.group("Simple Array");
         // console.log(studiSimpleArray);

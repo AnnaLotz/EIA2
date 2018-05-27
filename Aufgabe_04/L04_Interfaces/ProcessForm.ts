@@ -57,7 +57,7 @@ namespace L04_Interfaces {
             line += ", ";
             line += studi.curriculum;
             output.value += line + "\n";
-        };
+        }
 
         // zusätzliche Konsolenausgaben zur Demonstration
         /*    console.group("Simple Array"); 
@@ -68,8 +68,7 @@ namespace L04_Interfaces {
         // console.log(studiHomoAssoc);
         // console.groupEnd(); */
 
-        //funktion refresh zu
-        }
+        //funktion refresh zu     }
     function search(_event: Event): void {
         console.log("Suche wird ausgefuehrt");
         let outputs: HTMLTextAreaElement = document.getElementsByTagName("textarea")[1];
