@@ -63,7 +63,7 @@ namespace L06_StudiVZ {
     function handleStateChangeInsert(_event: ProgressEvent): void {
         var xhr: XMLHttpRequest = (<XMLHttpRequest>_event.target);
         if (xhr.readyState == XMLHttpRequest.DONE) {
-            alert(xhr.response);
+          //  alert(xhr.response);
         }
     } //function handleStateChangeInsert zu
     

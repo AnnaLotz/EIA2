@@ -55,7 +55,6 @@ var L06_StudiVZ;
     function handleStateChangeInsert(_event) {
         var xhr = _event.target;
         if (xhr.readyState == XMLHttpRequest.DONE) {
-            alert(xhr.response);
         }
     } //function handleStateChangeInsert zu
     function handleStateChangeRefresh(_event) {
