@@ -11,7 +11,6 @@ namespace Aufg4MemoryBackup {
 
     /************* Variablen deklarieren *******************/
 
-    //let cardContent: string[] = ["Tetris", "Pong", "Mario", "Zelda", "Minecraft", "Sims", "Portal", "SimCity", "Sonic", "Assassins Creed"];
     let cardArray: HTMLElement[] = []; //Divs für Karten, leeres Array, in das die letztendlich für das Spiel benötigten Karten als divs hineingespeichert werden
     let openCards: number = 0;      //später hochzählen, wie viele karten offen sind um nicht mehr als 2 karten offen zu haben
     let score: number = 0;          //Punktzahl
@@ -19,7 +18,6 @@ namespace Aufg4MemoryBackup {
     let cardField: HTMLElement;
     let stepperAmount: number = 1;
     var playerCounter: number = 1;
-
     let inputs: NodeListOf<HTMLInputElement> = document.getElementsByTagName("input");
 
 
@@ -124,10 +122,18 @@ namespace Aufg4MemoryBackup {
         let currentDeck: HTMLDataListElement = <HTMLDataListElement>document.getElementById("options");
         console.log(currentDeck);
 
+        
         // Spielkarten erzeugen
         for (let i: number = 0; i < numPairs; i++) {
+            if (decks[document.getElementsByTagName("select").item(0).value].content[i] === undefined) {
+            let numPairs: number = 6;
+            console.log("Deck Games");
+            createCard(decks["games"].content[i]);
+            } else {
+            console.log("Deck war ausgewählt");
             createCard(decks[document.getElementsByTagName("select").item(0).value].content[i]);
             createCard(decks[document.getElementsByTagName("select").item(0).value].content[i]);
+            }
         }
 
 

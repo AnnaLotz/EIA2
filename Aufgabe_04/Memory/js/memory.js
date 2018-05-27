@@ -9,7 +9,6 @@ var Aufg4MemoryBackup;
 (function (Aufg4MemoryBackup) {
     window.addEventListener("DOMContentLoaded", init);
     /************* Variablen deklarieren *******************/
-    //let cardContent: string[] = ["Tetris", "Pong", "Mario", "Zelda", "Minecraft", "Sims", "Portal", "SimCity", "Sonic", "Assassins Creed"];
     let cardArray = []; //Divs für Karten, leeres Array, in das die letztendlich für das Spiel benötigten Karten als divs hineingespeichert werden
     let openCards = 0; //später hochzählen, wie viele karten offen sind um nicht mehr als 2 karten offen zu haben
     let score = 0; //Punktzahl
@@ -102,8 +101,16 @@ var Aufg4MemoryBackup;
         console.log(currentDeck);
         // Spielkarten erzeugen
         for (let i = 0; i < numPairs; i++) {
-            createCard(Aufg4MemoryBackup.decks[document.getElementsByTagName("select").item(0).value].content[i]);
-            createCard(Aufg4MemoryBackup.decks[document.getElementsByTagName("select").item(0).value].content[i]);
+            if (Aufg4MemoryBackup.decks[document.getElementsByTagName("select").item(0).value].content[i] === undefined) {
+                let numPairs = 6;
+                console.log("Deck Games");
+                createCard(Aufg4MemoryBackup.decks["games"].content[i]);
+            }
+            else {
+                console.log("Deck war ausgewählt");
+                createCard(Aufg4MemoryBackup.decks[document.getElementsByTagName("select").item(0).value].content[i]);
+                createCard(Aufg4MemoryBackup.decks[document.getElementsByTagName("select").item(0).value].content[i]);
+            }
         }
         //Spielerinfo erzeugen
         console.log("Spieler sollte erzeugt werden");

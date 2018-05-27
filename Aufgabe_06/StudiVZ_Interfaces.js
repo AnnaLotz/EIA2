@@ -1,14 +1,14 @@
-/* Aufgabe: Aufgabe 4: Uebung zu Datenstrkturen und assoziative Arrays
+/* Aufgabe: Aufgabe 6: StudiVZ
   Name: Anna Lotz
   Matrikel: 257449
-  Datum: 01.05.18
+  Datum: 27.05.18
   Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
 */
-var L04_Interfaces;
-(function (L04_Interfaces) {
+var L06_StudiVZ;
+(function (L06_StudiVZ) {
     // Simples Array zum Speichern der Studi-Datens�tze (nur zur Demonstration)
-    L04_Interfaces.studiSimpleArray = [];
+    L06_StudiVZ.studiSimpleArray = [];
     // Homogenes assoziatives Array zur Speicherung einer Person unter der Matrikelnummer
-    L04_Interfaces.studiHomoAssoc = {};
-})(L04_Interfaces || (L04_Interfaces = {})); //namespace zu
-//# sourceMappingURL=Interfaces.js.map
+    L06_StudiVZ.studiHomoAssoc = {};
+})(L06_StudiVZ || (L06_StudiVZ = {})); //namespace zu
+//# sourceMappingURL=StudiVZ_Interfaces.js.map

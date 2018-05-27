@@ -1,11 +1,10 @@
-/* Aufgabe: Aufgabe 4: Uebung zu Datenstrkturen und assoziative Arrays
+/* Aufgabe: Aufgabe 6: StudiVZ
   Name: Anna Lotz
   Matrikel: 257449
-  Datum: 01.05.18
+  Datum: 27.05.18
   Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
 */ 
-
-namespace L04_Interfaces {
+namespace L06_StudiVZ {
     // Struktur des heterogenen assoziativen Arrays als Datensatz für eine studierende Person
     export interface Studi {
         name: string;

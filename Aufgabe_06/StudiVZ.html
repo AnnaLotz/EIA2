@@ -1,0 +1,55 @@
+<!-- Aufgabe: Aufgabe 6: StudiVZ
+  Name: Anna Lotz
+  Matrikel: 257449
+  Datum: 27.05.18
+  Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
+  -->
+  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>DatabaseClient</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="StudiVZ.css" type="text/css" media="screen"/>
+<script src="StudiVZ_Interfaces.js" type="text/javascript" charset="utf-8"></script>
+<script src="StudiVZ.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+	<!-- *****Input Studenten***** -->
+	<fieldset id="input">
+		<legend> Type student data here </legend>
+		<input type="text" name="name" placeholder="name"/>
+		<input type="text" name="firstname" placeholder="firstname"/>
+		<input type="text" name="matrikel" placeholder="matrikel"/>
+		<input type="number" name="age" placeholder="age" min="1" max="120"/>
+		<input type="text" name="Datalist" list="options" placeholder="curriculum"/>
+		<datalist id="options">
+			<option value="MKB"> </option>
+			<option value="OMB"> </option>
+			<option value="MIB"> </option>
+			<!-- <option value="DIM"> </option>
+				 <option value="MIM"> </option> -->
+		</datalist>
+		<input type="radio" name="gender" value="male" id="male"/>
+		<label for="male">Male</label>
+		<input type="radio" name="gender" value="female" id="female"/>
+		<label for="female">Female</label>
+		<button type="button" id="insert">Insert to database</button>
+	</fieldset>
+	
+	<!-- *****Output Studenten***** -->
+	<fieldset id="output">
+		<legend> All student data </legend>
+		<button type="button" id="refresh">Refresh</button>
+		<textarea rows="10" cols="90"> </textarea>
+	</fieldset>
+	
+	<!-- *****Output Suche***** -->
+	<fieldset>
+		<legend> Search Student </legend>
+		<input type="text" name="matrikelnumb" placeholder="Enter Matrikel Number"/>
+		<button type="button" id="search">Search</button>
+		<textarea rows="5" cols="90"></textarea>
+	</fieldset>
+</body>
+</html>
