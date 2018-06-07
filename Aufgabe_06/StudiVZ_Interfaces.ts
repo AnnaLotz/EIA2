@@ -21,7 +21,7 @@ namespace L06_StudiVZ {
     }
 
     // Simples Array zum Speichern der Studi-Datensätze (nur zur Demonstration)
-    export let studiSimpleArray: Studi[] = [];
+   // export let studiSimpleArray: Studi[] = [];
     
     // Homogenes assoziatives Array zur Speicherung einer Person unter der Matrikelnummer
     export let studiHomoAssoc: Studis = {};
