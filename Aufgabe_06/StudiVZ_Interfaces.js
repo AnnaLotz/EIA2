@@ -10,5 +10,6 @@ var L06_StudiVZ;
     // export let studiSimpleArray: Studi[] = [];
     // Homogenes assoziatives Array zur Speicherung einer Person unter der Matrikelnummer
     L06_StudiVZ.studiHomoAssoc = {};
+    console.log("test");
 })(L06_StudiVZ || (L06_StudiVZ = {})); //namespace zu
 //# sourceMappingURL=StudiVZ_Interfaces.js.map

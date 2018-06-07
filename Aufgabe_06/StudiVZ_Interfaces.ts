@@ -25,5 +25,6 @@ namespace L06_StudiVZ {
     
     // Homogenes assoziatives Array zur Speicherung einer Person unter der Matrikelnummer
     export let studiHomoAssoc: Studis = {};
+    console.log("test");
     
 } //namespace zu
