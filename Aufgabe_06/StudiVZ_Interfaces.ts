@@ -11,8 +11,8 @@ namespace L06_StudiVZ {
         firstname: string;
         matrikel: number;
         age: number;
-        curriculum: string;
         gender: boolean;
+        curriculum: string;
     }
 
     // Struktur des homogenen assoziativen Arrays, bei dem ein Datensatz der Matrikelnummer zugeordnet ist
@@ -25,6 +25,5 @@ namespace L06_StudiVZ {
     
     // Homogenes assoziatives Array zur Speicherung einer Person unter der Matrikelnummer
     export let studiHomoAssoc: Studis = {};
-    console.log("test");
     
 } //namespace zu
