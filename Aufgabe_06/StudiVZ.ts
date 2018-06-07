@@ -50,7 +50,7 @@ namespace L06_StudiVZ {
     }   //funktion refresh zu
     
     function search(_event: Event): void {
-        let mtrkl: string = inputs[2].value;
+        let mtrkl: string = inputs[6].value;
         
         let xhr: XMLHttpRequest = new XMLHttpRequest();
         xhr.open("GET", address + "?command=search&searchFor=" + mtrkl, true);

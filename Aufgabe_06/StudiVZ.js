@@ -46,7 +46,7 @@ var L06_StudiVZ;
         xhr.send();
     } //funktion refresh zu
     function search(_event) {
-        let mtrkl = inputs[2].value;
+        let mtrkl = inputs[6].value;
         let xhr = new XMLHttpRequest();
         xhr.open("GET", address + "?command=search&searchFor=" + mtrkl, true);
         xhr.addEventListener("readystatechange", handleStateChangeSearch);
