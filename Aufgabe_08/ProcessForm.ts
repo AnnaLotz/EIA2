@@ -83,7 +83,7 @@ namespace Aufgabe8 {
     
     //Funktion für die Suche per Matrikelnummer   
     function search(_event: Event): void {
-        let mtrkl: string = inputs[7].value;
+        let mtrkl: string = inputs[6].value;
         
         let xhr: XMLHttpRequest = new XMLHttpRequest();
         xhr.open("GET", address + "?command=search&searchFor=" + mtrkl, true);

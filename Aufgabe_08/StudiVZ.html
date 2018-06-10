@@ -19,35 +19,33 @@
 	<!-- *****Input Studenten***** -->
 	<fieldset id="input">
 		<legend> Type student data here </legend>
-		<input type="text" name="name" placeholder="name"/>
 		<input type="text" name="firstname" placeholder="firstname"/>
+		<input type="text" name="name" placeholder="name"/>
 		<input type="text" name="matrikel" placeholder="matrikel"/>
-		<input type="number" name="age" placeholder="age" min="1" max="120"/>
+		<div>Select your study path:
 		<select name="studyPath"> 
 			<option value="MKB">MKB</option>
 			<option value="OMB">OMB</option>
 			<option value="MIB">MIB</option>
 		</select>
+		</div>
+		<input type="number" name="age" placeholder="age" min="1" max="120"/>
 		<input type="radio" name="gender" value="male" id="male"/>
 		<label for="male">Male</label>
 		<input type="radio" name="gender" value="female" id="female"/>
 		<label for="female">Female</label>
 		<button type="button" id="insert">Insert to database</button>
 	</fieldset>
-	
-	<!-- *****Output Studenten***** -->
 	<fieldset id="output">
 		<legend> All student data </legend>
 		<button type="button" id="refresh">Refresh</button>
-		<textarea rows="10" cols="90"> </textarea>
+		<textarea rows="8" cols="90"> </textarea>
 	</fieldset>
-	
-	<!-- *****Output Suche***** -->
-	<fieldset>
-		<legend> Search Student </legend>
-		<input type="text" name="matrikelnumb" placeholder="Enter Matrikel Number"/>
-		<button type="button" id="search">Search</button>
-		<textarea rows="5" cols="90"></textarea>
-	</fieldset>
+	<fieldset id="checkSearch">
+		<legend> Search by matrikelnumber</legend>
+		<input type="text" name="search" placeholder="matrikel"/>
+		<button type="button" id="checkSearch">Search</button>
+		<textarea rows="2" cols="90"> </textarea>
+</fieldset>
 </body>
 </html>

@@ -69,7 +69,7 @@ var Aufgabe8;
     }
     //Funktion f�r die Suche per Matrikelnummer   
     function search(_event) {
-        let mtrkl = inputs[7].value;
+        let mtrkl = inputs[6].value;
         let xhr = new XMLHttpRequest();
         xhr.open("GET", address + "?command=search&searchFor=" + mtrkl, true);
         xhr.addEventListener("readystatechange", handleStateChangeSearch);
