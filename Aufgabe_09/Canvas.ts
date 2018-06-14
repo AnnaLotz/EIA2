@@ -10,10 +10,8 @@ namespace L09_Canvas {
         drawBackground();
         drawStoneBackground();
         drawSand();
-        drawChest(775, 475);
-
-        // drawDavidStar(300, 100);
-        //drawDavidStar(100, 200);
+        drawChest(750, 460);
+        drawAnchor(725, 670);
 
         /* for (let i: number = 0; i < 100; i++) {
              let x: number = Math.random() * crc2.canvas.width;
@@ -77,30 +75,44 @@ namespace L09_Canvas {
     }
     
     function drawChest(_x: number, _y: number): void {
-        console.log("chest");
+        crc2.lineWidth = 1;
+        crc2.strokeStyle = "rgb(0, 0, 0)";
         crc2.beginPath();
+        crc2.fillStyle = "rgb(102, 51, 0)";
         crc2.moveTo(_x, _y); //A
         crc2.lineTo(_x , _y + 50); //B
         crc2.lineTo(_x + 100, _y + 100); //C
         crc2.lineTo(_x + 100, _y + 50); //D
         crc2.lineTo(_x, _y); //A
-        crc2.closePath();
-        crc2.stroke();
-        
+        crc2.fill();
+        crc2.stroke();        
         crc2.beginPath();
         crc2.moveTo(_x, _y); //A
         crc2.lineTo(_x + 50, _y); //G
         crc2.lineTo(_x + 150, _y + 50); //E
+        crc2.lineTo(_x + 100, _y + 50); //D 
+        crc2.lineTo(_x, _y); //A
+        crc2.fill();      
+        crc2.stroke();                
+        crc2.moveTo(_x + 100, _y + 100); //C
+        crc2.lineTo(_x + 150, _y + 100); //F
+        crc2.lineTo(_x + 150, _y + 50); //E
         crc2.lineTo(_x + 100, _y + 50); //D
+        crc2.fill();
+        crc2.stroke();        
+        crc2.moveTo(_x + 50, _y); //G
+        crc2.lineTo(_x + 25, _y - 45); //H
+        crc2.lineTo(_x + 125, _y + 5); //I
+        crc2.lineTo(_x + 150, _y + 50); //E
+        crc2.fill();
+        crc2.stroke();   
         crc2.closePath();
-        crc2.stroke();
-        
        /* 
         crc2.moveTo(_x, _y); //A
         crc2.lineTo(_x , _y + 50); //B
         crc2.lineTo(_x + 100, _y + 100); //C
         crc2.lineTo(_x + 100, _y + 50); //D
-        crc2.lineTo(_x + 150, _y + 100); //E
+        crc2.lineTo(_x + 150, _y + 50); //E
         crc2.lineTo(_x + 150, _y + 150); //F
         crc2.lineTo(_x + 50, _y); //G
         crc2.lineTo(_x + 25, _y - 45); //H
@@ -109,6 +121,16 @@ namespace L09_Canvas {
         crc2.lineTo(_x + 35, _y - 35); //K
         crc2.closePath();
         crc2.stroke(); */
+    }
+    
+    function drawAnchor(_x: number, _y: number): void {
+        crc2.beginPath();
+        crc2.lineWidth = 2;
+        crc2.strokeStyle = "rgb(77, 77, 77)";
+        crc2.moveTo(_x, _y); //A
+        crc2.lineTo(_x + 10, _y - 90); //D
+        crc2.stroke();
+        crc2.closePath();
     }
     
     
