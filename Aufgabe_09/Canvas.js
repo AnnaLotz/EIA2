@@ -9,6 +9,7 @@ var L09_Canvas;
         drawBackground();
         drawStoneBackground();
         drawSand();
+        drawChest(775, 475);
         // drawDavidStar(300, 100);
         //drawDavidStar(100, 200);
         /* for (let i: number = 0; i < 100; i++) {
@@ -23,6 +24,7 @@ var L09_Canvas;
     }
     function drawStoneBackground() {
         crc2.beginPath();
+        crc2.fillStyle = "rgb(166, 166, 166)";
         crc2.moveTo(0, 510);
         crc2.lineTo(50, 425);
         crc2.lineTo(90, 415);
@@ -32,6 +34,9 @@ var L09_Canvas;
         crc2.lineTo(275, 520);
         crc2.closePath();
         crc2.stroke();
+        crc2.fill();
+        crc2.beginPath();
+        crc2.fillStyle = "rgb(179, 179, 179)";
         crc2.moveTo(150, 470);
         crc2.lineTo(180, 395);
         crc2.lineTo(215, 385);
@@ -43,6 +48,7 @@ var L09_Canvas;
         crc2.lineTo(425, 660);
         crc2.closePath();
         crc2.stroke();
+        crc2.fill();
     }
     function drawSand() {
         crc2.beginPath();
@@ -59,6 +65,38 @@ var L09_Canvas;
         crc2.closePath();
         crc2.stroke();
         crc2.fill();
+    }
+    function drawChest(_x, _y) {
+        console.log("chest");
+        crc2.beginPath();
+        crc2.moveTo(_x, _y); //A
+        crc2.lineTo(_x, _y + 50); //B
+        crc2.lineTo(_x + 100, _y + 100); //C
+        crc2.lineTo(_x + 100, _y + 50); //D
+        crc2.lineTo(_x, _y); //A
+        crc2.closePath();
+        crc2.stroke();
+        crc2.beginPath();
+        crc2.moveTo(_x, _y); //A
+        crc2.lineTo(_x + 50, _y); //G
+        crc2.lineTo(_x + 150, _y + 50); //E
+        crc2.lineTo(_x + 100, _y + 50); //D
+        crc2.closePath();
+        crc2.stroke();
+        /*
+         crc2.moveTo(_x, _y); //A
+         crc2.lineTo(_x , _y + 50); //B
+         crc2.lineTo(_x + 100, _y + 100); //C
+         crc2.lineTo(_x + 100, _y + 50); //D
+         crc2.lineTo(_x + 150, _y + 100); //E
+         crc2.lineTo(_x + 150, _y + 150); //F
+         crc2.lineTo(_x + 50, _y); //G
+         crc2.lineTo(_x + 25, _y - 45); //H
+         crc2.lineTo(_x + 125, _y + 5); //I
+         crc2.lineTo(_x + 135, _y + 15); //J
+         crc2.lineTo(_x + 35, _y - 35); //K
+         crc2.closePath();
+         crc2.stroke(); */
     }
 })(L09_Canvas || (L09_Canvas = {})); //namespace zu
 //# sourceMappingURL=Canvas.js.map
