@@ -11,6 +11,11 @@ var L09_Canvas;
         drawSand();
         drawChest(750, 460);
         drawAnchor(725, 670);
+        drawStoneA(200, 575);
+        drawStoneB(825, 625);
+        drawFish(300, 175);
+        drawFish(575, 125);
+        drawFish(650, 250);
         /* for (let i: number = 0; i < 100; i++) {
              let x: number = Math.random() * crc2.canvas.width;
              let y: number = Math.random() * crc2.canvas.height;
@@ -121,6 +126,48 @@ var L09_Canvas;
         crc2.lineTo(_x + 10, _y - 90); //D
         crc2.stroke();
         crc2.closePath();
+    }
+    function drawStoneA(_x, _y) {
+        crc2.beginPath();
+        crc2.fillStyle = "rgb(166, 166, 166)";
+        crc2.lineTo(_x + 35, _y + 20);
+        crc2.lineTo(_x + 30, _y + 50);
+        crc2.lineTo(_x + 10, _y + 60);
+        crc2.lineTo(_x - 20, _y + 55);
+        crc2.lineTo(_x - 30, _y + 50);
+        crc2.lineTo(_x - 40, _y + 25);
+        crc2.lineTo(_x, _y);
+        crc2.closePath();
+        crc2.stroke();
+        crc2.fill();
+    }
+    function drawStoneB(_x, _y) {
+        crc2.beginPath();
+        crc2.fillStyle = "rgb(166, 166, 166)";
+        crc2.lineTo(_x - 20, _y + 20);
+        crc2.lineTo(_x - 60, _y + 25);
+        crc2.lineTo(_x - 90, _y + 18);
+        crc2.lineTo(_x - 80, _y - 20);
+        crc2.lineTo(_x - 50, _y - 40);
+        crc2.lineTo(_x - 10, _y - 25);
+        crc2.lineTo(_x, _y);
+        crc2.closePath();
+        crc2.stroke();
+        crc2.fill();
+    }
+    function drawFish(_x, _y) {
+        crc2.strokeStyle = "rgb( 0, 0, 0)";
+        crc2.beginPath();
+        crc2.fillStyle = "rgb(180, 20, 0)";
+        crc2.moveTo(_x, _y);
+        crc2.quadraticCurveTo(_x + 60, _y - 60, _x + 120, _y + 0);
+        crc2.lineTo(_x + 150, _y - 25);
+        crc2.lineTo(_x + 150, _y + 25);
+        crc2.lineTo(_x + 120, _y);
+        crc2.quadraticCurveTo(_x + 60, _y + 60, _x + 0, _y + 0);
+        crc2.closePath();
+        crc2.stroke();
+        crc2.fill();
     }
 })(L09_Canvas || (L09_Canvas = {})); //namespace zu
 //# sourceMappingURL=Canvas.js.map
