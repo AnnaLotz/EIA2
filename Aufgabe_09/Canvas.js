@@ -1,3 +1,9 @@
+/*  Aufgabe: Aufgabe : Canvas
+    Name: Anna Lotz
+    Matrikel: 257449
+    Datum: 17.06.18
+    
+    Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.*/
 var L09_Canvas;
 (function (L09_Canvas) {
     window.addEventListener("load", init);
