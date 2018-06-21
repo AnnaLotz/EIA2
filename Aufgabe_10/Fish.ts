@@ -5,11 +5,10 @@ namespace L10_Animation {
         color: string;
         size: number;
         speed: number;
+        
 
         move(): void {
-            this.x += -5 ;
-            
-            //bewegung
+            this.x += -3 ;
         }
               
 
@@ -30,6 +29,6 @@ namespace L10_Animation {
         }
 
 
-    } //close class fish
+    } //class fish zu
 
 } //namespace zu

@@ -23,7 +23,7 @@ var L10_Animation;
         drawStoneA(200, 575);
         drawStoneB(825, 625);
         drawChest(750, 460);
-        drawAnchor(570, 670);
+        //drawAnchor(570, 670);
     }
     L10_Animation.drawBackground = drawBackground;
     function drawWater() {
@@ -121,21 +121,6 @@ var L10_Animation;
          crc2.lineTo(_x + 35, _y - 35); //K
          crc2.closePath();
          crc2.stroke(); */
-    }
-    function drawAnchor(_x, _y) {
-        L10_Animation.crc2.beginPath();
-        L10_Animation.crc2.lineWidth = 4;
-        L10_Animation.crc2.strokeStyle = "rgb(38, 38, 38)";
-        L10_Animation.crc2.moveTo(_x, _y); //A
-        L10_Animation.crc2.lineTo(_x + 10, _y - 90); //D
-        L10_Animation.crc2.arc(_x + 12, _y - 107, 15, 1.5, 15 * Math.PI);
-        L10_Animation.crc2.moveTo(_x - 5, _y - 72); //F
-        L10_Animation.crc2.lineTo(_x + 20, _y - 68); //E
-        L10_Animation.crc2.moveTo(_x - 40, _y - 45); //C
-        L10_Animation.crc2.quadraticCurveTo(_x - 38, _y - 5, _x, _y);
-        L10_Animation.crc2.quadraticCurveTo(_x + 35, _y + 5, _x + 48, _y - 33);
-        L10_Animation.crc2.stroke();
-        L10_Animation.crc2.closePath();
     }
     function drawStoneA(_x, _y) {
         L10_Animation.crc2.beginPath();

@@ -28,7 +28,7 @@ namespace L10_Animation {
         drawStoneA(200, 575);
         drawStoneB(825, 625);
         drawChest(750, 460);
-        drawAnchor(570, 670);
+        //drawAnchor(570, 670);
 
     }
 
@@ -135,22 +135,6 @@ namespace L10_Animation {
          crc2.stroke(); */
     }
 
-    function drawAnchor(_x: number, _y: number): void {
-        crc2.beginPath();
-        crc2.lineWidth = 4;
-        crc2.strokeStyle = "rgb(38, 38, 38)";
-        crc2.moveTo(_x, _y); //A
-        crc2.lineTo(_x + 10, _y - 90); //D
-        crc2.arc(_x + 12, _y - 107, 15, 1.5, 15 * Math.PI);
-        crc2.moveTo(_x - 5, _y - 72); //F
-        crc2.lineTo(_x + 20, _y - 68); //E
-        crc2.moveTo(_x - 40, _y - 45); //C
-        crc2.quadraticCurveTo(_x - 38, _y - 5, _x, _y);
-        crc2.quadraticCurveTo(_x + 35, _y + 5, _x + 48, _y - 33);
-
-        crc2.stroke();
-        crc2.closePath();
-    }
 
     function drawStoneA(_x: number, _y: number): void {
         crc2.beginPath();

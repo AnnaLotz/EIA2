@@ -2,8 +2,7 @@ var L10_Animation;
 (function (L10_Animation) {
     class Fish {
         move() {
-            this.x += -5;
-            //bewegung
+            this.x += -3;
         }
         draw() {
             L10_Animation.crc2.beginPath();
@@ -21,6 +20,6 @@ var L10_Animation;
             L10_Animation.crc2.fill();
         }
     }
-    L10_Animation.Fish = Fish; //close class fish
+    L10_Animation.Fish = Fish; //class fish zu
 })(L10_Animation || (L10_Animation = {})); //namespace zu
 //# sourceMappingURL=Fish.js.map
