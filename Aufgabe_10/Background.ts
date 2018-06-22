@@ -1,3 +1,10 @@
+/*  Aufgabe: Aufgabe 10 : Canvas Animation
+    Name: Anna Lotz
+    Matrikel: 257449
+    Datum: 22.06.18
+    
+    Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.*/
+
 namespace L10_Animation {
 
     export function drawBackground(): void {
@@ -32,7 +39,7 @@ namespace L10_Animation {
     }
 
     function drawWater(): void {
-        let gradient: CanvasGradient = crc2.createLinearGradient(0, 0, 0, 300);
+        let gradient: CanvasGradient = crc2.createLinearGradient(50, 0, 10, 300);
         gradient.addColorStop(0, "#63B4FF");
         gradient.addColorStop(1, "#3C68E8");
 
@@ -91,7 +98,7 @@ namespace L10_Animation {
         crc2.lineTo(0, 700);
         crc2.closePath();
         crc2.stroke();
-        crc2.fill();
+        crc2.fill();    
     }
 
     function drawChest(_x: number, _y: number): void {
@@ -179,7 +186,10 @@ namespace L10_Animation {
     function drawSeaGrass(_x: number, _y: number): void {
         crc2.strokeStyle = "rgb(34, 51, 0)";
         crc2.lineWidth = 1;
-        crc2.fillStyle = "rgb(51, 77, 0)";
+        let gradient: CanvasGradient = crc2.createLinearGradient(0, 250, 0, 600);
+        gradient.addColorStop(0, "#2B731D");
+        gradient.addColorStop(1, "#195C22");
+        crc2.fillStyle = gradient;
         crc2.beginPath();
         crc2.moveTo(_x, _y);
         crc2.quadraticCurveTo(_x - 25, _y - 40, _x - 5, _y - 75);

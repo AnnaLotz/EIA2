@@ -1,3 +1,9 @@
+/*  Aufgabe: Aufgabe 10 : Canvas Animation
+    Name: Anna Lotz
+    Matrikel: 257449
+    Datum: 22.06.18
+    
+    Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.*/
 var L10_Animation;
 (function (L10_Animation) {
     function drawBackground() {
@@ -26,7 +32,7 @@ var L10_Animation;
     }
     L10_Animation.drawBackground = drawBackground;
     function drawWater() {
-        let gradient = L10_Animation.crc2.createLinearGradient(0, 0, 0, 300);
+        let gradient = L10_Animation.crc2.createLinearGradient(50, 0, 10, 300);
         gradient.addColorStop(0, "#63B4FF");
         gradient.addColorStop(1, "#3C68E8");
         L10_Animation.crc2.fillStyle = gradient;
@@ -160,7 +166,10 @@ var L10_Animation;
     function drawSeaGrass(_x, _y) {
         L10_Animation.crc2.strokeStyle = "rgb(34, 51, 0)";
         L10_Animation.crc2.lineWidth = 1;
-        L10_Animation.crc2.fillStyle = "rgb(51, 77, 0)";
+        let gradient = L10_Animation.crc2.createLinearGradient(0, 250, 0, 600);
+        gradient.addColorStop(0, "#2B731D");
+        gradient.addColorStop(1, "#195C22");
+        L10_Animation.crc2.fillStyle = gradient;
         L10_Animation.crc2.beginPath();
         L10_Animation.crc2.moveTo(_x, _y);
         L10_Animation.crc2.quadraticCurveTo(_x - 25, _y - 40, _x - 5, _y - 75);

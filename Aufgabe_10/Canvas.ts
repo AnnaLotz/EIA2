@@ -1,7 +1,7 @@
 /*  Aufgabe: Aufgabe 10 : Canvas Animation
     Name: Anna Lotz
     Matrikel: 257449
-    Datum: 21.06.18
+    Datum: 22.06.18
     
     Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.*/
 
@@ -15,6 +15,7 @@ namespace L10_Animation {
     let fishs: Fish[] = [];
     let bubbles: Bubble[] = [];
     let anchors: Anchor[] = [];
+    let chains: Chain[] = [];
 
 
     function init(_event: Event): void {
@@ -25,11 +26,12 @@ namespace L10_Animation {
         drawBackground();
         imgData = crc2.getImageData(0, 0, canvas.width, canvas.height);
 
+        //Fische
         for (let i: number = 0; i < 8; i++) {
             let oneFish: Fish = new Fish();
             oneFish.x = Math.random() * crc2.canvas.width;
             oneFish.y = Math.random() * crc2.canvas.height - 200;
-            oneFish.speed = Math.random() + 0.2;
+            oneFish.speed = (Math.random() + 1) * 0.5;
             fishs.push(oneFish);
         }
 
@@ -38,7 +40,7 @@ namespace L10_Animation {
             let oneBubble: Bubble = new Bubble();
             oneBubble.x = Math.random() * (100 - 300) + 300;
             oneBubble.y = Math.random() * 325;
-            oneBubble.r = Math.random() * 5;
+            oneBubble.r = (Math.random() + 0.1) * 6;
             bubbles.push(oneBubble);
         }
 
@@ -52,17 +54,28 @@ namespace L10_Animation {
         }
 
         //Anker
-        for (let i: number = 0; i < 1; i++) {
-            console.log("anker");
-            let oneAnchor: Anchor = new Anchor();
-            oneAnchor.x = 590;
-            oneAnchor.y = 500;
-            anchors.push(oneAnchor);
+        window.setTimeout(sinkAnchor, 10);
+        function sinkAnchor(): void {
+            for (let i: number = 0; i < 1; i++) {
+                console.log("anker");
+                let oneAnchor: Anchor = new Anchor();
+                oneAnchor.x = 590;
+                //oneAnchor.y = -10;
+                oneAnchor.y = 0;
+                anchors.push(oneAnchor);
+            }
+        }
+
+        //Kette
+        for (let i: number = 0; i < 25; i++) {
+            let oneChain: Chain = new Chain();
+            oneChain.x = 603;
+            oneChain.y = -128 - i * 20.5;
+            chains.push(oneChain);
         }
 
 
         animate();
-
 
     } //init zu
 
@@ -73,27 +86,23 @@ namespace L10_Animation {
 
         moveObjects();
         drawObjects();
-    }
+    } //animate zu
 
     function moveObjects(): void {
 
-
+        //Fische
         for (let i: number = 0; i < fishs.length; i++) {
             fishs[i].moveForward();
-
             //um die fische neu zu spawnen, wenn sie aus dem Bild schwimmen
             if (fishs[i].x < -200) {
                 fishs[i].x = canvas.width + 50;
                 fishs[i].y = Math.random() * crc2.canvas.height - 200;
             }
         }
-        
-        for (let i: number = 0; i < fishs.length; i++)
-            fishs[i].moveUpAndDown();
 
+        //Luftblasen
         for (let i: number = 0; i < bubbles.length; i++) {
             bubbles[i].move();
-
             //Luftblasen links:
             if (bubbles[i].x < 500 && bubbles[i].y < -50) {
                 bubbles[i].x = Math.random() * (100 - 300) + 300;
@@ -106,29 +115,42 @@ namespace L10_Animation {
             }
         }
 
-        for (let i: number = 0; i < anchors.length; i++) {            
-            
-            if (anchors[i].y == 644) {
+        //Anker               
+        for (let i: number = 0; i < anchors.length; i++) {
+
+            if (anchors[i].y == 644) { //Anhalten/Aufschlagen
                 anchors[i].x = 590;
                 anchors[i].y = 644;
-                
+
             } else {
                 anchors[i].move();
             }
         }
+
+        //Kette
+        for (let i: number = 0; i < chains.length; i++) {
+            
+            if (chains[i].y == 519 + i) {
+                chains[i].y = 519 + i;
+            } else {
+                chains[i].move();
+            }
+        }
+
+
 
     } //moveObjects zu
 
     function drawObjects(): void {
         for (let i: number = 0; i < fishs.length; i++)
             fishs[i].draw();
-        crc2.setTransform(1.0, 0, 0, 1.0, 0, 0);
         for (let i: number = 0; i < bubbles.length; i++)
             bubbles[i].draw();
-        for (let i: number = 0; i < anchors.length; i++) {
+        for (let i: number = 0; i < anchors.length; i++)
             anchors[i].draw();
-        }
-    }
+        for (let i: number = 0; i < chains.length; i++)
+            chains[i].draw();
+    } //drawObjects zu
 
 
 } //namespace zu

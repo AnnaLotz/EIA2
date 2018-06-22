@@ -1,13 +1,16 @@
+/*  Aufgabe: Aufgabe 10 : Canvas Animation
+    Name: Anna Lotz
+    Matrikel: 257449
+    Datum: 22.06.18
+    
+    Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.*/
 var L10_Animation;
 (function (L10_Animation) {
     class Anchor {
-        move() {
-            this.y += 1;
-        }
         draw() {
             console.log("draw anchor");
             L10_Animation.crc2.beginPath();
-            L10_Animation.crc2.lineWidth = 4;
+            L10_Animation.crc2.lineWidth = 6.5;
             L10_Animation.crc2.strokeStyle = "rgb(38, 38, 38)";
             L10_Animation.crc2.moveTo(this.x, this.y); //A
             L10_Animation.crc2.lineTo(this.x + 10, this.y - 90); //D
@@ -19,6 +22,9 @@ var L10_Animation;
             L10_Animation.crc2.quadraticCurveTo(this.x + 35, this.y + 5, this.x + 48, this.y - 33);
             L10_Animation.crc2.stroke();
             L10_Animation.crc2.closePath();
+        }
+        move() {
+            this.y += 1;
         }
     }
     L10_Animation.Anchor = Anchor; //class Bubble zu

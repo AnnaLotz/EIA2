@@ -6,26 +6,24 @@
     Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.*/
 
 namespace L10_Animation {
-    export class Bubble {
+    export class Chain {
         x: number;
         y: number;
-        r: number;
-        speed: number;          
+        r: number; //radius   
 
         draw(): void {
-            crc2.fillStyle = "rgb(204, 238, 255, 0.55)";
-            crc2.lineWidth = 0.5;
+            crc2.strokeStyle = "rgb(38, 38, 38)";
+            crc2.lineWidth = 4.5;
             crc2.beginPath();
-            crc2.arc(this.x, this.y, this.r, 0, 2 * Math.PI);
+            crc2.arc(this.x, this.y, 12, 0, 2 * Math.PI);
             crc2.closePath();
             crc2.stroke();
-            crc2.fill();
         }
         
         move(): void {
-            this.y += -0.8;
+            this.y += 1;
         }
 
 
-    } //class Bubble zu
+    } //class Chain zu
 } //namespace zu
