@@ -25,7 +25,7 @@ namespace L10_Animation {
         drawBackground();
         imgData = crc2.getImageData(0, 0, canvas.width, canvas.height);
 
-        for (let i: number = 0; i < 7; i++) {
+        for (let i: number = 0; i < 8; i++) {
             let oneFish: Fish = new Fish();
             oneFish.x = Math.random() * crc2.canvas.width;
             oneFish.y = Math.random() * crc2.canvas.height - 200;
@@ -55,8 +55,8 @@ namespace L10_Animation {
         for (let i: number = 0; i < 1; i++) {
             console.log("anker");
             let oneAnchor: Anchor = new Anchor();
-            oneAnchor.x = 570;
-            oneAnchor.y = - 100;
+            oneAnchor.x = 590;
+            oneAnchor.y = 500;
             anchors.push(oneAnchor);
         }
 
@@ -108,9 +108,9 @@ namespace L10_Animation {
 
         for (let i: number = 0; i < anchors.length; i++) {            
             
-            if (anchors[i].y == 670) {
-                anchors[i].x = 570;
-                anchors[i].y = 670;
+            if (anchors[i].y == 644) {
+                anchors[i].x = 590;
+                anchors[i].y = 644;
                 
             } else {
                 anchors[i].move();
@@ -122,6 +122,7 @@ namespace L10_Animation {
     function drawObjects(): void {
         for (let i: number = 0; i < fishs.length; i++)
             fishs[i].draw();
+        crc2.setTransform(1.0, 0, 0, 1.0, 0, 0);
         for (let i: number = 0; i < bubbles.length; i++)
             bubbles[i].draw();
         for (let i: number = 0; i < anchors.length; i++) {

@@ -7,7 +7,7 @@ namespace L10_Animation {
         
 
         move(): void {
-            this.y += -1;
+            this.y += -0.8;
         }
         
 

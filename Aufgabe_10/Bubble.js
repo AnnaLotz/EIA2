@@ -2,7 +2,7 @@ var L10_Animation;
 (function (L10_Animation) {
     class Bubble {
         move() {
-            this.y += -1;
+            this.y += -0.8;
         }
         draw() {
             L10_Animation.crc2.fillStyle = "rgb(204, 238, 255, 0.55)";

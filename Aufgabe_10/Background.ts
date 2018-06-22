@@ -26,9 +26,8 @@ namespace L10_Animation {
         crc2.scale(2, 2);
 
         drawStoneA(200, 575);
-        drawStoneB(825, 625);
+        drawStoneB(680, 620);
         drawChest(750, 460);
-        //drawAnchor(570, 670);
 
     }
 
@@ -76,6 +75,11 @@ namespace L10_Animation {
 
         crc2.beginPath();
         crc2.fillStyle = "rgba(237, 192, 44, 1)";
+        let gradient: CanvasGradient = crc2.createLinearGradient(0, 550, 0, 700);
+        gradient.addColorStop(0, "#F5DC32");
+        gradient.addColorStop(1, "#D1B15A");
+        crc2.fillStyle = gradient;
+
         crc2.moveTo(0, 475);
         crc2.quadraticCurveTo(50, 475, 85, 440);
         crc2.quadraticCurveTo(175, 380, 255, 460);

@@ -17,7 +17,7 @@ var L10_Animation;
         console.log(L10_Animation.crc2);
         L10_Animation.drawBackground();
         imgData = L10_Animation.crc2.getImageData(0, 0, L10_Animation.canvas.width, L10_Animation.canvas.height);
-        for (let i = 0; i < 7; i++) {
+        for (let i = 0; i < 8; i++) {
             let oneFish = new L10_Animation.Fish();
             oneFish.x = Math.random() * L10_Animation.crc2.canvas.width;
             oneFish.y = Math.random() * L10_Animation.crc2.canvas.height - 200;
@@ -44,8 +44,8 @@ var L10_Animation;
         for (let i = 0; i < 1; i++) {
             console.log("anker");
             let oneAnchor = new L10_Animation.Anchor();
-            oneAnchor.x = 570;
-            oneAnchor.y = -100;
+            oneAnchor.x = 590;
+            oneAnchor.y = 500;
             anchors.push(oneAnchor);
         }
         animate();
@@ -82,9 +82,9 @@ var L10_Animation;
             }
         }
         for (let i = 0; i < anchors.length; i++) {
-            if (anchors[i].y == 670) {
-                anchors[i].x = 570;
-                anchors[i].y = 670;
+            if (anchors[i].y == 644) {
+                anchors[i].x = 590;
+                anchors[i].y = 644;
             }
             else {
                 anchors[i].move();
@@ -94,6 +94,7 @@ var L10_Animation;
     function drawObjects() {
         for (let i = 0; i < fishs.length; i++)
             fishs[i].draw();
+        L10_Animation.crc2.setTransform(1.0, 0, 0, 1.0, 0, 0);
         for (let i = 0; i < bubbles.length; i++)
             bubbles[i].draw();
         for (let i = 0; i < anchors.length; i++) {
