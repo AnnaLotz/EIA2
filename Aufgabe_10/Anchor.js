@@ -23,8 +23,11 @@ var L10_Animation;
             L10_Animation.crc2.stroke();
             L10_Animation.crc2.closePath();
         }
-        move() {
+        moveDown() {
             this.y += 1;
+        }
+        moveUp() {
+            this.y -= 1;
         }
     }
     L10_Animation.Anchor = Anchor; //class Bubble zu

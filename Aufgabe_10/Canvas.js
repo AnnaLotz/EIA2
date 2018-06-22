@@ -17,6 +17,8 @@ var L10_Animation;
         L10_Animation.crc2 = L10_Animation.canvas.getContext("2d");
         console.log(L10_Animation.crc2);
         L10_Animation.drawBackground();
+        window.setTimeout(makeAnchor, 10);
+        window.setTimeout(makeChain, 10);
         imgData = L10_Animation.crc2.getImageData(0, 0, L10_Animation.canvas.width, L10_Animation.canvas.height);
         //Fische
         for (let i = 0; i < 8; i++) {
@@ -43,23 +45,23 @@ var L10_Animation;
             bubbles.push(oneBubble);
         }
         //Anker
-        window.setTimeout(sinkAnchor, 10);
-        function sinkAnchor() {
+        function makeAnchor() {
             for (let i = 0; i < 1; i++) {
                 console.log("anker");
                 let oneAnchor = new L10_Animation.Anchor();
                 oneAnchor.x = 590;
-                //oneAnchor.y = -10;
-                oneAnchor.y = 0;
+                oneAnchor.y = -10;
                 anchors.push(oneAnchor);
             }
         }
-        //Kette
-        for (let i = 0; i < 1; i++) {
-            let oneChain = new L10_Animation.Chain();
-            oneChain.x = 603;
-            oneChain.y = -128;
-            chains.push(oneChain);
+        //Kette       
+        function makeChain() {
+            for (let i = 0; i < 1; i++) {
+                let oneChain = new L10_Animation.Chain();
+                oneChain.x = 603;
+                oneChain.y = -138;
+                chains.push(oneChain);
+            }
         }
         animate();
     } //init zu
@@ -96,21 +98,28 @@ var L10_Animation;
         }
         //Anker               
         for (let i = 0; i < anchors.length; i++) {
-            if (anchors[i].y == 644) {
-                anchors[i].x = 590;
-                anchors[i].y = 644;
-            }
-            else {
-                anchors[i].move();
+            window.setTimeout(sinkAnchor, 3000);
+            function sinkAnchor() {
+                if (anchors[i].y == 644) {
+                    anchors[i].x = 590;
+                    anchors[i].y = 644;
+                }
+                else {
+                    anchors[i].moveDown();
+                }
             }
         }
         //Kette
         for (let i = 0; i < chains.length; i++) {
-            if (chains[i].y == 519 + i) {
-                chains[i].y = 519 + i;
-            }
-            else {
-                chains[i].move();
+            window.setTimeout(sinkChain, 3000);
+            //            window.setTimeout(pullChain, 40000);
+            function sinkChain() {
+                if (chains[i].y == 517 + i) {
+                    chains[i].y = 517 + i;
+                }
+                else {
+                    chains[i].moveDown();
+                }
             }
         }
     } //moveObjects zu

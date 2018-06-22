@@ -24,6 +24,8 @@ namespace L10_Animation {
         console.log(crc2);
 
         drawBackground();
+        window.setTimeout(makeAnchor, 10);
+        window.setTimeout(makeChain, 10);
         imgData = crc2.getImageData(0, 0, canvas.width, canvas.height);
 
         //Fische
@@ -54,26 +56,27 @@ namespace L10_Animation {
         }
 
         //Anker
-        window.setTimeout(sinkAnchor, 10);
-        function sinkAnchor(): void {
+
+        function makeAnchor(): void {
             for (let i: number = 0; i < 1; i++) {
                 console.log("anker");
                 let oneAnchor: Anchor = new Anchor();
                 oneAnchor.x = 590;
-                //oneAnchor.y = -10;
-                oneAnchor.y = 0;
+                oneAnchor.y = -10;
                 anchors.push(oneAnchor);
             }
         }
 
-        //Kette
-        for (let i: number = 0; i < 1; i++) {
-            let oneChain: Chain = new Chain();
-            oneChain.x = 603;
-            oneChain.y = -128;
-            chains.push(oneChain);     
+        //Kette       
+        function makeChain(): void {
+            for (let i: number = 0; i < 1; i++) {
+                let oneChain: Chain = new Chain();
+                oneChain.x = 603;
+                oneChain.y = -138;
+                chains.push(oneChain);
+            }
         }
-        
+
 
         animate();
 
@@ -117,24 +120,39 @@ namespace L10_Animation {
 
         //Anker               
         for (let i: number = 0; i < anchors.length; i++) {
+            window.setTimeout(sinkAnchor, 3000);
 
-            if (anchors[i].y == 644) { //Anhalten/Aufschlagen
-                anchors[i].x = 590;
-                anchors[i].y = 644;
+            function sinkAnchor(): void {
+                if (anchors[i].y == 644) { //Anhalten/Aufschlagen
+                    anchors[i].x = 590;
+                    anchors[i].y = 644;
 
-            } else {
-                anchors[i].move();
+                } else {
+                    anchors[i].moveDown();
+                }
             }
         }
 
         //Kette
         for (let i: number = 0; i < chains.length; i++) {
-            
-            if (chains[i].y == 519 + i) {
-                chains[i].y = 519 + i;
-            } else {
-                chains[i].move();
+            window.setTimeout(sinkChain, 3000);
+//            window.setTimeout(pullChain, 40000);
+
+            function sinkChain(): void {
+                if (chains[i].y == 517 + i) {
+                    chains[i].y = 517 + i;
+                } else {
+                    chains[i].moveDown();
+                }
             }
+            
+//            function pullChain(): void {
+//                if (chains[i].y == -10 + i) {
+//                    chains[i].y = -10 + i;
+//                } else {
+//                    chains[i].moveUp();
+//                }
+//            }
         }
 
 

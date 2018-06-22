@@ -23,8 +23,12 @@ namespace L10_Animation {
             }
         }
 
-        move(): void {
+        moveDown(): void {
             this.y += 1;
+        }
+        
+        moveUp(): void {
+           this.y -= 1;    
         }
 
 

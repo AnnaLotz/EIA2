@@ -27,8 +27,12 @@ namespace L10_Animation {
             crc2.closePath();
         }
         
-        move(): void {
+        moveDown(): void {
             this.y += 1;
+        }
+        
+        moveUp(): void {
+            this.y -= 1;    
         }
 
 
