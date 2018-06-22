@@ -55,10 +55,10 @@ var L10_Animation;
             }
         }
         //Kette
-        for (let i = 0; i < 25; i++) {
+        for (let i = 0; i < 1; i++) {
             let oneChain = new L10_Animation.Chain();
             oneChain.x = 603;
-            oneChain.y = -128 - i * 20.5;
+            oneChain.y = -128;
             chains.push(oneChain);
         }
         animate();

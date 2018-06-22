@@ -10,10 +10,12 @@ var L10_Animation;
         draw() {
             L10_Animation.crc2.strokeStyle = "rgb(38, 38, 38)";
             L10_Animation.crc2.lineWidth = 4.5;
-            L10_Animation.crc2.beginPath();
-            L10_Animation.crc2.arc(this.x, this.y, 12, 0, 2 * Math.PI);
-            L10_Animation.crc2.closePath();
-            L10_Animation.crc2.stroke();
+            for (let i = 0; i < 30; i++) {
+                L10_Animation.crc2.beginPath();
+                L10_Animation.crc2.arc(this.x, this.y - i * 20, 12, 0, 2 * Math.PI);
+                L10_Animation.crc2.closePath();
+                L10_Animation.crc2.stroke();
+            }
         }
         move() {
             this.y += 1;

@@ -67,13 +67,13 @@ namespace L10_Animation {
         }
 
         //Kette
-        for (let i: number = 0; i < 25; i++) {
+        for (let i: number = 0; i < 1; i++) {
             let oneChain: Chain = new Chain();
             oneChain.x = 603;
-            oneChain.y = -128 - i * 20.5;
-            chains.push(oneChain);
+            oneChain.y = -128;
+            chains.push(oneChain);     
         }
-
+        
 
         animate();
 

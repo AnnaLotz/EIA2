@@ -14,12 +14,15 @@ namespace L10_Animation {
         draw(): void {
             crc2.strokeStyle = "rgb(38, 38, 38)";
             crc2.lineWidth = 4.5;
-            crc2.beginPath();
-            crc2.arc(this.x, this.y, 12, 0, 2 * Math.PI);
-            crc2.closePath();
-            crc2.stroke();
+            
+            for (let i: number = 0; i < 30; i++) {
+                crc2.beginPath();
+                crc2.arc(this.x, this.y - i * 20, 12, 0, 2 * Math.PI);
+                crc2.closePath();
+                crc2.stroke();
+            }
         }
-        
+
         move(): void {
             this.y += 1;
         }
