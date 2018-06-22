@@ -33,7 +33,11 @@ namespace L10_Animation {
     }
 
     function drawWater(): void {
-        crc2.fillStyle = "rgba(0,0,200, 0.65)";
+        let gradient: CanvasGradient = crc2.createLinearGradient(0, 0, 0, 300);
+        gradient.addColorStop(0, "#63B4FF");
+        gradient.addColorStop(1, "#3C68E8");
+
+        crc2.fillStyle = gradient;
         crc2.fillRect(0, 0, 1000, 700);
     }
 

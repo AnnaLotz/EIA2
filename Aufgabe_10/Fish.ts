@@ -7,8 +7,12 @@ namespace L10_Animation {
         speed: number;
         
 
-        move(): void {
-            this.x += -3 ;
+        moveForward(): void {
+            this.x += this.speed * (-2) ;            
+        }
+        
+        moveUpAndDown(): void {
+            //this.y += Math.random() * 2 + 50 - Math.random() * 2 - 50;
         }
               
 

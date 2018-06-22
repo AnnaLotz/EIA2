@@ -1,8 +1,11 @@
 var L10_Animation;
 (function (L10_Animation) {
     class Fish {
-        move() {
-            this.x += -3;
+        moveForward() {
+            this.x += this.speed * (-2);
+        }
+        moveUpAndDown() {
+            //this.y += Math.random() * 2 + 50 - Math.random() * 2 - 50;
         }
         draw() {
             L10_Animation.crc2.beginPath();

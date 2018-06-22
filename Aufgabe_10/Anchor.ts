@@ -7,8 +7,8 @@ namespace L10_Animation {
             this.y += 1;
         }
 
-
         draw(): void {
+            console.log("draw anchor");
             crc2.beginPath();
             crc2.lineWidth = 4;
             crc2.strokeStyle = "rgb(38, 38, 38)";
@@ -20,7 +20,6 @@ namespace L10_Animation {
             crc2.moveTo(this.x - 40, this.y - 45); //C
             crc2.quadraticCurveTo(this.x - 38, this.y - 5, this.x, this.y);
             crc2.quadraticCurveTo(this.x + 35, this.y + 5, this.x + 48, this.y - 33);
-
             crc2.stroke();
             crc2.closePath();
         }

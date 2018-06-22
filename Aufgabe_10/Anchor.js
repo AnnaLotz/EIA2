@@ -5,6 +5,7 @@ var L10_Animation;
             this.y += 1;
         }
         draw() {
+            console.log("draw anchor");
             L10_Animation.crc2.beginPath();
             L10_Animation.crc2.lineWidth = 4;
             L10_Animation.crc2.strokeStyle = "rgb(38, 38, 38)";

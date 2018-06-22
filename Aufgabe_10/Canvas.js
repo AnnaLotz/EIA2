@@ -10,16 +10,18 @@ var L10_Animation;
     var imgData;
     let fishs = [];
     let bubbles = [];
+    let anchors = [];
     function init(_event) {
         L10_Animation.canvas = document.getElementsByTagName("canvas")[0];
         L10_Animation.crc2 = L10_Animation.canvas.getContext("2d");
         console.log(L10_Animation.crc2);
         L10_Animation.drawBackground();
-        imgData = L10_Animation.crc2.getImageData(0, 0, 1000, 700);
+        imgData = L10_Animation.crc2.getImageData(0, 0, L10_Animation.canvas.width, L10_Animation.canvas.height);
         for (let i = 0; i < 7; i++) {
             let oneFish = new L10_Animation.Fish();
             oneFish.x = Math.random() * L10_Animation.crc2.canvas.width;
             oneFish.y = Math.random() * L10_Animation.crc2.canvas.height - 200;
+            oneFish.speed = Math.random() + 0.2;
             fishs.push(oneFish);
         }
         //Bubbles links
@@ -38,9 +40,14 @@ var L10_Animation;
             oneBubble.r = Math.random() * 10;
             bubbles.push(oneBubble);
         }
-        let oneAnchor = new L10_Animation.Anchor();
-        oneAnchor.x = 570;
-        oneAnchor.y = 670;
+        //Anker
+        for (let i = 0; i < 1; i++) {
+            console.log("anker");
+            let oneAnchor = new L10_Animation.Anchor();
+            oneAnchor.x = 570;
+            oneAnchor.y = -100;
+            anchors.push(oneAnchor);
+        }
         animate();
     } //init zu
     function animate() {
@@ -52,13 +59,15 @@ var L10_Animation;
     }
     function moveObjects() {
         for (let i = 0; i < fishs.length; i++) {
-            fishs[i].move();
+            fishs[i].moveForward();
             //um die fische neu zu spawnen, wenn sie aus dem Bild schwimmen
             if (fishs[i].x < -200) {
                 fishs[i].x = L10_Animation.canvas.width + 50;
                 fishs[i].y = Math.random() * L10_Animation.crc2.canvas.height - 200;
             }
         }
+        for (let i = 0; i < fishs.length; i++)
+            fishs[i].moveUpAndDown();
         for (let i = 0; i < bubbles.length; i++) {
             bubbles[i].move();
             //Luftblasen links:
@@ -72,12 +81,24 @@ var L10_Animation;
                 bubbles[i].y = Math.random() * 10 + 470;
             }
         }
+        for (let i = 0; i < anchors.length; i++) {
+            if (anchors[i].y == 670) {
+                anchors[i].x = 570;
+                anchors[i].y = 670;
+            }
+            else {
+                anchors[i].move();
+            }
+        }
     } //moveObjects zu
     function drawObjects() {
         for (let i = 0; i < fishs.length; i++)
             fishs[i].draw();
         for (let i = 0; i < bubbles.length; i++)
             bubbles[i].draw();
+        for (let i = 0; i < anchors.length; i++) {
+            anchors[i].draw();
+        }
     }
 })(L10_Animation || (L10_Animation = {})); //namespace zu
 //# sourceMappingURL=Canvas.js.map

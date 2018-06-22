@@ -27,7 +27,10 @@ var L10_Animation;
     }
     L10_Animation.drawBackground = drawBackground;
     function drawWater() {
-        L10_Animation.crc2.fillStyle = "rgba(0,0,200, 0.65)";
+        let gradient = L10_Animation.crc2.createLinearGradient(0, 0, 0, 300);
+        gradient.addColorStop(0, "#63B4FF");
+        gradient.addColorStop(1, "#3C68E8");
+        L10_Animation.crc2.fillStyle = gradient;
         L10_Animation.crc2.fillRect(0, 0, 1000, 700);
     }
     function drawStoneBackground() {
