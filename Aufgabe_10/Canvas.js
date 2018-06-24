@@ -86,11 +86,11 @@ var L10_Animation;
         //Anker und Kette bewegen           
         moveAnchorAndChain();
         function moveAnchorAndChain() {
-            if (anchor.y == -10) {
+            if (anchor.y <= -10) {
                 //sobald du bei -10 bist sollst du nur noch sinken
                 sink = true;
             }
-            else if (anchor.y == 644) {
+            else if (anchor.y >= 644) {
                 //sobald du bei 644 bist sollst du nur noch steigen
                 sink = false;
             }
