@@ -9,6 +9,7 @@ namespace L10_Animation {
     export class Anchor {
         x: number;
         y: number;
+        status: string;
 
         draw(): void {
             //console.log("draw anchor");

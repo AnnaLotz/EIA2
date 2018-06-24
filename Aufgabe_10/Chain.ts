@@ -10,6 +10,7 @@ namespace L10_Animation {
         x: number;
         y: number;
         r: number; //radius   
+        status: string;
 
         draw(): void {
             crc2.strokeStyle = "rgb(38, 38, 38)";
