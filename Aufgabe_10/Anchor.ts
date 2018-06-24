@@ -8,10 +8,10 @@
 namespace L10_Animation {
     export class Anchor {
         x: number;
-        y: number;        
+        y: number;
 
         draw(): void {
-            console.log("draw anchor");
+            //console.log("draw anchor");
             crc2.beginPath();
             crc2.lineWidth = 6.5;
             crc2.strokeStyle = "rgb(38, 38, 38)";
@@ -26,14 +26,16 @@ namespace L10_Animation {
             crc2.stroke();
             crc2.closePath();
         }
-        
+
         moveDown(): void {
             this.y += 1;
         }
-        
+
         moveUp(): void {
-            this.y -= 1;    
+            this.y -= 1;
         }
+        
+
 
 
     } //class Bubble zu

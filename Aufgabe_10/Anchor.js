@@ -8,7 +8,7 @@ var L10_Animation;
 (function (L10_Animation) {
     class Anchor {
         draw() {
-            console.log("draw anchor");
+            //console.log("draw anchor");
             L10_Animation.crc2.beginPath();
             L10_Animation.crc2.lineWidth = 6.5;
             L10_Animation.crc2.strokeStyle = "rgb(38, 38, 38)";

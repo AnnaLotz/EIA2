@@ -14,8 +14,11 @@ namespace L10_Animation {
 
     let fishs: Fish[] = [];
     let bubbles: Bubble[] = [];
-    let anchors: Anchor[] = [];
-    let chains: Chain[] = [];
+
+    //Neue Objekte erzeugen mit new vom typ der class
+    let anchor: Anchor = new Anchor();
+    let chain: Chain = new Chain();
+    let sink: boolean = true; //boolean zur bestimmung, ob AnchorAndChain sinken oder steigen sollen
 
 
     function init(_event: Event): void {
@@ -24,8 +27,6 @@ namespace L10_Animation {
         console.log(crc2);
 
         drawBackground();
-        window.setTimeout(makeAnchor, 10);
-        window.setTimeout(makeChain, 10);
         imgData = crc2.getImageData(0, 0, canvas.width, canvas.height);
 
         //Fische
@@ -53,33 +54,19 @@ namespace L10_Animation {
             oneBubble.y = Math.random() * 480;
             oneBubble.r = Math.random() * 10;
             bubbles.push(oneBubble);
-        }
-
+        }       
+        
         //Anker
-
-        function makeAnchor(): void {
-            for (let i: number = 0; i < 1; i++) {
-                console.log("anker");
-                let oneAnchor: Anchor = new Anchor();
-                oneAnchor.x = 590;
-                oneAnchor.y = -10;
-                anchors.push(oneAnchor);
-            }
-        }
-
+        anchor.x = 590;
+        anchor.y = -10;
+        
         //Kette       
-        function makeChain(): void {
-            for (let i: number = 0; i < 1; i++) {
-                let oneChain: Chain = new Chain();
-                oneChain.x = 603;
-                oneChain.y = -138;
-                chains.push(oneChain);
-            }
-        }
-
+        chain.x = 603;
+        chain.y = -138;
+       
 
         animate();
-
+        
     } //init zu
 
     function animate(): void {
@@ -118,56 +105,58 @@ namespace L10_Animation {
             }
         }
 
-        //Anker               
-        for (let i: number = 0; i < anchors.length; i++) {
-            window.setTimeout(sinkAnchor, 3000);
-
-            function sinkAnchor(): void {
-                if (anchors[i].y == 644) { //Anhalten/Aufschlagen
-                    anchors[i].x = 590;
-                    anchors[i].y = 644;
-
-                } else {
-                    anchors[i].moveDown();
-                }
-            }
-        }
-
-        //Kette
-        for (let i: number = 0; i < chains.length; i++) {
-            window.setTimeout(sinkChain, 3000);
-//            window.setTimeout(pullChain, 40000);
-
-            function sinkChain(): void {
-                if (chains[i].y == 517 + i) {
-                    chains[i].y = 517 + i;
-                } else {
-                    chains[i].moveDown();
-                }
+        
+        
+        
+        
+        //Anker und Kette bewegen           
+        
+        moveAnchorAndChain();
+        
+        function moveAnchorAndChain(): void {                        
+            
+            if (anchor.y == -10) {
+                //sobald du bei -10 bist sollst du nur noch sinken
+                sink = true;            
+            } else if (anchor.y == 644) {
+                //sobald du bei 644 bist sollst du nur noch steigen
+                sink = false;   
             }
             
-//            function pullChain(): void {
-//                if (chains[i].y == -10 + i) {
-//                    chains[i].y = -10 + i;
-//                } else {
-//                    chains[i].moveUp();
-//                }
-//            }
+            if (sink == true) {
+                //wenn du sinken sollst, warte 3 sekunden und lasse dann sinken
+                window.setTimeout(sinkAnchorAndChain(), 3000);    
+            } else {
+                //wenn du steigen sollst, dann warte 5 sekunden und pulle dann
+                window.setTimeout(pullAnchorAndChain(), 5000);    
+            }
+            
+        } //moveAnchorAndChain zu
+        
+        function sinkAnchorAndChain(): void {            
+            anchor.moveDown();
+            chain.moveDown();
+        }
+        
+        function pullAnchorAndChain(): void {
+            anchor.moveUp();
+            chain.moveUp();
         }
 
+ 
+        
 
-
-    } //moveObjects zu
-
+    } //moveObjects    
     function drawObjects(): void {
+
         for (let i: number = 0; i < fishs.length; i++)
             fishs[i].draw();
         for (let i: number = 0; i < bubbles.length; i++)
             bubbles[i].draw();
-        for (let i: number = 0; i < anchors.length; i++)
-            anchors[i].draw();
-        for (let i: number = 0; i < chains.length; i++)
-            chains[i].draw();
+
+        anchor.draw();
+        chain.draw();
+        
     } //drawObjects zu
 
 
