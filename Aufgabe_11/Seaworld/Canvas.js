@@ -4,34 +4,33 @@
     Datum: 26.06.18
     
     Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.*/
-var L11_Inheritance;
-(function (L11_Inheritance) {
+var L11_SeaworldInheritance;
+(function (L11_SeaworldInheritance) {
     window.addEventListener("load", init);
-    let crc2;
     var imgData;
     let fishs = [];
     let bubbles = [];
     //Neue Objekte erzeugen mit new vom typ der class
-    let anchor = new L11_Inheritance.Anchor();
-    let chain = new L11_Inheritance.Chain();
+    let anchor;
+    let chain;
     let sink = true; //boolean zur bestimmung, ob AnchorAndChain sinken oder steigen sollen
     function init(_event) {
-        L11_Inheritance.canvas = document.getElementsByTagName("canvas")[0];
-        crc2 = L11_Inheritance.canvas.getContext("2d");
-        console.log(crc2);
-        L11_Inheritance.drawBackground();
-        imgData = crc2.getImageData(0, 0, L11_Inheritance.canvas.width, L11_Inheritance.canvas.height);
+        L11_SeaworldInheritance.canvas = document.getElementsByTagName("canvas")[0];
+        L11_SeaworldInheritance.crc2 = L11_SeaworldInheritance.canvas.getContext("2d");
+        console.log(L11_SeaworldInheritance.crc2);
+        L11_SeaworldInheritance.drawBackground();
+        imgData = L11_SeaworldInheritance.crc2.getImageData(0, 0, L11_SeaworldInheritance.canvas.width, L11_SeaworldInheritance.canvas.height);
         //Fische
         for (let i = 0; i < 8; i++) {
-            let oneFish = new L11_Inheritance.Fish();
-            oneFish.x = Math.random() * crc2.canvas.width;
-            oneFish.y = Math.random() * crc2.canvas.height - 200;
+            let oneFish = new L11_SeaworldInheritance.Fish();
+            oneFish.x = Math.random() * L11_SeaworldInheritance.crc2.canvas.width;
+            oneFish.y = Math.random() * L11_SeaworldInheritance.crc2.canvas.height - 200;
             oneFish.speed = (Math.random() + 1) * 0.5;
             fishs.push(oneFish);
         }
         //Bubbles links
         for (let i = 0; i < 12; i++) {
-            let oneBubble = new L11_Inheritance.Bubble();
+            let oneBubble = new L11_SeaworldInheritance.Bubble();
             oneBubble.x = Math.random() * (100 - 300) + 300; // Math.random() * (max - min) + min
             oneBubble.y = Math.random() * 325;
             oneBubble.r = (Math.random() + 0.1) * 6;
@@ -39,24 +38,26 @@ var L11_Inheritance;
         }
         //Bubbles rechts
         for (let i = 0; i < 20; i++) {
-            let oneBubble = new L11_Inheritance.Bubble();
+            let oneBubble = new L11_SeaworldInheritance.Bubble();
             oneBubble.x = Math.random() * (750 - 900) + 900;
             oneBubble.y = Math.random() * 480;
             oneBubble.r = Math.random() * 10;
             bubbles.push(oneBubble);
         }
         //Anker
+        anchor = new L11_SeaworldInheritance.Anchor();
         anchor.x = 590;
         anchor.y = -10;
-        //Kette       
+        //Kette 
+        chain = new L11_SeaworldInheritance.Chain();
         chain.x = 603;
         chain.y = -138;
         animate();
     } //init zu
     function animate() {
         window.setTimeout(animate, 10);
-        crc2.clearRect(0, 0, crc2.canvas.width, crc2.canvas.height);
-        crc2.putImageData(imgData, 0, 0);
+        L11_SeaworldInheritance.crc2.clearRect(0, 0, L11_SeaworldInheritance.crc2.canvas.width, L11_SeaworldInheritance.crc2.canvas.height);
+        L11_SeaworldInheritance.crc2.putImageData(imgData, 0, 0);
         moveObjects();
         drawObjects();
     } //animate zu
@@ -66,8 +67,8 @@ var L11_Inheritance;
             fishs[i].moveForward();
             //um die fische neu zu spawnen, wenn sie aus dem Bild schwimmen
             if (fishs[i].x < -200) {
-                fishs[i].x = L11_Inheritance.canvas.width + 50;
-                fishs[i].y = Math.random() * crc2.canvas.height - 200;
+                fishs[i].x = L11_SeaworldInheritance.canvas.width + 50;
+                fishs[i].y = Math.random() * L11_SeaworldInheritance.crc2.canvas.height - 200;
             }
         }
         //Luftblasen
@@ -121,5 +122,5 @@ var L11_Inheritance;
         anchor.draw();
         chain.draw();
     } //drawObjects zu
-})(L11_Inheritance || (L11_Inheritance = {})); //namespace zu
+})(L11_SeaworldInheritance || (L11_SeaworldInheritance = {})); //namespace zu
 //# sourceMappingURL=Canvas.js.map

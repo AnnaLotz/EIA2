@@ -5,10 +5,10 @@
     
     Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.*/
 
-namespace L11_Inheritance {
+namespace L11_SeaworldInheritance {
 
     window.addEventListener("load", init);
-    let crc2: CanvasRenderingContext2D;
+    export let crc2: CanvasRenderingContext2D;
     var imgData: ImageData;
     export let canvas: HTMLCanvasElement;
 
@@ -16,8 +16,8 @@ namespace L11_Inheritance {
     let bubbles: Bubble[] = [];
 
     //Neue Objekte erzeugen mit new vom typ der class
-    let anchor: Anchor = new Anchor();
-    let chain: Chain = new Chain();
+    let anchor: Anchor;
+    let chain: Chain;
     let sink: boolean = true; //boolean zur bestimmung, ob AnchorAndChain sinken oder steigen sollen
 
 
@@ -54,13 +54,15 @@ namespace L11_Inheritance {
             oneBubble.y = Math.random() * 480;
             oneBubble.r = Math.random() * 10;
             bubbles.push(oneBubble);
-        }       
+        }
         
         //Anker
+        anchor = new Anchor();    
         anchor.x = 590;
         anchor.y = -10;
         
-        //Kette       
+        //Kette 
+        chain = new Chain();      
         chain.x = 603;
         chain.y = -138;
        

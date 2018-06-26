@@ -5,7 +5,7 @@
     
     Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.*/
 
-namespace L11_Inheritance {
+namespace L11_SeaworldInheritance {
     export class Anchor {
         x: number;
         y: number;
