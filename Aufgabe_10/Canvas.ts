@@ -41,7 +41,7 @@ namespace L10_Animation {
         //Bubbles links
         for (let i: number = 0; i < 12; i++) {
             let oneBubble: Bubble = new Bubble();
-            oneBubble.x = Math.random() * (100 - 300) + 300;
+            oneBubble.x = Math.random() * (100 - 300) + 300; // Math.random() * (max - min) + min
             oneBubble.y = Math.random() * 325;
             oneBubble.r = (Math.random() + 0.1) * 6;
             bubbles.push(oneBubble);
