@@ -10,17 +10,13 @@ namespace L11_SeaworldInheritance {
         x: number;
         y: number;
         color: string;
-        size: number;
         speed: number;              
 
         draw(): void {
             crc2.beginPath();
             crc2.strokeStyle = "rgb( 0, 0, 0)";
             crc2.lineWidth = 2;
-            let gradient: CanvasGradient = crc2.createLinearGradient(0, 325, 0, 200);
-            gradient.addColorStop(0, "#E12623");
-            gradient.addColorStop(1, "#C5234A");
-            crc2.fillStyle = gradient;
+            crc2.fillStyle = this.color;
             crc2.moveTo(this.x, this.y);
             crc2.quadraticCurveTo(this.x + 60, this.y - 60, this.x + 120, this.y + 0);
             crc2.lineTo(this.x + 150, this.y - 25);

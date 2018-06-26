@@ -12,7 +12,6 @@ namespace L11_SeaworldInheritance {
         status: string;
 
         draw(): void {
-            //console.log("draw anchor");
             crc2.beginPath();
             crc2.lineWidth = 6.5;
             crc2.strokeStyle = "rgb(38, 38, 38)";
@@ -26,6 +25,14 @@ namespace L11_SeaworldInheritance {
             crc2.quadraticCurveTo(this.x + 35, this.y + 5, this.x + 48, this.y - 33);
             crc2.stroke();
             crc2.closePath();
+                        
+            crc2.lineWidth = 4.5;
+            for (let i: number = 0; i < 30; i++) {
+                crc2.beginPath();
+                crc2.arc(this.x + 12, this.y - 128 - i * 20, 12, 0, 2 * Math.PI);
+                crc2.closePath();
+                crc2.stroke();
+            }
         }
 
         moveDown(): void {
@@ -39,5 +46,5 @@ namespace L11_SeaworldInheritance {
 
 
 
-    } //class Bubble zu
+    } //class Anchor zu
 } //namespace zu

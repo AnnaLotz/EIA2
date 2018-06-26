@@ -23,7 +23,7 @@ namespace L11_SeaworldInheritance {
         }
         
         move(): void {
-            this.y += -0.8;
+            this.y += -this.speed * 0.06 - 0.5;
         }
 
 

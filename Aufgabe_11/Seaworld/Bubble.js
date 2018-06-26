@@ -17,7 +17,7 @@ var L11_SeaworldInheritance;
             L11_SeaworldInheritance.crc2.fill();
         }
         move() {
-            this.y += -0.8;
+            this.y += -this.speed * 0.06 - 0.5;
         }
     }
     L11_SeaworldInheritance.Bubble = Bubble; //class Bubble zu
