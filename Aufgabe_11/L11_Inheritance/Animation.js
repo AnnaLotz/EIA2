@@ -18,9 +18,9 @@ var L11_Inheritance;
     }
     function insertNewObject(_event) {
         //Abfrage f�r x und y des MouseEvents
-        var newX = _event.clientX;
-        var newY = _event.clientY;
-        var r = Math.floor(Math.random() * 3);
+        let newX = _event.clientX;
+        let newY = _event.clientY;
+        let r = Math.floor(Math.random() * 3);
         switch (r) {
             case 0:
                 let star = new L11_Inheritance.DavidStar("#ffff00");

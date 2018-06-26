@@ -26,10 +26,10 @@ namespace L11_Inheritance {
     function insertNewObject(_event: MouseEvent): void {
 
         //Abfrage für x und y des MouseEvents
-        var newX: number = _event.clientX;
-        var newY: number = _event.clientY;
+        let newX: number = _event.clientX;
+        let newY: number = _event.clientY;
 
-        var r: number = Math.floor(Math.random() * 3);
+        let r: number = Math.floor(Math.random() * 3);
 
         switch (r) {
             case 0:
