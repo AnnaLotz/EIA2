@@ -6,11 +6,55 @@
     Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.*/
 
 namespace L11_SeaworldInheritance {
-    export class Fish {
-        x: number;
-        y: number;
+    export class Fish extends MovingObjects {
         color: string;
-        speed: number;              
+        speed: number;
+
+        constructor() {
+            super();
+            this.setRandomPosition();
+            this.setRandomSpeed();
+            this.setRandomColor();
+        }
+
+        checkPosition(): void {
+            if (this.x < -200) {
+                this.setNewRandomSpawnPoint();
+                this.setRandomSpeed();
+                this.setRandomColor();
+            }
+        }
+
+        setRandomPosition(): void {
+            this.x = Math.random() * crc2.canvas.width;
+            this.y = Math.random() * crc2.canvas.height - 200;
+        }
+
+        setNewRandomSpawnPoint(): void {
+            this.x = canvas.width + 50;
+            this.y = Math.random() * ((crc2.canvas.height - 200) - 50) + 50; // Math.random() * (max - min) + min
+        }
+
+        setRandomSpeed(): void {
+            this.speed = (Math.random() + 1) * 0.5;
+        }
+
+        setRandomColor(): void {
+            let c: number = Math.floor(Math.random() * 3);
+            switch (c) {
+                case 0:
+                    this.color = "#A1356B";
+                    break;
+                case 1:
+                    this.color = "#67D431";
+                    break;
+                case 2:
+                    this.color = "#D44831";
+                    break;
+            }
+        }
+
+
 
         draw(): void {
             crc2.beginPath();
@@ -27,10 +71,12 @@ namespace L11_SeaworldInheritance {
             crc2.stroke();
             crc2.fill();
         }
-        
-        moveForward(): void {
-            this.x += this.speed * (-3) ;            
+
+        move(): void {
+            this.x += this.speed * (-3);
         }
+
+
 
 
     } //class fish zu

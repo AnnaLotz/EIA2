@@ -6,7 +6,45 @@
     Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.*/
 var L11_SeaworldInheritance;
 (function (L11_SeaworldInheritance) {
-    class Fish {
+    class Fish extends L11_SeaworldInheritance.MovingObjects {
+        constructor() {
+            super();
+            this.setRandomPosition();
+            this.setRandomSpeed();
+            this.setRandomColor();
+        }
+        checkPosition() {
+            if (this.x < -200) {
+                this.setNewRandomSpawnPoint();
+                this.setRandomSpeed();
+                this.setRandomColor();
+            }
+        }
+        setRandomPosition() {
+            this.x = Math.random() * L11_SeaworldInheritance.crc2.canvas.width;
+            this.y = Math.random() * L11_SeaworldInheritance.crc2.canvas.height - 200;
+        }
+        setNewRandomSpawnPoint() {
+            this.x = L11_SeaworldInheritance.canvas.width + 50;
+            this.y = Math.random() * ((L11_SeaworldInheritance.crc2.canvas.height - 200) - 50) + 50; // Math.random() * (max - min) + min
+        }
+        setRandomSpeed() {
+            this.speed = (Math.random() + 1) * 0.5;
+        }
+        setRandomColor() {
+            let c = Math.floor(Math.random() * 3);
+            switch (c) {
+                case 0:
+                    this.color = "#A1356B";
+                    break;
+                case 1:
+                    this.color = "#67D431";
+                    break;
+                case 2:
+                    this.color = "#D44831";
+                    break;
+            }
+        }
         draw() {
             L11_SeaworldInheritance.crc2.beginPath();
             L11_SeaworldInheritance.crc2.strokeStyle = "rgb( 0, 0, 0)";
@@ -22,7 +60,7 @@ var L11_SeaworldInheritance;
             L11_SeaworldInheritance.crc2.stroke();
             L11_SeaworldInheritance.crc2.fill();
         }
-        moveForward() {
+        move() {
             this.x += this.speed * (-3);
         }
     }

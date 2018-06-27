@@ -6,25 +6,59 @@
     Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.*/
 
 namespace L11_SeaworldInheritance {
-    export class Bubble {
-        x: number;
-        y: number;
-        r: number;
-        speed: number;          
+    export class Bubble extends MovingObjects {
+        radius: number;
+        speed: number;
+
+        constructor() {
+            super();
+            this.setRandomPosition();
+            this.setRandomRadius();
+            this.setSpeed();
+        }
+
+        checkPosition(): void {
+            if (this.y < -50) {
+                this.setNewRandomSpawnPoint();
+                this.setRandomRadius();
+                this.setSpeed();
+            }
+        }
+
+        setRandomPosition(): void {
+            this.x = Math.random() * (750 - 900) + 900;
+            this.y = Math.random() * 480;
+        }
+
+        setNewRandomSpawnPoint(): void {
+            this.x = Math.random() * (750 - 900) + 900;
+            this.y = Math.random() * 10 + 470;
+        }
+
+        setRandomRadius(): void {
+            this.radius = Math.random() * 10;
+        }
+
+        setSpeed(): void {
+            this.speed = this.radius;
+        }
+
 
         draw(): void {
             crc2.fillStyle = "rgb(204, 238, 255, 0.55)";
             crc2.lineWidth = 0.5;
             crc2.beginPath();
-            crc2.arc(this.x, this.y, this.r, 0, 2 * Math.PI);
+            crc2.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
             crc2.closePath();
             crc2.stroke();
             crc2.fill();
         }
-        
+
         move(): void {
             this.y += -this.speed * 0.06 - 0.5;
         }
+
+
 
 
     } //class Bubble zu

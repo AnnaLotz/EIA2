@@ -6,7 +6,16 @@
     Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.*/
 var L11_SeaworldInheritance;
 (function (L11_SeaworldInheritance) {
-    class Anchor {
+    class Anchor extends L11_SeaworldInheritance.MovingObjects {
+        constructor() {
+            super();
+            this.setPosition();
+        }
+        setPosition() {
+            this.x = 590;
+            //anchor.y = -10;
+            this.y = 644;
+        }
         draw() {
             L11_SeaworldInheritance.crc2.beginPath();
             L11_SeaworldInheritance.crc2.lineWidth = 6.5;
