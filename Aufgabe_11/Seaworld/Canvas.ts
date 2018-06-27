@@ -19,12 +19,13 @@ namespace L11_SeaworldInheritance {
         canvas = document.getElementsByTagName("canvas")[0];
         crc2 = canvas.getContext("2d");
         console.log(crc2);
+        //canvas.addEventListener("click", insertFood);
 
         drawBackground();
         imgData = crc2.getImageData(0, 0, canvas.width, canvas.height);
 
 
-        //Objekte zum ersten mal Erzeugen
+        //Moving Objekte zum ersten mal Erzeugen
         //Fische
         for (let i: number = 0; i < 8; i++) {
             let oneFish: Fish = new Fish();
@@ -45,6 +46,7 @@ namespace L11_SeaworldInheritance {
         //Anker
         let anchor: Anchor = new Anchor();
         movingObjects.push(anchor);
+        
 
         animate();
 

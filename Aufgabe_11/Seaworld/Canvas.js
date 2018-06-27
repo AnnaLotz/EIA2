@@ -13,9 +13,10 @@ var L11_SeaworldInheritance;
         L11_SeaworldInheritance.canvas = document.getElementsByTagName("canvas")[0];
         L11_SeaworldInheritance.crc2 = L11_SeaworldInheritance.canvas.getContext("2d");
         console.log(L11_SeaworldInheritance.crc2);
+        //canvas.addEventListener("click", insertFood);
         L11_SeaworldInheritance.drawBackground();
         imgData = L11_SeaworldInheritance.crc2.getImageData(0, 0, L11_SeaworldInheritance.canvas.width, L11_SeaworldInheritance.canvas.height);
-        //Objekte zum ersten mal Erzeugen
+        //Moving Objekte zum ersten mal Erzeugen
         //Fische
         for (let i = 0; i < 8; i++) {
             let oneFish = new L11_SeaworldInheritance.Fish();
