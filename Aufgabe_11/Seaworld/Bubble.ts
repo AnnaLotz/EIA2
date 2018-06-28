@@ -14,14 +14,12 @@ namespace L11_SeaworldInheritance {
             super();
             this.setRandomPosition();
             this.setRandomRadius();
-            this.setSpeed();
         }
 
         checkPosition(): void {
             if (this.y < -50) {
                 this.setNewRandomSpawnPoint();
                 this.setRandomRadius();
-                this.setSpeed();
             }
         }
 
@@ -37,11 +35,9 @@ namespace L11_SeaworldInheritance {
 
         setRandomRadius(): void {
             this.radius = Math.random() * 10;
-        }
-
-        setSpeed(): void {
             this.speed = this.radius;
         }
+
 
 
         draw(): void {

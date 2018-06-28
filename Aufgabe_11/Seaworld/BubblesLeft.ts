@@ -10,6 +10,7 @@ namespace L11_SeaworldInheritance {
 
         constructor() {
             super();
+            this.setRandomRadius();
         }
         
         setRandomPosition(): void {
@@ -23,7 +24,8 @@ namespace L11_SeaworldInheritance {
         }
             
         setRandomRadius(): void {
-            this.radius = (Math.random() + 0.1) * 6;    
+            this.radius = (Math.random() + 0.1) * 6;   
+            this.speed = this.radius; 
         }
         
 

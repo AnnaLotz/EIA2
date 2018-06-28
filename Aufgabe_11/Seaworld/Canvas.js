@@ -13,7 +13,7 @@ var L11_SeaworldInheritance;
         L11_SeaworldInheritance.canvas = document.getElementsByTagName("canvas")[0];
         L11_SeaworldInheritance.crc2 = L11_SeaworldInheritance.canvas.getContext("2d");
         console.log(L11_SeaworldInheritance.crc2);
-        //canvas.addEventListener("click", insertFood);
+        L11_SeaworldInheritance.canvas.addEventListener("click", insertFood);
         L11_SeaworldInheritance.drawBackground();
         imgData = L11_SeaworldInheritance.crc2.getImageData(0, 0, L11_SeaworldInheritance.canvas.width, L11_SeaworldInheritance.canvas.height);
         //Moving Objekte zum ersten mal Erzeugen
@@ -37,6 +37,14 @@ var L11_SeaworldInheritance;
         movingObjects.push(anchor);
         animate();
     } //init zu
+    function insertFood(_event) {
+        //Abfrage f�r x und y des MouseEvents
+        let spawnX = _event.clientX;
+        let spawnY = _event.clientY;
+        console.log("spawn food");
+        let food = new L11_SeaworldInheritance.Food(spawnX, spawnY);
+        movingObjects.push(food);
+    }
     function animate() {
         window.setTimeout(animate, 10);
         L11_SeaworldInheritance.crc2.clearRect(0, 0, L11_SeaworldInheritance.crc2.canvas.width, L11_SeaworldInheritance.crc2.canvas.height);

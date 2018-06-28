@@ -11,13 +11,11 @@ var L11_SeaworldInheritance;
             super();
             this.setRandomPosition();
             this.setRandomRadius();
-            this.setSpeed();
         }
         checkPosition() {
             if (this.y < -50) {
                 this.setNewRandomSpawnPoint();
                 this.setRandomRadius();
-                this.setSpeed();
             }
         }
         setRandomPosition() {
@@ -30,8 +28,6 @@ var L11_SeaworldInheritance;
         }
         setRandomRadius() {
             this.radius = Math.random() * 10;
-        }
-        setSpeed() {
             this.speed = this.radius;
         }
         draw() {

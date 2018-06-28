@@ -19,7 +19,7 @@ namespace L11_SeaworldInheritance {
         canvas = document.getElementsByTagName("canvas")[0];
         crc2 = canvas.getContext("2d");
         console.log(crc2);
-        //canvas.addEventListener("click", insertFood);
+        canvas.addEventListener("click", insertFood);
 
         drawBackground();
         imgData = crc2.getImageData(0, 0, canvas.width, canvas.height);
@@ -51,6 +51,16 @@ namespace L11_SeaworldInheritance {
         animate();
 
     } //init zu
+    
+    function insertFood(_event: MouseEvent): void {
+        //Abfrage für x und y des MouseEvents
+        let spawnX: number = _event.clientX;
+        let spawnY: number = _event.clientY;
+        console.log("spawn food");
+        
+        let food: Food = new Food(spawnX, spawnY);
+        movingObjects.push(food);
+    }
 
     function animate(): void {
         window.setTimeout(animate, 10);

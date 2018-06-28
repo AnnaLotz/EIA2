@@ -9,6 +9,7 @@ var L11_SeaworldInheritance;
     class BubblesLeft extends L11_SeaworldInheritance.Bubble {
         constructor() {
             super();
+            this.setRandomRadius();
         }
         setRandomPosition() {
             this.x = Math.random() * (100 - 300) + 300; // Math.random() * (max - min) + min
@@ -20,6 +21,7 @@ var L11_SeaworldInheritance;
         }
         setRandomRadius() {
             this.radius = (Math.random() + 0.1) * 6;
+            this.speed = this.radius;
         }
     }
     L11_SeaworldInheritance.BubblesLeft = BubblesLeft; //class BubblesLeft zu
