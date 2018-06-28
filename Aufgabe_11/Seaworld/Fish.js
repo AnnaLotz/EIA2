@@ -22,7 +22,7 @@ var L11_SeaworldInheritance;
         }
         setRandomPosition() {
             this.x = Math.random() * L11_SeaworldInheritance.crc2.canvas.width;
-            this.y = Math.random() * L11_SeaworldInheritance.crc2.canvas.height - 200;
+            this.y = Math.random() * L11_SeaworldInheritance.crc2.canvas.height - 300;
         }
         setNewRandomSpawnPoint() {
             this.x = L11_SeaworldInheritance.canvas.width + 50;

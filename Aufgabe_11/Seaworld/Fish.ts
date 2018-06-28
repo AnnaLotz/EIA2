@@ -27,7 +27,7 @@ namespace L11_SeaworldInheritance {
 
         setRandomPosition(): void {
             this.x = Math.random() * crc2.canvas.width;
-            this.y = Math.random() * crc2.canvas.height - 200;
+            this.y = Math.random() * crc2.canvas.height - 300;
         }
 
         setNewRandomSpawnPoint(): void {

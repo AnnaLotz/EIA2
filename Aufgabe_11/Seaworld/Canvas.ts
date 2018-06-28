@@ -46,20 +46,24 @@ namespace L11_SeaworldInheritance {
         //Anker
         let anchor: Anchor = new Anchor();
         movingObjects.push(anchor);
-        
+
 
         animate();
 
     } //init zu
-    
+
     function insertFood(_event: MouseEvent): void {
         //Abfrage für x und y des MouseEvents
         let spawnX: number = _event.clientX;
         let spawnY: number = _event.clientY;
-        console.log("spawn food");
-        
-        let food: Food = new Food(spawnX, spawnY);
-        movingObjects.push(food);
+
+        for (let i: number = 0; i < 4; i++) {                     
+            let food: Food = new Food(spawnX, spawnY);
+            movingObjects.push(food);
+            spawnX += Math.random() * 70;
+            spawnX -= Math.random() * 70;
+            spawnY += Math.random() * 10;
+        }
     }
 
     function animate(): void {
@@ -79,7 +83,7 @@ namespace L11_SeaworldInheritance {
             movingObjects[i].checkPosition();
             movingObjects[i].move();
         }
-        
+
     } //moveObjects zu
 
 

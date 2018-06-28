@@ -41,9 +41,13 @@ var L11_SeaworldInheritance;
         //Abfrage f�r x und y des MouseEvents
         let spawnX = _event.clientX;
         let spawnY = _event.clientY;
-        console.log("spawn food");
-        let food = new L11_SeaworldInheritance.Food(spawnX, spawnY);
-        movingObjects.push(food);
+        for (let i = 0; i < 4; i++) {
+            let food = new L11_SeaworldInheritance.Food(spawnX, spawnY);
+            movingObjects.push(food);
+            spawnX += Math.random() * 70;
+            spawnX -= Math.random() * 70;
+            spawnY += Math.random() * 10;
+        }
     }
     function animate() {
         window.setTimeout(animate, 10);
