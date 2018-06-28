@@ -9,9 +9,9 @@ var L11_Inheritance;
         console.log(L11_Inheritance.crc2);
         canvas.addEventListener("click", insertNewObject);
         for (let i = 0; i < n; i++) {
-            let star = new L11_Inheritance.DavidStar("#00ffff");
+            let star = new L11_Inheritance.DavidStar("#00ffff"); //cyan
             stars.push(star);
-            let rect = new L11_Inheritance.Rect("#ff0000");
+            let rect = new L11_Inheritance.Rect("#ff0000"); //rot
             stars.push(rect);
         }
         animate();
@@ -23,19 +23,19 @@ var L11_Inheritance;
         let r = Math.floor(Math.random() * 3);
         switch (r) {
             case 0:
-                let star = new L11_Inheritance.DavidStar("#ffff00");
+                let star = new L11_Inheritance.DavidStar("#00ffff"); //cyan
                 star.x = newX;
                 star.y = newY;
                 stars.push(star);
                 break;
             case 1:
-                let rect = new L11_Inheritance.Rect("#ff0000");
+                let rect = new L11_Inheritance.Rect("#ff0000"); //rot
                 rect.x = newX;
                 rect.y = newY;
                 stars.push(rect);
                 break;
             case 2:
-                let subStar = new L11_Inheritance.SubStar("ffff00");
+                let subStar = new L11_Inheritance.SubStar("#ffff00"); //gelb
                 subStar.x = newX;
                 subStar.y = newY;
                 stars.push(subStar);

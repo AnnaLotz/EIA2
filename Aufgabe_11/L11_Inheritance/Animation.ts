@@ -12,10 +12,10 @@ namespace L11_Inheritance {
         canvas.addEventListener("click", insertNewObject);
 
         for (let i: number = 0; i < n; i++) {
-            let star: DavidStar = new DavidStar("#00ffff");
+            let star: DavidStar = new DavidStar("#00ffff"); //cyan
             stars.push(star);
 
-            let rect: Rect = new Rect("#ff0000");
+            let rect: Rect = new Rect("#ff0000"); //rot
             stars.push(rect);
         }
 
@@ -33,21 +33,21 @@ namespace L11_Inheritance {
 
         switch (r) {
             case 0:
-                let star: DavidStar = new DavidStar("#ffff00");
+                let star: DavidStar = new DavidStar("#00ffff"); //cyan
                 star.x = newX;
                 star.y = newY;
                 stars.push(star);
                 break;
 
             case 1:
-                let rect: Rect = new Rect("#ff0000");
+                let rect: Rect = new Rect("#ff0000"); //rot
                 rect.x = newX;
                 rect.y = newY;
                 stars.push(rect);
                 break;
 
             case 2:
-                let subStar: SubStar = new SubStar("ffff00");
+                let subStar: SubStar = new SubStar("#ffff00"); //gelb
                 subStar.x = newX;
                 subStar.y = newY;
                 stars.push(subStar);
