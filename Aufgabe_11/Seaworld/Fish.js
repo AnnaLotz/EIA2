@@ -1,9 +1,10 @@
 /*  Aufgabe: Aufgabe 11 : Inheritance: Seaworld
     Name: Anna Lotz
     Matrikel: 257449
-    Datum: 26.06.18
+    Datum: 28.06.18
     
-    Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.*/
+    Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
+    Dieser Code wurde zusammen mit Alena Hurst und Franziska Hei� erarbeitet */
 var L11_SeaworldInheritance;
 (function (L11_SeaworldInheritance) {
     class Fish extends L11_SeaworldInheritance.MovingObjects {
