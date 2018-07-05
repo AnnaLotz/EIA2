@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+
+html {
+	font-family: 'Press Start 2P', sans-serif;
+}
+
+canvas {
+
+	
+	margin: -0.5em;
+	image-rendering: -moz-crisp-edges;
+	image-rendering: -webkit-crisp-edges;
+	image-rendering: pixelated;
+	image-rendering: crisp-edges;
+
+	object-fit: contain;
+}
+
+div {
+	
+	
+}
+
+/* @media screen and (min-width: 1024px)
+{
+canvas {
+	
+	height: 100%; 
+	object-fit: contain;
+}
+} /* Media screen*/
