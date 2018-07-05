@@ -5,20 +5,30 @@ html {
 }
 
 canvas {
-
-	
 	margin: -0.5em;
 	image-rendering: -moz-crisp-edges;
 	image-rendering: -webkit-crisp-edges;
 	image-rendering: pixelated;
 	image-rendering: crisp-edges;
-
 	object-fit: contain;
 }
 
 div {
-	
-	
+	margin-left: auto;
+	margin-right: auto;
+	text-align:center;
+}
+
+@media ( orientation : portrait) {
+	canvas {
+		display: block;
+	}
+}
+
+@media ( orientation : landscape) {
+	canvas {
+		display: inline;
+	}
 }
 
 /* @media screen and (min-width: 1024px)
