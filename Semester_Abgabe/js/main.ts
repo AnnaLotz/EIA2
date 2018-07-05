@@ -3,7 +3,7 @@ namespace SpaceInvader {
     window.addEventListener("load", init);
     let crc2: CanvasRenderingContext2D;
     let canvas: HTMLCanvasElement;
-    let breite: number = <number>(screen.availWidth);
+    let breite: number = <number>(window.innerWidth);
     let hoehe: number = <number>(window.innerHeight);
 
     function init(_event: Event): void {

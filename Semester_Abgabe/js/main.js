@@ -3,7 +3,7 @@ var SpaceInvader;
     window.addEventListener("load", init);
     let crc2;
     let canvas;
-    let breite = (screen.availWidth);
+    let breite = (window.innerWidth);
     let hoehe = (window.innerHeight);
     function init(_event) {
         canvas = document.getElementsByTagName("canvas")[0];
