@@ -1,10 +1,12 @@
 namespace SpaceInvader {
 
+
     export class Player {
         x: number;
         y: number;
         lives: number;
         movingDirection: number = 0;
+        bullets: number = 0;
 
         constructor() {
             this.x = 50;
@@ -42,7 +44,6 @@ namespace SpaceInvader {
         }
 
         moveRight(): void {
-            console.log("right");
             if (this.x > canvas.width - 30) {
                 this.x = canvas.width - 29;
             } else {
@@ -51,7 +52,6 @@ namespace SpaceInvader {
         }
 
         moveLeft(): void {
-            console.log("left");
             if (this.x < 30) {
                 this.x = 29;
             } else {
@@ -60,7 +60,12 @@ namespace SpaceInvader {
         }
 
         shoot(): void {
-            console.log("peng");
+            if (this.bullets < 1) {
+                //laser = new Laser();
+                
+            }
+            this.bullets += 1;
+            console.log(this.bullets);
         }
     } //class player zu
 

@@ -9,123 +9,32 @@ namespace SpaceInvader {
     let hoehe: number = <number>(window.innerHeight);
 
     export let score: number = 0;
-    let player: Player;
-
-
+    export let player: Player;
+    export let laser: Laser;
 
     function init(_event: Event): void {
         
         canvas = document.getElementsByTagName("canvas")[0];
         crc2 = canvas.getContext("2d");
-        console.log(crc2);
+
+        drawBackground();
+        imgData = crc2.getImageData(0, 0, canvas.width, canvas.height);
 
         if (breite > hoehe) {
             canvas.style.setProperty("height", hoehe + "px");
         } else if (hoehe > breite) {
             canvas.style.setProperty("width", breite + "px");
         }
-        console.log("breite: " + breite);
-        console.log("hoehe: " + hoehe);
+        console.log("Breite: " + breite);
+        console.log("Hoehe: " + hoehe);
 
-
-        drawBackground();
-        imgData = crc2.getImageData(0, 0, canvas.width, canvas.height);
-
-        
+ 
         createObjects();
         createListener();
         animate();
 
-
     } //init zu
-
-
-
-    function createListener(): void {
-
-        //KeyboardEvents
-        window.onkeydown = handleKeyDown;
-        window.onkeyup = handleKeyUp;
-
-        //ButtonEvents
-        let leftButtonLandscape: HTMLButtonElement = <HTMLButtonElement>document.getElementById("LeftButtonLandscape");
-        leftButtonLandscape.addEventListener("touchstart", handleLeftButtonDown);
-        leftButtonLandscape.addEventListener("touchend", handleButtonUp);
-                
-        let rightButtonLandspace: HTMLButtonElement = <HTMLButtonElement>document.getElementById("RightButtonLandspace");
-        rightButtonLandspace.addEventListener("touchstart", handleRightButtonDown);
-        rightButtonLandspace.addEventListener("touchend", handleButtonUp);
-        
-        let shootButtonLandscape: HTMLButtonElement = <HTMLButtonElement>document.getElementById("ShootButtonLandscape");
-        shootButtonLandscape.addEventListener("touchstart", handleShootButton);
-        
-        let leftButtonPortrait: HTMLButtonElement = <HTMLButtonElement>document.getElementById("LeftButtonPortrait");
-        leftButtonPortrait.addEventListener("touchstart", handleLeftButtonDown);
-        leftButtonPortrait.addEventListener("touchend", handleButtonUp);
-                
-        let rightButtonPortrait: HTMLButtonElement = <HTMLButtonElement>document.getElementById("RightButtonPortrait");
-        rightButtonPortrait.addEventListener("touchstart", handleRightButtonDown);
-        rightButtonPortrait.addEventListener("touchend", handleButtonUp);
-        
-        let shootButtonPortrait: HTMLButtonElement = <HTMLButtonElement>document.getElementById("ShootButtonPortrait");
-        shootButtonPortrait.addEventListener("touchstart", handleShootButton);
-        
-        
-        
-
-    } //createListener zu
-    
-    function handleLeftButtonDown(_event: TouchEvent): void {
-        console.log("left button down");
-        player.movingDirection = - 1;
-    }
-    
-    function handleRightButtonDown(_event: TouchEvent): void {
-        console.log("right button down");
-        player.movingDirection = + 1;
-    }
-    
-    function handleButtonUp(_event: TouchEvent): void {
-        console.log("button up");
-        player.movingDirection = 0;
-    }
-    
-    function handleShootButton(_event: TouchEvent): void {
-        console.log("button shoot");    
-    }
-    
-    function handleKeyDown(_event: KeyboardEvent): void {
-        
-
-        switch (_event.keyCode) {
-
-            case 32:
-                player.shoot();
-                break;
-            case 37: //left arrow
-            case 65: // key a
-                player.movingDirection = - 1;
-                break;
-            case 39: //right arrow
-            case 68: //key d
-                player.movingDirection = 1;
-                break;
-        }
-
-    } //handleKeyDown zu
-
-    function handleKeyUp(_event: KeyboardEvent): void {
-
-        switch (_event.keyCode) {
-            case 37: //left arrow
-            case 39: //right arrow
-            case 65: // key a
-            case 68: //key d
-                player.movingDirection = 0;
-                break;
-        }
-
-    } //handleKeyUp zu
+  
 
     function createObjects(): void {
         player = new Player();
@@ -139,20 +48,22 @@ namespace SpaceInvader {
         moveObjects();
         drawObjects();
 
-
     } //animate zu
 
 
     function moveObjects(): void {
+        //laser.move();
         if (player.movingDirection < 0) {
             player.moveLeft();
         } else if (player.movingDirection > 0) {
             player.moveRight();
         }
+       
     }
 
     function drawObjects(): void {
         player.draw();
+        //laser.draw(); 
     }
 
 } // namespace zu
