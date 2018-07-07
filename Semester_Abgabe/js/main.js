@@ -30,8 +30,24 @@ var SpaceInvader;
         window.onkeyup = handleKeyUp;
         //ButtonEvents
         let leftButtonLandscape = document.getElementById("LeftButtonLandscape");
-        leftButtonLandscape.addEventListener("click", player.moveLeft);
+        leftButtonLandscape.addEventListener("touchstart", handleLeftButtonDown);
+        leftButtonLandscape.addEventListener("touchend", handleButtonUp);
+        let rightButtonLandspace = document.getElementById("RightButtonLandspace");
+        rightButtonLandspace.addEventListener("touchstart", handleRightButtonDown);
+        rightButtonLandspace.addEventListener("touchend", handleButtonUp);
     } //createListener zu
+    function handleLeftButtonDown(_event) {
+        console.log(" left button down");
+        player.movingDirection = -1;
+    }
+    function handleRightButtonDown(_event) {
+        console.log("right button down");
+        player.movingDirection = +1;
+    }
+    function handleButtonUp(_event) {
+        console.log("button up");
+        player.movingDirection = 0;
+    }
     function handleKeyDown(_event) {
         switch (_event.keyCode) {
             case 32:

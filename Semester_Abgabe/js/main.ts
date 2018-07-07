@@ -49,11 +49,35 @@ namespace SpaceInvader {
 
         //ButtonEvents
         let leftButtonLandscape: HTMLButtonElement = <HTMLButtonElement>document.getElementById("LeftButtonLandscape");
-        leftButtonLandscape.addEventListener("click", player.moveLeft);
+        leftButtonLandscape.addEventListener("touchstart", handleLeftButtonDown);
+        leftButtonLandscape.addEventListener("touchend", handleButtonUp);
+                
+        let rightButtonLandspace: HTMLButtonElement = <HTMLButtonElement>document.getElementById("RightButtonLandspace");
+        rightButtonLandspace.addEventListener("touchstart", handleRightButtonDown);
+        rightButtonLandspace.addEventListener("touchend", handleButtonUp);
+        
+        
+        
 
     } //createListener zu
     
+    function handleLeftButtonDown(_event: TouchEvent): void {
+        console.log(" left button down");
+        player.movingDirection = - 1;
+    }
+    
+    function handleRightButtonDown(_event: TouchEvent): void {
+        console.log("right button down");
+        player.movingDirection = + 1;
+    }
+    
+    function handleButtonUp(_event: TouchEvent): void {
+        console.log("button up");
+        player.movingDirection = 0;
+    }
+    
     function handleKeyDown(_event: KeyboardEvent): void {
+        
 
         switch (_event.keyCode) {
 
