@@ -1,14 +1,38 @@
 var SpaceInvader;
 (function (SpaceInvader) {
     window.addEventListener("load", init);
-    window.onkeydown = checkKey;
-    window.onkeyup = handleKeyUp;
     let imgData;
     let breite = (window.innerWidth);
     let hoehe = (window.innerHeight);
     SpaceInvader.score = 0;
     let player;
-    function checkKey(_event) {
+    function init(_event) {
+        SpaceInvader.canvas = document.getElementsByTagName("canvas")[0];
+        SpaceInvader.crc2 = SpaceInvader.canvas.getContext("2d");
+        console.log(SpaceInvader.crc2);
+        if (breite > hoehe) {
+            SpaceInvader.canvas.style.setProperty("height", hoehe + "px");
+        }
+        else if (hoehe > breite) {
+            SpaceInvader.canvas.style.setProperty("width", breite + "px");
+        }
+        console.log("breite: " + breite);
+        console.log("hoehe: " + hoehe);
+        SpaceInvader.drawBackground();
+        imgData = SpaceInvader.crc2.getImageData(0, 0, SpaceInvader.canvas.width, SpaceInvader.canvas.height);
+        createObjects();
+        createListener();
+        animate();
+    } //init zu
+    function createListener() {
+        //KeyboardEvents
+        window.onkeydown = handleKeyDown;
+        window.onkeyup = handleKeyUp;
+        //ButtonEvents
+        let leftButtonLandscape = document.getElementById("LeftButtonLandscape");
+        leftButtonLandscape.addEventListener("click", player.moveLeft);
+    } //createListener zu
+    function handleKeyDown(_event) {
         switch (_event.keyCode) {
             case 32:
                 player.shoot();
@@ -26,7 +50,7 @@ var SpaceInvader;
                 player.movingDirection = 1;
                 break;
         }
-    } //checkKey zu
+    } //handleKeyDown zu
     function handleKeyUp(_event) {
         switch (_event.keyCode) {
             case 37:
@@ -42,24 +66,7 @@ var SpaceInvader;
                 player.movingDirection = 0;
                 break;
         }
-    }
-    function init(_event) {
-        SpaceInvader.canvas = document.getElementsByTagName("canvas")[0];
-        SpaceInvader.crc2 = SpaceInvader.canvas.getContext("2d");
-        console.log(SpaceInvader.crc2);
-        if (breite > hoehe) {
-            SpaceInvader.canvas.style.setProperty("height", hoehe + "px");
-        }
-        else if (hoehe > breite) {
-            SpaceInvader.canvas.style.setProperty("width", breite + "px");
-        }
-        SpaceInvader.drawBackground();
-        imgData = SpaceInvader.crc2.getImageData(0, 0, SpaceInvader.canvas.width, SpaceInvader.canvas.height);
-        console.log("breite: " + breite);
-        console.log("hoehe: " + hoehe);
-        createObjects();
-        animate();
-    } //init zu
+    } //handleKeyUp zu
     function createObjects() {
         player = new SpaceInvader.Player();
     }

@@ -1,22 +1,59 @@
 namespace SpaceInvader {
 
     window.addEventListener("load", init);
-    window.onkeydown = checkKey;
-    window.onkeyup = handleKeyUp;
-    // window.onkeydown = shoot;
+
     export let crc2: CanvasRenderingContext2D;
     export let canvas: HTMLCanvasElement;
     let imgData: ImageData;
     let breite: number = <number>(window.innerWidth);
     let hoehe: number = <number>(window.innerHeight);
 
-    
-
     export let score: number = 0;
     let player: Player;
 
 
-    function checkKey(_event: KeyboardEvent): void {
+
+    function init(_event: Event): void {
+        
+        canvas = document.getElementsByTagName("canvas")[0];
+        crc2 = canvas.getContext("2d");
+        console.log(crc2);
+
+        if (breite > hoehe) {
+            canvas.style.setProperty("height", hoehe + "px");
+        } else if (hoehe > breite) {
+            canvas.style.setProperty("width", breite + "px");
+        }
+        console.log("breite: " + breite);
+        console.log("hoehe: " + hoehe);
+
+
+        drawBackground();
+        imgData = crc2.getImageData(0, 0, canvas.width, canvas.height);
+
+        
+        createObjects();
+        createListener();
+        animate();
+
+
+    } //init zu
+
+
+
+    function createListener(): void {
+
+        //KeyboardEvents
+        window.onkeydown = handleKeyDown;
+        window.onkeyup = handleKeyUp;
+
+        //ButtonEvents
+        let leftButtonLandscape: HTMLButtonElement = <HTMLButtonElement>document.getElementById("LeftButtonLandscape");
+        leftButtonLandscape.addEventListener("click", player.moveLeft);
+
+    } //createListener zu
+    
+    function handleKeyDown(_event: KeyboardEvent): void {
 
         switch (_event.keyCode) {
 
@@ -35,13 +72,9 @@ namespace SpaceInvader {
             case 68: //key d
                 player.movingDirection = 1;
                 break;
-
-
         }
 
-
-
-    } //checkKey zu
+    } //handleKeyDown zu
 
     function handleKeyUp(_event: KeyboardEvent): void {
 
@@ -56,41 +89,11 @@ namespace SpaceInvader {
                 player.movingDirection = 0;
                 break;
             case 68: //key d
-               player.movingDirection = 0;
+                player.movingDirection = 0;
                 break;
         }
 
-    }
-
-
-
-    function init(_event: Event): void {
-
-
-        canvas = document.getElementsByTagName("canvas")[0];
-        crc2 = canvas.getContext("2d");
-        console.log(crc2);
-
-        if (breite > hoehe) {
-            canvas.style.setProperty("height", hoehe + "px");
-        } else if (hoehe > breite) {
-            canvas.style.setProperty("width", breite + "px");
-        }
-
-        drawBackground();
-        imgData = crc2.getImageData(0, 0, canvas.width, canvas.height);
-
-
-
-
-        console.log("breite: " + breite);
-        console.log("hoehe: " + hoehe);
-
-        createObjects();
-        animate();
-
-
-    } //init zu
+    } //handleKeyUp zu
 
     function createObjects(): void {
         player = new Player();

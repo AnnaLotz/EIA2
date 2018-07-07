@@ -35,6 +35,7 @@ var SpaceInvader;
             SpaceInvader.crc2.closePath();
         }
         moveRight() {
+            console.log("right");
             if (this.x > SpaceInvader.canvas.width - 30) {
                 this.x = SpaceInvader.canvas.width - 29;
             }
@@ -43,6 +44,7 @@ var SpaceInvader;
             }
         }
         moveLeft() {
+            console.log("left");
             if (this.x < 30) {
                 this.x = 29;
             }
