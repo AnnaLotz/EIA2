@@ -56,13 +56,27 @@ namespace SpaceInvader {
         rightButtonLandspace.addEventListener("touchstart", handleRightButtonDown);
         rightButtonLandspace.addEventListener("touchend", handleButtonUp);
         
+        let shootButtonLandscape: HTMLButtonElement = <HTMLButtonElement>document.getElementById("ShootButtonLandscape");
+        shootButtonLandscape.addEventListener("touchstart", handleShootButton);
+        
+        let leftButtonPortrait: HTMLButtonElement = <HTMLButtonElement>document.getElementById("LeftButtonPortrait");
+        leftButtonPortrait.addEventListener("touchstart", handleLeftButtonDown);
+        leftButtonPortrait.addEventListener("touchend", handleButtonUp);
+                
+        let rightButtonPortrait: HTMLButtonElement = <HTMLButtonElement>document.getElementById("RightButtonPortrait");
+        rightButtonPortrait.addEventListener("touchstart", handleRightButtonDown);
+        rightButtonPortrait.addEventListener("touchend", handleButtonUp);
+        
+        let shootButtonPortrait: HTMLButtonElement = <HTMLButtonElement>document.getElementById("ShootButtonPortrait");
+        shootButtonPortrait.addEventListener("touchstart", handleShootButton);
+        
         
         
 
     } //createListener zu
     
     function handleLeftButtonDown(_event: TouchEvent): void {
-        console.log(" left button down");
+        console.log("left button down");
         player.movingDirection = - 1;
     }
     
@@ -76,6 +90,10 @@ namespace SpaceInvader {
         player.movingDirection = 0;
     }
     
+    function handleShootButton(_event: TouchEvent): void {
+        console.log("button shoot");    
+    }
+    
     function handleKeyDown(_event: KeyboardEvent): void {
         
 
@@ -85,14 +103,10 @@ namespace SpaceInvader {
                 player.shoot();
                 break;
             case 37: //left arrow
-                player.movingDirection = - 1;
-                break;
-            case 39: //right arrow
-                player.movingDirection = 1;
-                break;
             case 65: // key a
                 player.movingDirection = - 1;
                 break;
+            case 39: //right arrow
             case 68: //key d
                 player.movingDirection = 1;
                 break;
@@ -104,14 +118,8 @@ namespace SpaceInvader {
 
         switch (_event.keyCode) {
             case 37: //left arrow
-                player.movingDirection = 0;
-                break;
             case 39: //right arrow
-                player.movingDirection = 0;
-                break;
             case 65: // key a
-                player.movingDirection = 0;
-                break;
             case 68: //key d
                 player.movingDirection = 0;
                 break;
@@ -121,7 +129,6 @@ namespace SpaceInvader {
 
     function createObjects(): void {
         player = new Player();
-
     }
 
     function animate(): void {
