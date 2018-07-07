@@ -48,7 +48,7 @@ namespace SpaceInvader {
 
     export function handleShootButton(_event: TouchEvent): void {
         console.log("button shoot");
-        player.shoot();
+        shoot();
     }
 
     export function handleKeyDown(_event: KeyboardEvent): void {
@@ -56,7 +56,7 @@ namespace SpaceInvader {
         switch (_event.keyCode) {
 
             case 32:
-                player.shoot();
+                shoot();
                 break;
             case 37: //left arrow
             case 65: // key a

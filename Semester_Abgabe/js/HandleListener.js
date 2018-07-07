@@ -40,13 +40,13 @@ var SpaceInvader;
     SpaceInvader.handleButtonUp = handleButtonUp;
     function handleShootButton(_event) {
         console.log("button shoot");
-        SpaceInvader.player.shoot();
+        SpaceInvader.shoot();
     }
     SpaceInvader.handleShootButton = handleShootButton;
     function handleKeyDown(_event) {
         switch (_event.keyCode) {
             case 32:
-                SpaceInvader.player.shoot();
+                SpaceInvader.shoot();
                 break;
             case 37: //left arrow
             case 65:

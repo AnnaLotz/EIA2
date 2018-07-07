@@ -1,12 +1,11 @@
 namespace SpaceInvader {
 
-
     export class Player {
         x: number;
         y: number;
         lives: number;
         movingDirection: number = 0;
-        bullets: number = 0;
+        //bullets: number = 0;
 
         constructor() {
             this.x = 50;
@@ -14,7 +13,22 @@ namespace SpaceInvader {
             this.lives = 3;
         }
 
+        moveRight(): void {
+            if (this.x > canvas.width - 30) 
+                this.x = canvas.width - 29;
+             else 
+                this.x += 2;            
+        }
 
+        moveLeft(): void {
+            if (this.x < 30) 
+                this.x = 29;
+             else 
+                this.x -= 2;            
+        }
+        
+        
+        
         draw(): void {
             crc2.beginPath();
             crc2.strokeStyle = "white";
@@ -43,30 +57,7 @@ namespace SpaceInvader {
             crc2.closePath();
         }
 
-        moveRight(): void {
-            if (this.x > canvas.width - 30) {
-                this.x = canvas.width - 29;
-            } else {
-                this.x += 2;
-            }
-        }
 
-        moveLeft(): void {
-            if (this.x < 30) {
-                this.x = 29;
-            } else {
-                this.x -= 2;
-            }
-        }
-
-        shoot(): void {
-            if (this.bullets < 1) {
-                //laser = new Laser();
-                
-            }
-            this.bullets += 1;
-            console.log(this.bullets);
-        }
     } //class player zu
 
 } //namespace zu

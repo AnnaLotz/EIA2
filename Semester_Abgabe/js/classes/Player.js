@@ -1,12 +1,24 @@
 var SpaceInvader;
 (function (SpaceInvader) {
     class Player {
+        //bullets: number = 0;
         constructor() {
             this.movingDirection = 0;
-            this.bullets = 0;
             this.x = 50;
             this.y = 506;
             this.lives = 3;
+        }
+        moveRight() {
+            if (this.x > SpaceInvader.canvas.width - 30)
+                this.x = SpaceInvader.canvas.width - 29;
+            else
+                this.x += 2;
+        }
+        moveLeft() {
+            if (this.x < 30)
+                this.x = 29;
+            else
+                this.x -= 2;
         }
         draw() {
             SpaceInvader.crc2.beginPath();
@@ -34,28 +46,6 @@ var SpaceInvader;
             SpaceInvader.crc2.stroke();
             SpaceInvader.crc2.fill();
             SpaceInvader.crc2.closePath();
-        }
-        moveRight() {
-            if (this.x > SpaceInvader.canvas.width - 30) {
-                this.x = SpaceInvader.canvas.width - 29;
-            }
-            else {
-                this.x += 2;
-            }
-        }
-        moveLeft() {
-            if (this.x < 30) {
-                this.x = 29;
-            }
-            else {
-                this.x -= 2;
-            }
-        }
-        shoot() {
-            if (this.bullets < 1) {
-            }
-            this.bullets += 1;
-            console.log(this.bullets);
         }
     }
     SpaceInvader.Player = Player; //class player zu

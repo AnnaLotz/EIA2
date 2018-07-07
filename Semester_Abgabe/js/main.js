@@ -5,6 +5,8 @@ var SpaceInvader;
     let breite = (window.innerWidth);
     let hoehe = (window.innerHeight);
     SpaceInvader.score = 0;
+    SpaceInvader.movingObjects = [];
+    SpaceInvader.bullets = 0;
     function init(_event) {
         SpaceInvader.canvas = document.getElementsByTagName("canvas")[0];
         SpaceInvader.crc2 = SpaceInvader.canvas.getContext("2d");
@@ -25,6 +27,14 @@ var SpaceInvader;
     function createObjects() {
         SpaceInvader.player = new SpaceInvader.Player();
     }
+    function shoot() {
+        //if (bullets < 1) {
+        let laser = new SpaceInvader.Laser();
+        SpaceInvader.movingObjects.push(laser);
+        SpaceInvader.bullets += 1;
+        //}
+    }
+    SpaceInvader.shoot = shoot;
     function animate() {
         window.setTimeout(animate, 20); //framerate: 50 fps -> 20 ms
         SpaceInvader.crc2.clearRect(0, 0, SpaceInvader.crc2.canvas.width, SpaceInvader.crc2.canvas.height);
@@ -33,7 +43,10 @@ var SpaceInvader;
         drawObjects();
     } //animate zu
     function moveObjects() {
-        //laser.move();
+        for (let i = 0; i < SpaceInvader.movingObjects.length; i++) {
+            SpaceInvader.movingObjects[i].move();
+            SpaceInvader.movingObjects[i].checkPosition();
+        }
         if (SpaceInvader.player.movingDirection < 0) {
             SpaceInvader.player.moveLeft();
         }
@@ -43,7 +56,9 @@ var SpaceInvader;
     }
     function drawObjects() {
         SpaceInvader.player.draw();
-        //laser.draw(); 
+        for (let i = 0; i < SpaceInvader.movingObjects.length; i++) {
+            SpaceInvader.movingObjects[i].draw();
+        }
     }
 })(SpaceInvader || (SpaceInvader = {})); // namespace zu
 //# sourceMappingURL=main.js.map

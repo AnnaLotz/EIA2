@@ -10,10 +10,11 @@ namespace SpaceInvader {
 
     export let score: number = 0;
     export let player: Player;
-    export let laser: Laser;
+    export let movingObjects: MovingObject[] = [];
+    export let bullets: number = 0;
 
     function init(_event: Event): void {
-        
+
         canvas = document.getElementsByTagName("canvas")[0];
         crc2 = canvas.getContext("2d");
 
@@ -28,16 +29,25 @@ namespace SpaceInvader {
         console.log("Breite: " + breite);
         console.log("Hoehe: " + hoehe);
 
- 
+
         createObjects();
         createListener();
         animate();
 
     } //init zu
-  
+
 
     function createObjects(): void {
         player = new Player();
+    }
+
+    export function shoot(): void {
+        //if (bullets < 1) {
+            let laser: Laser = new Laser();
+            movingObjects.push(laser);
+            bullets += 1;
+        //}
+
     }
 
     function animate(): void {
@@ -52,18 +62,23 @@ namespace SpaceInvader {
 
 
     function moveObjects(): void {
-        //laser.move();
+        for (let i: number = 0; i < movingObjects.length; i++) {
+            movingObjects[i].move();
+            movingObjects[i].checkPosition();
+        }
         if (player.movingDirection < 0) {
             player.moveLeft();
         } else if (player.movingDirection > 0) {
             player.moveRight();
         }
-       
+
     }
 
     function drawObjects(): void {
         player.draw();
-        //laser.draw(); 
+        for (let i: number = 0; i < movingObjects.length; i++) {
+            movingObjects[i].draw();
+        }
     }
 
 } // namespace zu

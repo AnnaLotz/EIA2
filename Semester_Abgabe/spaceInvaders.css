@@ -30,19 +30,21 @@ div {
 }
 
 button {
+	margin: auto;
 	height: 8em;
 	width: 8em;
 }
 
 .buttonsLeftSide {
-	float: left;	
+	float: left;
+	margin-left: 10px;	
 }
 
 .buttonsRightSide {
 	float: right;
 }
 
-@media ( orientation : portrait) {
+@media (orientation : portrait) {
 	canvas {
 		display: block;
 	}
@@ -51,11 +53,12 @@ button {
 	}
 	.buttonsPortait {
 		display: inline;
+		margin: 5em;
 		margin-top: 2em;
 	}
 }
 
-@media ( orientation : landscape) {
+@media (orientation : landscape) {
 	canvas {
 		display: inline;
 	}
