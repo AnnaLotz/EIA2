@@ -4,6 +4,7 @@ namespace SpaceInvader {
         x: number;
         y: number;
         lives: number;
+        movingDirection: number = 0;
 
         constructor() {
             this.x = 50;
@@ -56,6 +57,9 @@ namespace SpaceInvader {
             }
         }
 
-    }
+        shoot(): void {
+            console.log("peng");    
+        }
+    } //class player zu
 
-}
+} //namespace zu

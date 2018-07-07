@@ -2,6 +2,7 @@ var SpaceInvader;
 (function (SpaceInvader) {
     class Player {
         constructor() {
+            this.movingDirection = 0;
             this.x = 50;
             this.y = 506;
             this.lives = 3;
@@ -49,7 +50,10 @@ var SpaceInvader;
                 this.x -= 2;
             }
         }
+        shoot() {
+            console.log("peng");
+        }
     }
-    SpaceInvader.Player = Player;
-})(SpaceInvader || (SpaceInvader = {}));
+    SpaceInvader.Player = Player; //class player zu
+})(SpaceInvader || (SpaceInvader = {})); //namespace zu
 //# sourceMappingURL=Player.js.map

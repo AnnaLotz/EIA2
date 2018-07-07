@@ -2,19 +2,47 @@ var SpaceInvader;
 (function (SpaceInvader) {
     window.addEventListener("load", init);
     window.onkeydown = checkKey;
+    window.onkeyup = handleKeyUp;
     let imgData;
     let breite = (window.innerWidth);
     let hoehe = (window.innerHeight);
     SpaceInvader.score = 0;
     let player;
     function checkKey(_event) {
-        if (_event.key == "ArrowLeft") {
-            player.moveLeft();
-        }
-        else if (_event.key == "ArrowRight") {
-            player.moveRight();
+        switch (_event.keyCode) {
+            case 32:
+                player.shoot();
+                break;
+            case 37:
+                player.movingDirection = -1;
+                break;
+            case 39:
+                player.movingDirection = 1;
+                break;
+            case 65:
+                player.movingDirection = -1;
+                break;
+            case 68:
+                player.movingDirection = 1;
+                break;
         }
     } //checkKey zu
+    function handleKeyUp(_event) {
+        switch (_event.keyCode) {
+            case 37:
+                player.movingDirection = 0;
+                break;
+            case 39:
+                player.movingDirection = 0;
+                break;
+            case 65:
+                player.movingDirection = 0;
+                break;
+            case 68:
+                player.movingDirection = 0;
+                break;
+        }
+    }
     function init(_event) {
         SpaceInvader.canvas = document.getElementsByTagName("canvas")[0];
         SpaceInvader.crc2 = SpaceInvader.canvas.getContext("2d");
@@ -43,7 +71,12 @@ var SpaceInvader;
         drawObjects();
     } //animate zu
     function moveObjects() {
-        //
+        if (player.movingDirection < 0) {
+            player.moveLeft();
+        }
+        else if (player.movingDirection > 0) {
+            player.moveRight();
+        }
     }
     function drawObjects() {
         player.draw();
