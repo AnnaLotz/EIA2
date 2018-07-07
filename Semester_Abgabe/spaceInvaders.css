@@ -2,7 +2,15 @@
 
 html {
 	font-family: 'Press Start 2P', sans-serif;
+	/*background-color: black;*/
 }
+* {
+	image-rendering: -moz-crisp-edges;
+	image-rendering: -webkit-crisp-edges;
+	image-rendering: pixelated;
+	image-rendering: crisp-edges;	
+}
+	
 
 canvas {
 	margin: -0.5em;
@@ -11,6 +19,8 @@ canvas {
 	image-rendering: pixelated;
 	image-rendering: crisp-edges;
 	object-fit: contain;
+	border: 10px;
+	border: white;
 }
 
 div {
