@@ -30,8 +30,16 @@ div {
 }
 
 button {
-	height: 4em;
-	width: 4em;
+	height: 8em;
+	width: 8em;
+}
+
+.buttonsLeftSide {
+	float: left;	
+}
+
+.buttonsRightSide {
+	float: right;
 }
 
 @media ( orientation : portrait) {
