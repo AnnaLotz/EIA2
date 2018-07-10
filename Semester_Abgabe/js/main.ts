@@ -8,10 +8,10 @@ namespace SpaceInvader {
     let breite: number = <number>(window.innerWidth);
     let hoehe: number = <number>(window.innerHeight);
 
-    export let score: number = 0;
-    export let player: Player;
     export let movingObjects: MovingObject[] = [];
-    export let bullets: number = 0;
+    export let enemys: Enemy[] = [];
+    export let player: Player;
+    export let score: number = 0;
 
     function init(_event: Event): void {
 
@@ -38,14 +38,31 @@ namespace SpaceInvader {
 
 
     function createObjects(): void {
+
         player = new Player();
-    }
+
+        for (let i: number = 0; i < 10; i++) {
+            let enemy: Enemy1 = new Enemy1();
+            enemy.x = 108 + i * 37;
+            enemy.y = 318;
+            enemys.push(enemy);
+        }
+
+        for (let j: number = 0; j < 10; j++) {
+            let enemy: Enemy1 = new Enemy1();
+            enemy.x = 105 + j * 37;
+            enemy.y = 281;
+            enemys.push(enemy);
+        }
+
+
+    } //createObjects zu
 
     export function shoot(): void {
-        //if (bullets < 1) {
-            let laser: Laser = new Laser();
-            movingObjects.push(laser);
-            bullets += 1;
+        //if (player.bullets < 1) {
+        let laser: Laser = new Laser();
+        movingObjects.push(laser);
+        player.bullets += 1;
         //}
 
     }
@@ -62,10 +79,22 @@ namespace SpaceInvader {
 
 
     function moveObjects(): void {
+        
         for (let i: number = 0; i < movingObjects.length; i++) {
             movingObjects[i].move();
             movingObjects[i].checkPosition();
         }
+
+        for (let i: number = 0; i < enemys.length; i++) {
+            if (enemys[i].checkPosition() == true) {
+                for (let i: number = 0; i < enemys.length; i++) {
+                    enemys[i].y += 20;
+                    enemys[i].direction *= -1;
+                }
+            }
+            enemys[i].move();
+
+        }
         if (player.movingDirection < 0) {
             player.moveLeft();
         } else if (player.movingDirection > 0) {
@@ -76,6 +105,9 @@ namespace SpaceInvader {
 
     function drawObjects(): void {
         player.draw();
+        for (let i: number = 0; i < enemys.length; i++) {
+            enemys[i].draw();
+        }
         for (let i: number = 0; i < movingObjects.length; i++) {
             movingObjects[i].draw();
         }

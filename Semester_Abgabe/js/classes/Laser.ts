@@ -5,7 +5,8 @@ namespace SpaceInvader {
         y: number;
 
         constructor() {
-            this.x = player.x;
+            console.log("peng");
+            this.x = player.x - 1;
             this.y = player.y;
         }
 
@@ -19,7 +20,7 @@ namespace SpaceInvader {
         destroyLaser(): void {
             //console.log("destroy laser");
 
-//                let index: number = movingObjects.indexOf(bullets);
+//                let index: number = movingObjects.indexOf(player.bullets);
 //                //let index: number = movingObjects.length;
 //                //let index: number = <number>movingObjects[10];
 //                console.log(index);
@@ -33,8 +34,8 @@ namespace SpaceInvader {
             crc2.fillStyle = "white";
             crc2.moveTo(this.x, this.y);
             crc2.lineTo(this.x + 2, this.y);
-            crc2.lineTo(this.x + 2, this.y - 12);
-            crc2.lineTo(this.x, this.y - 12);
+            crc2.lineTo(this.x + 2, this.y - 16);
+            crc2.lineTo(this.x, this.y - 16);
             crc2.lineTo(this.x, this.y);
             crc2.closePath();
             crc2.fill();

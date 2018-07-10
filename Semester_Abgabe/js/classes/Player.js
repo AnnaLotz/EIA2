@@ -1,9 +1,9 @@
 var SpaceInvader;
 (function (SpaceInvader) {
     class Player {
-        //bullets: number = 0;
         constructor() {
             this.movingDirection = 0;
+            this.bullets = 0;
             this.x = 50;
             this.y = 506;
             this.lives = 3;

@@ -4,9 +4,9 @@ var SpaceInvader;
     let imgData;
     let breite = (window.innerWidth);
     let hoehe = (window.innerHeight);
-    SpaceInvader.score = 0;
     SpaceInvader.movingObjects = [];
-    SpaceInvader.bullets = 0;
+    SpaceInvader.enemys = [];
+    SpaceInvader.score = 0;
     function init(_event) {
         SpaceInvader.canvas = document.getElementsByTagName("canvas")[0];
         SpaceInvader.crc2 = SpaceInvader.canvas.getContext("2d");
@@ -26,12 +26,24 @@ var SpaceInvader;
     } //init zu
     function createObjects() {
         SpaceInvader.player = new SpaceInvader.Player();
-    }
+        for (let i = 0; i < 10; i++) {
+            let enemy = new SpaceInvader.Enemy1();
+            enemy.x = 108 + i * 37;
+            enemy.y = 318;
+            SpaceInvader.enemys.push(enemy);
+        }
+        for (let j = 0; j < 10; j++) {
+            let enemy = new SpaceInvader.Enemy1();
+            enemy.x = 105 + j * 37;
+            enemy.y = 281;
+            SpaceInvader.enemys.push(enemy);
+        }
+    } //createObjects zu
     function shoot() {
-        //if (bullets < 1) {
+        //if (player.bullets < 1) {
         let laser = new SpaceInvader.Laser();
         SpaceInvader.movingObjects.push(laser);
-        SpaceInvader.bullets += 1;
+        SpaceInvader.player.bullets += 1;
         //}
     }
     SpaceInvader.shoot = shoot;
@@ -47,6 +59,15 @@ var SpaceInvader;
             SpaceInvader.movingObjects[i].move();
             SpaceInvader.movingObjects[i].checkPosition();
         }
+        for (let i = 0; i < SpaceInvader.enemys.length; i++) {
+            if (SpaceInvader.enemys[i].checkPosition() == true) {
+                for (let i = 0; i < SpaceInvader.enemys.length; i++) {
+                    SpaceInvader.enemys[i].y += 20;
+                    SpaceInvader.enemys[i].direction *= -1;
+                }
+            }
+            SpaceInvader.enemys[i].move();
+        }
         if (SpaceInvader.player.movingDirection < 0) {
             SpaceInvader.player.moveLeft();
         }
@@ -56,6 +77,9 @@ var SpaceInvader;
     }
     function drawObjects() {
         SpaceInvader.player.draw();
+        for (let i = 0; i < SpaceInvader.enemys.length; i++) {
+            SpaceInvader.enemys[i].draw();
+        }
         for (let i = 0; i < SpaceInvader.movingObjects.length; i++) {
             SpaceInvader.movingObjects[i].draw();
         }

@@ -65,6 +65,11 @@ button {
 	.buttonsPortait {
 		display: none;
 	}
+	.buttonsLandscape {
+		display: inital;
+		margin: 5em;
+		margin-top: 2em;
+	}
 }
 
 @media ( hover : hover) {

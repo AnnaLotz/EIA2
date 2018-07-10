@@ -5,7 +5,7 @@ namespace SpaceInvader {
         y: number;
         lives: number;
         movingDirection: number = 0;
-        //bullets: number = 0;
+        bullets: number = 0;
 
         constructor() {
             this.x = 50;
@@ -55,6 +55,8 @@ namespace SpaceInvader {
             crc2.stroke();
             crc2.fill();
             crc2.closePath();
+            
+            
         }
 
 
