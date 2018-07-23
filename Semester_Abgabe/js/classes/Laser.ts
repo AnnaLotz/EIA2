@@ -4,19 +4,18 @@ namespace SpaceInvader {
         x: number;
         y: number;
         hitbox: number;
-        enemy: Enemy;
 
         constructor() {
             console.log("peng");
             this.x = player.x - 1;
             this.y = player.y;
-            this.hitbox = 10;
+            player.bullets += 1;
         } //constructor zu
 
         checkPosition(): void {
-            /**if (this.y <= 0) {
+            if (this.y <= 0) {
                 this.destroyLaser();
-            }*/
+            }
 
             for (let i: number = 0; i < enemies.length; i++) {
                 if (this.y <= enemies[i].y + 1 && this.y >= enemies[i].y - 1) {
@@ -24,6 +23,7 @@ namespace SpaceInvader {
                         let index: number = i;
                         console.log("enemy " + index + " hit");
                         enemies.splice(index, 1);
+                        this.destroyLaser();
                     }
                 }
             }
@@ -34,14 +34,11 @@ namespace SpaceInvader {
 
 
         destroyLaser(): void {
-            //console.log("destroy laser");
-
-            //                let index: number = movingObjects.indexOf(player.bullets);
-            //                //let index: number = movingObjects.length;
-            //                //let index: number = <number>movingObjects[10];
-            //                console.log(index);
-            //                movinice(index, 1);
-            //                bullets = 0;
+            console.log("destroy laser");
+            let index: number = movingObjects.indexOf(this);
+            movingObjects.splice(index, 1);
+            player.bullets -= 1;
+            
 
         } //destroy laser zu
 

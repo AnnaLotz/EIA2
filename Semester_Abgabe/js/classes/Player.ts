@@ -4,13 +4,16 @@ namespace SpaceInvader {
         x: number;
         y: number;
         lives: number;
-        movingDirection: number = 0;
-        bullets: number = 0;
+        movingDirection: number;
+        bullets: number;
 
         constructor() {
-            this.x = 50;
+            this.x = 250;
             this.y = 506;
             this.lives = 3;
+            this.movingDirection = 0;
+            this.bullets = 0;
+            
         }
 
         moveRight(): void {
@@ -54,9 +57,7 @@ namespace SpaceInvader {
             crc2.lineTo(this.x, this.y);
             crc2.stroke();
             crc2.fill();
-            crc2.closePath();
-            
-            
+            crc2.closePath();   
         }
 
 

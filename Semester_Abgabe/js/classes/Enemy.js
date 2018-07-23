@@ -5,7 +5,6 @@ var SpaceInvader;
             this.health = 1;
             this.speed = 1;
             this.direction = 1;
-            console.log("new enemy");
         }
         checkPosition() {
             //ob enemy ganz rechts oder links

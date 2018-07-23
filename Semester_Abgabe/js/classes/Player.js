@@ -2,11 +2,11 @@ var SpaceInvader;
 (function (SpaceInvader) {
     class Player {
         constructor() {
-            this.movingDirection = 0;
-            this.bullets = 0;
-            this.x = 50;
+            this.x = 250;
             this.y = 506;
             this.lives = 3;
+            this.movingDirection = 0;
+            this.bullets = 0;
         }
         moveRight() {
             if (this.x > SpaceInvader.canvas.width - 30)

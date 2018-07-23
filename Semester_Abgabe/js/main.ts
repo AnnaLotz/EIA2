@@ -26,8 +26,6 @@ namespace SpaceInvader {
         } else if (hoehe > breite) {
             canvas.style.setProperty("width", breite + "px");
         }
-        console.log("Breite: " + breite);
-        console.log("Hoehe: " + hoehe);
 
 
         createObjects();

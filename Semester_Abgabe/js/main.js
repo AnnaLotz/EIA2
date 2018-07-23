@@ -18,8 +18,6 @@ var SpaceInvader;
         else if (hoehe > breite) {
             SpaceInvader.canvas.style.setProperty("width", breite + "px");
         }
-        console.log("Breite: " + breite);
-        console.log("Hoehe: " + hoehe);
         createObjects();
         SpaceInvader.createListener();
         animate();
