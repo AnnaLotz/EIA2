@@ -1,12 +1,7 @@
 namespace SpaceInvader {
 
     export class Enemy3 extends Enemy {
-        x: number;
-        y: number;
-        points: number;
-        health: number;
-        speed: number;
-        direction: number; // 1 -> to right, -1 -> to left
+       
 
 
         constructor() {

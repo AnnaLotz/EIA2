@@ -3,6 +3,7 @@ var SpaceInvader;
     class Enemy1 extends SpaceInvader.Enemy {
         constructor() {
             super();
+            this.points = 10;
         }
         draw() {
             SpaceInvader.crc2.strokeStyle = "white";

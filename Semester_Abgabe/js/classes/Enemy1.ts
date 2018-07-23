@@ -1,10 +1,11 @@
 namespace SpaceInvader {
 
     export class Enemy1 extends Enemy {
-
+        
 
         constructor() {
-            super();        
+            super();    
+            this.points = 10;    
         }
 
         draw(): void {
