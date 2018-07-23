@@ -43,15 +43,15 @@ namespace SpaceInvader {
 
         for (let i: number = 0; i < 10; i++) {
             let enemy: Enemy1 = new Enemy1();
-            enemy.x = 108 + i * 37;
+            enemy.x = 90 + i * 37;
             enemy.y = 318;
             enemies.push(enemy);
-            
+
         }
 
         for (let j: number = 0; j < 10; j++) {
             let enemy: Enemy1 = new Enemy1();
-            enemy.x = 105 + j * 37;
+            enemy.x = 80 + j * 37;
             enemy.y = 281;
             enemies.push(enemy);
         }
@@ -80,11 +80,13 @@ namespace SpaceInvader {
 
 
     function moveObjects(): void {
-        
+
         for (let i: number = 0; i < movingObjects.length; i++) {
             movingObjects[i].move();
             movingObjects[i].checkPosition();
         }
+
+
 
         for (let i: number = 0; i < enemies.length; i++) {
             if (enemies[i].checkPosition() == true) {
@@ -93,16 +95,19 @@ namespace SpaceInvader {
                     enemies[i].direction *= -1;
                 }
             }
-            enemies[i].move();
+        }
 
-        }
+        for (let i: number = 0; i < enemies.length; i++) {
+            enemies[i].move();
+        }
+
         if (player.movingDirection < 0) {
             player.moveLeft();
         } else if (player.movingDirection > 0) {
             player.moveRight();
         }
 
-    }
+    } //moveObjects zu
 
     function drawObjects(): void {
         player.draw();
@@ -112,6 +117,6 @@ namespace SpaceInvader {
         for (let i: number = 0; i < movingObjects.length; i++) {
             movingObjects[i].draw();
         }
-    }
+    } //drawObjects zu
 
 } // namespace zu

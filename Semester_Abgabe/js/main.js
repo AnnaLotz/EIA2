@@ -28,13 +28,13 @@ var SpaceInvader;
         SpaceInvader.player = new SpaceInvader.Player();
         for (let i = 0; i < 10; i++) {
             let enemy = new SpaceInvader.Enemy1();
-            enemy.x = 108 + i * 37;
+            enemy.x = 90 + i * 37;
             enemy.y = 318;
             SpaceInvader.enemies.push(enemy);
         }
         for (let j = 0; j < 10; j++) {
             let enemy = new SpaceInvader.Enemy1();
-            enemy.x = 105 + j * 37;
+            enemy.x = 80 + j * 37;
             enemy.y = 281;
             SpaceInvader.enemies.push(enemy);
         }
@@ -66,6 +66,8 @@ var SpaceInvader;
                     SpaceInvader.enemies[i].direction *= -1;
                 }
             }
+        }
+        for (let i = 0; i < SpaceInvader.enemies.length; i++) {
             SpaceInvader.enemies[i].move();
         }
         if (SpaceInvader.player.movingDirection < 0) {
@@ -74,7 +76,7 @@ var SpaceInvader;
         else if (SpaceInvader.player.movingDirection > 0) {
             SpaceInvader.player.moveRight();
         }
-    }
+    } //moveObjects zu
     function drawObjects() {
         SpaceInvader.player.draw();
         for (let i = 0; i < SpaceInvader.enemies.length; i++) {
@@ -83,6 +85,6 @@ var SpaceInvader;
         for (let i = 0; i < SpaceInvader.movingObjects.length; i++) {
             SpaceInvader.movingObjects[i].draw();
         }
-    }
+    } //drawObjects zu
 })(SpaceInvader || (SpaceInvader = {})); // namespace zu
 //# sourceMappingURL=main.js.map
