@@ -8,8 +8,9 @@ var SpaceInvader;
             console.log("new enemy");
         }
         checkPosition() {
-            //enemy ganz rechts oder links
+            //ob enemy ganz rechts oder links
             if (this.x > SpaceInvader.canvas.width - 30) {
+                //console.log(this.x);
                 return true;
             }
             else if (this.x < 30) {
@@ -23,14 +24,7 @@ var SpaceInvader;
             this.x += this.speed * this.direction;
         }
         draw() {
-            SpaceInvader.crc2.strokeStyle = "white";
-            SpaceInvader.crc2.fillStyle = "white";
-            SpaceInvader.crc2.moveTo(this.x, this.y - 2);
-            SpaceInvader.crc2.lineTo(this.x + 2, this.y - 2);
-            SpaceInvader.crc2.lineTo(this.x + 2, this.y - 4);
-            SpaceInvader.crc2.lineTo(this.x + 6, this.y - 2);
-            SpaceInvader.crc2.closePath();
-            SpaceInvader.crc2.fill();
+            //
         }
     }
     SpaceInvader.Enemy = Enemy; //class enemy zu

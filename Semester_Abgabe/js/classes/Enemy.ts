@@ -19,35 +19,26 @@ namespace SpaceInvader {
         }
 
         checkPosition(): boolean {
-            //enemy ganz rechts oder links
+            //ob enemy ganz rechts oder links
             if (this.x > canvas.width - 30) {
+                //console.log(this.x);
                 return true;
             } else if (this.x < 30) {
                 return true;
             } else {
-            return false;
+                return false;
             }
-            
+
 
         }
 
         move(): void {
-            this.x += this.speed * this.direction;
-            
-            
+            this.x += this.speed * this.direction;            
         }
 
 
         draw(): void {
-            crc2.strokeStyle = "white";
-            crc2.fillStyle = "white";
-            crc2.moveTo(this.x, this.y - 2);
-            crc2.lineTo(this.x + 2, this.y - 2);
-            crc2.lineTo(this.x + 2, this.y - 4);
-            crc2.lineTo(this.x + 6, this.y - 2);
-
-            crc2.closePath();
-            crc2.fill();
+            //
         }
 
 

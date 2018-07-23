@@ -43,18 +43,18 @@ var SpaceInvader;
             SpaceInvader.crc2.lineTo(this.x - 3, this.y - 9);
             SpaceInvader.crc2.lineTo(this.x - 3, this.y - 6);
             SpaceInvader.crc2.closePath();
-            SpaceInvader.crc2.stroke();
             SpaceInvader.crc2.fill();
             //sollte das Auge geben:
-            SpaceInvader.crc2.strokeStyle = "black";
-            SpaceInvader.crc2.fillStyle = "black";
-            SpaceInvader.crc2.moveTo(this.x + 3, this.y - 12);
-            SpaceInvader.crc2.lineTo(this.x + 6, this.y - 12);
-            SpaceInvader.crc2.lineTo(this.x + 6, this.y - 15);
-            SpaceInvader.crc2.lineTo(this.x + 3, this.y - 15);
-            SpaceInvader.crc2.lineTo(this.x + 3, this.y - 12);
-            SpaceInvader.crc2.stroke();
-            SpaceInvader.crc2.fill();
+            //            crc2.strokeStyle = "black";
+            //            crc2.fillStyle = "black";
+            //            crc2.moveTo(this.x + 3, this.y - 12);
+            //            crc2.lineTo(this.x + 6, this.y - 12);
+            //            crc2.lineTo(this.x + 6, this.y - 15);
+            //            crc2.lineTo(this.x + 3, this.y - 15);
+            //            crc2.lineTo(this.x + 3, this.y - 12);
+            //            crc2.closePath();
+            //            crc2.stroke();            
+            //            crc2.fill();
         }
     }
     SpaceInvader.Enemy1 = Enemy1; //class enemy zu
