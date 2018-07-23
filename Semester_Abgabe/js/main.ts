@@ -9,7 +9,7 @@ namespace SpaceInvader {
     let hoehe: number = <number>(window.innerHeight);
 
     export let movingObjects: MovingObject[] = [];
-    export let enemys: Enemy[] = [];
+    export let enemies: Enemy[] = [];
     export let player: Player;
     export let score: number = 0;
 
@@ -45,14 +45,14 @@ namespace SpaceInvader {
             let enemy: Enemy1 = new Enemy1();
             enemy.x = 108 + i * 37;
             enemy.y = 318;
-            enemys.push(enemy);
+            enemies.push(enemy);
         }
 
         for (let j: number = 0; j < 10; j++) {
             let enemy: Enemy1 = new Enemy1();
             enemy.x = 105 + j * 37;
             enemy.y = 281;
-            enemys.push(enemy);
+            enemies.push(enemy);
         }
 
 
@@ -85,14 +85,14 @@ namespace SpaceInvader {
             movingObjects[i].checkPosition();
         }
 
-        for (let i: number = 0; i < enemys.length; i++) {
-            if (enemys[i].checkPosition() == true) {
-                for (let i: number = 0; i < enemys.length; i++) {
-                    enemys[i].y += 20;
-                    enemys[i].direction *= -1;
+        for (let i: number = 0; i < enemies.length; i++) {
+            if (enemies[i].checkPosition() == true) {
+                for (let i: number = 0; i < enemies.length; i++) {
+                    enemies[i].y += 20;
+                    enemies[i].direction *= -1;
                 }
             }
-            enemys[i].move();
+            enemies[i].move();
 
         }
         if (player.movingDirection < 0) {
@@ -105,8 +105,8 @@ namespace SpaceInvader {
 
     function drawObjects(): void {
         player.draw();
-        for (let i: number = 0; i < enemys.length; i++) {
-            enemys[i].draw();
+        for (let i: number = 0; i < enemies.length; i++) {
+            enemies[i].draw();
         }
         for (let i: number = 0; i < movingObjects.length; i++) {
             movingObjects[i].draw();
