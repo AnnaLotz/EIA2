@@ -14,10 +14,9 @@ var SpaceInvader;
             for (let i = 0; i < SpaceInvader.enemies.length; i++) {
                 if (this.y <= SpaceInvader.enemies[i].y + 1 && this.y >= SpaceInvader.enemies[i].y - 1) {
                     if (this.x <= SpaceInvader.enemies[i].x + 12 && this.x >= SpaceInvader.enemies[i].x - 12) {
-                        let index = i;
-                        console.log("enemy " + index + " hit");
-                        SpaceInvader.enemies.splice(index, 1);
                         SpaceInvader.enemies[i].givePoints();
+                        let index = i;
+                        SpaceInvader.enemies.splice(index, 1);
                         this.destroyLaser();
                         console.log(SpaceInvader.score);
                     }

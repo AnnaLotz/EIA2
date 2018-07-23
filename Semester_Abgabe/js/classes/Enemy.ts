@@ -30,7 +30,6 @@ namespace SpaceInvader {
         }
         
         givePoints(): void {
-            this.points = 20;
             score += this.points;
         }
 

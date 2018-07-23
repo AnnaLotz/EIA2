@@ -19,11 +19,13 @@ namespace SpaceInvader {
 
             for (let i: number = 0; i < enemies.length; i++) {
                 if (this.y <= enemies[i].y + 1 && this.y >= enemies[i].y - 1) {
-                    if (this.x <= enemies[i].x + 12 && this.x >= enemies[i].x - 12) {                        
-                        let index: number = i;
-                        console.log("enemy " + index + " hit");
-                        enemies.splice(index, 1);
+                    if (this.x <= enemies[i].x + 12 && this.x >= enemies[i].x - 12) {
+                        
                         enemies[i].givePoints();
+                        
+                        let index: number = i;
+                        enemies.splice(index, 1);
+
                         this.destroyLaser();
                         console.log(score);
                     }
@@ -40,7 +42,7 @@ namespace SpaceInvader {
             let index: number = movingObjects.indexOf(this);
             movingObjects.splice(index, 1);
             player.bullets -= 1;
-            
+
 
         } //destroy laser zu
 
@@ -54,7 +56,7 @@ namespace SpaceInvader {
             crc2.lineTo(this.x, this.y);
             crc2.closePath();
             crc2.fill();
-        } 
+        }
 
         move(): void {
             this.y -= 3;

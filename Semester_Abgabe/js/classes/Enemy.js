@@ -19,7 +19,6 @@ var SpaceInvader;
             }
         }
         givePoints() {
-            this.points = 20;
             SpaceInvader.score += this.points;
         }
         move() {
