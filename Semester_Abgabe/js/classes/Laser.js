@@ -5,21 +5,31 @@ var SpaceInvader;
             console.log("peng");
             this.x = SpaceInvader.player.x - 1;
             this.y = SpaceInvader.player.y;
-        }
+            this.hitbox = 10;
+        } //constructor zu
         checkPosition() {
-            if (this.y <= 0) {
+            /**if (this.y <= 0) {
                 this.destroyLaser();
+            }*/
+            for (let i = 0; i < SpaceInvader.enemies.length; i++) {
+                if (this.y <= SpaceInvader.enemies[i].y + 1 && this.y >= SpaceInvader.enemies[i].y - 1) {
+                    if (this.x <= SpaceInvader.enemies[i].x + 12 && this.x >= SpaceInvader.enemies[i].x - 12) {
+                        let index = i;
+                        console.log("enemy " + index + " hit");
+                        SpaceInvader.enemies.splice(index, 1);
+                    }
+                }
             }
-        }
+        } //checkPosition zu
         destroyLaser() {
             //console.log("destroy laser");
             //                let index: number = movingObjects.indexOf(player.bullets);
             //                //let index: number = movingObjects.length;
             //                //let index: number = <number>movingObjects[10];
             //                console.log(index);
-            //                movingObjects.splice(index, 1);
+            //                movinice(index, 1);
             //                bullets = 0;
-        }
+        } //destroy laser zu
         draw() {
             SpaceInvader.crc2.strokeStyle = "white";
             SpaceInvader.crc2.fillStyle = "white";
