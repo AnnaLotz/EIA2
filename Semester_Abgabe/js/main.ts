@@ -56,8 +56,8 @@ namespace SpaceInvader {
 
     } //createObjects zu
 
-
-
+    
+    
     export function shoot(): void {
         if (player.bullets < 1) {
             let laser: Laser = new Laser();

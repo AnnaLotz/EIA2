@@ -7,9 +7,8 @@ var SpaceInvader;
             this.direction = 1;
         }
         checkPosition() {
-            //ob enemy ganz rechts oder links
+            //ob enemy ganz rechts ...
             if (this.x > SpaceInvader.canvas.width - 30) {
-                //console.log(this.x);
                 return true;
             }
             else if (this.x < 30) {
@@ -18,6 +17,10 @@ var SpaceInvader;
             else {
                 return false;
             }
+        }
+        givePoints() {
+            this.points = 20;
+            SpaceInvader.score += this.points;
         }
         move() {
             this.x += this.speed * this.direction;

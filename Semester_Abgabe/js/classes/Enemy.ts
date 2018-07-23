@@ -16,10 +16,10 @@ namespace SpaceInvader {
         }
 
         checkPosition(): boolean {
-            //ob enemy ganz rechts oder links
+            //ob enemy ganz rechts ...
             if (this.x > canvas.width - 30) {
-                //console.log(this.x);
                 return true;
+            //...oder ganz links
             } else if (this.x < 30) {
                 return true;
             } else {
@@ -27,6 +27,11 @@ namespace SpaceInvader {
             }
 
 
+        }
+        
+        givePoints(): void {
+            this.points = 20;
+            score += this.points;
         }
 
         move(): void {

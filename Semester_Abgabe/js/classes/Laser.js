@@ -17,7 +17,9 @@ var SpaceInvader;
                         let index = i;
                         console.log("enemy " + index + " hit");
                         SpaceInvader.enemies.splice(index, 1);
+                        SpaceInvader.enemies[i].givePoints();
                         this.destroyLaser();
+                        console.log(SpaceInvader.score);
                     }
                 }
             }

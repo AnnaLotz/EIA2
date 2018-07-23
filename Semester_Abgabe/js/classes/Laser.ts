@@ -23,7 +23,9 @@ namespace SpaceInvader {
                         let index: number = i;
                         console.log("enemy " + index + " hit");
                         enemies.splice(index, 1);
+                        enemies[i].givePoints();
                         this.destroyLaser();
+                        console.log(score);
                     }
                 }
             }

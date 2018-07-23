@@ -13,25 +13,25 @@ namespace SpaceInvader {
             this.lives = 3;
             this.movingDirection = 0;
             this.bullets = 0;
-            
+
         }
 
         moveRight(): void {
-            if (this.x > canvas.width - 30) 
+            if (this.x > canvas.width - 30)
                 this.x = canvas.width - 29;
-             else 
-                this.x += 2;            
+            else
+                this.x += 2;
         }
 
         moveLeft(): void {
-            if (this.x < 30) 
+            if (this.x < 30)
                 this.x = 29;
-             else 
-                this.x -= 2;            
+            else
+                this.x -= 2;
         }
-        
-        
-        
+
+
+
         draw(): void {
             crc2.beginPath();
             crc2.strokeStyle = "white";
@@ -57,7 +57,12 @@ namespace SpaceInvader {
             crc2.lineTo(this.x, this.y);
             crc2.stroke();
             crc2.fill();
-            crc2.closePath();   
+            crc2.closePath();
+
+            crc2.font = "21px Arial";
+            crc2.fillText("SCORE: " + score, 20, 37);
+            crc2.fillText("3", 21, 581); //lives
+
         }
 
 

@@ -46,6 +46,9 @@ var SpaceInvader;
             SpaceInvader.crc2.stroke();
             SpaceInvader.crc2.fill();
             SpaceInvader.crc2.closePath();
+            SpaceInvader.crc2.font = "21px Arial";
+            SpaceInvader.crc2.fillText("SCORE: " + SpaceInvader.score, 20, 37);
+            SpaceInvader.crc2.fillText("3", 21, 581); //lives
         }
     }
     SpaceInvader.Player = Player; //class player zu
