@@ -11,15 +11,15 @@ namespace SpaceInvader {
 
         constructor() {
             this.health = 1;
-            this.speed = 1;
+            this.speed = 0.6;
             this.direction = 1;
         }
 
         checkPosition(): boolean {
-            //ob enemy ganz rechts ...
+            //check ob enemy ganz rechts ...
             if (this.x > canvas.width - 30) {
                 return true;
-            //...oder ganz links
+                //...oder ganz links
             } else if (this.x < 30) {
                 return true;
             } else {
@@ -28,13 +28,17 @@ namespace SpaceInvader {
 
 
         }
-        
+
         givePoints(): void {
             score += this.points;
         }
 
         move(): void {
-            this.x += this.speed * this.direction;            
+//            if (this.y >= player.y) {
+//                //
+//            } else 
+                this.x += this.speed * this.direction;
+            
         }
 
 

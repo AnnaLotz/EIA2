@@ -3,11 +3,11 @@ var SpaceInvader;
     class Enemy {
         constructor() {
             this.health = 1;
-            this.speed = 1;
+            this.speed = 0.6;
             this.direction = 1;
         }
         checkPosition() {
-            //ob enemy ganz rechts ...
+            //check ob enemy ganz rechts ...
             if (this.x > SpaceInvader.canvas.width - 30) {
                 return true;
             }
@@ -22,6 +22,9 @@ var SpaceInvader;
             SpaceInvader.score += this.points;
         }
         move() {
+            //            if (this.y >= player.y) {
+            //                //
+            //            } else 
             this.x += this.speed * this.direction;
         }
         draw() {

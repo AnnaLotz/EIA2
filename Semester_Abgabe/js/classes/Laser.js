@@ -2,7 +2,6 @@ var SpaceInvader;
 (function (SpaceInvader) {
     class Laser {
         constructor() {
-            console.log("peng");
             this.x = SpaceInvader.player.x - 1;
             this.y = SpaceInvader.player.y;
             SpaceInvader.player.bullets += 1;
@@ -12,19 +11,17 @@ var SpaceInvader;
                 this.destroyLaser();
             }
             for (let i = 0; i < SpaceInvader.enemies.length; i++) {
-                if (this.y <= SpaceInvader.enemies[i].y + 1 && this.y >= SpaceInvader.enemies[i].y - 1) {
+                if (this.y <= SpaceInvader.enemies[i].y + 1 && this.y >= SpaceInvader.enemies[i].y - 21) {
                     if (this.x <= SpaceInvader.enemies[i].x + 12 && this.x >= SpaceInvader.enemies[i].x - 12) {
                         SpaceInvader.enemies[i].givePoints();
                         let index = i;
                         SpaceInvader.enemies.splice(index, 1);
                         this.destroyLaser();
-                        console.log(SpaceInvader.score);
                     }
                 }
             }
         } //checkPosition zu
         destroyLaser() {
-            console.log("destroy laser");
             let index = SpaceInvader.movingObjects.indexOf(this);
             SpaceInvader.movingObjects.splice(index, 1);
             SpaceInvader.player.bullets -= 1;

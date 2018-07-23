@@ -59,10 +59,11 @@ namespace SpaceInvader {
     
     
     export function shoot(): void {
-        if (player.bullets < 1) {
+        //max Bullets:
+        //if (player.bullets < 5) {
             let laser: Laser = new Laser();
             movingObjects.push(laser);
-        }
+        //}
 
     } //shoot zu
 

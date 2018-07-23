@@ -6,7 +6,6 @@ namespace SpaceInvader {
         hitbox: number;
 
         constructor() {
-            console.log("peng");
             this.x = player.x - 1;
             this.y = player.y;
             player.bullets += 1;
@@ -18,7 +17,7 @@ namespace SpaceInvader {
             }
 
             for (let i: number = 0; i < enemies.length; i++) {
-                if (this.y <= enemies[i].y + 1 && this.y >= enemies[i].y - 1) {
+                if (this.y <= enemies[i].y + 1 && this.y >= enemies[i].y - 21) {
                     if (this.x <= enemies[i].x + 12 && this.x >= enemies[i].x - 12) {
                         
                         enemies[i].givePoints();
@@ -27,7 +26,6 @@ namespace SpaceInvader {
                         enemies.splice(index, 1);
 
                         this.destroyLaser();
-                        console.log(score);
                     }
                 }
             }
@@ -38,7 +36,6 @@ namespace SpaceInvader {
 
 
         destroyLaser(): void {
-            console.log("destroy laser");
             let index: number = movingObjects.indexOf(this);
             movingObjects.splice(index, 1);
             player.bullets -= 1;
