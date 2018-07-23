@@ -38,11 +38,10 @@ var SpaceInvader;
         }
     } //createObjects zu
     function shoot() {
-        //if (player.bullets < 1) {
-        let laser = new SpaceInvader.Laser();
-        SpaceInvader.movingObjects.push(laser);
-        SpaceInvader.player.bullets += 1;
-        //}
+        if (SpaceInvader.player.bullets < 1) {
+            let laser = new SpaceInvader.Laser();
+            SpaceInvader.movingObjects.push(laser);
+        }
     }
     SpaceInvader.shoot = shoot; //shoot zu
     function animate() {

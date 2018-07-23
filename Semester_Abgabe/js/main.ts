@@ -56,14 +56,13 @@ namespace SpaceInvader {
 
     } //createObjects zu
 
-    
-    
+
+
     export function shoot(): void {
-        //if (player.bullets < 1) {
-        let laser: Laser = new Laser();
-        movingObjects.push(laser);
-        player.bullets += 1;
-        //}
+        if (player.bullets < 1) {
+            let laser: Laser = new Laser();
+            movingObjects.push(laser);
+        }
 
     } //shoot zu
 
@@ -77,12 +76,12 @@ namespace SpaceInvader {
 
     } //animate zu
 
-    
-    
+
+
 
     function moveObjects(): void {
-        
-        
+
+
         for (let i: number = 0; i < movingObjects.length; i++) {
             movingObjects[i].move();
             movingObjects[i].checkPosition();
@@ -92,8 +91,8 @@ namespace SpaceInvader {
             player.moveLeft();
         } else if (player.movingDirection > 0) {
             player.moveRight();
-        }        
-        
+        }
+
         //if one enemy is far left or right - change direction and yPosition
         for (let i: number = 0; i < enemies.length; i++) {
             if (enemies[i].checkPosition() == true) {
@@ -103,16 +102,16 @@ namespace SpaceInvader {
                 }
             }
         }
-        
+
         for (let i: number = 0; i < enemies.length; i++) {
             enemies[i].move();
         }
 
-        
+
 
     } //moveObjects zu
 
-    
+
     function drawObjects(): void {
         player.draw();
         for (let i: number = 0; i < enemies.length; i++) {
