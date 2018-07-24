@@ -5,11 +5,12 @@ var SpaceInvader;
             super();
         }
         draw() {
-            SpaceInvader.crc2.strokeStyle = "white";
-            SpaceInvader.crc2.fillStyle = "white";
-            SpaceInvader.crc2.moveTo(this.x, this.y);
-            SpaceInvader.crc2.closePath();
-            SpaceInvader.crc2.fill();
+            //            crc2.strokeStyle = "white";
+            //            crc2.fillStyle = "white";
+            //            crc2.moveTo(this.x, this.y);
+            //
+            //            crc2.closePath();
+            //            crc2.fill();
         }
     }
     SpaceInvader.Enemy4 = Enemy4; //class enemy zu

@@ -13,12 +13,12 @@ namespace SpaceInvader {
 
 
         draw(): void {
-            crc2.strokeStyle = "white";
-            crc2.fillStyle = "white";
-            crc2.moveTo(this.x, this.y);
-
-            crc2.closePath();
-            crc2.fill();
+//            crc2.strokeStyle = "white";
+//            crc2.fillStyle = "white";
+//            crc2.moveTo(this.x, this.y);
+//
+//            crc2.closePath();
+//            crc2.fill();
         }
 
 

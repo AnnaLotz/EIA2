@@ -31,9 +31,15 @@ var SpaceInvader;
             SpaceInvader.enemies.push(enemy);
         }
         for (let j = 0; j < 10; j++) {
-            let enemy = new SpaceInvader.Enemy2();
-            enemy.x = 80 + j * 37;
+            let enemy = new SpaceInvader.Enemy1();
+            enemy.x = 89 + j * 37;
             enemy.y = 281;
+            SpaceInvader.enemies.push(enemy);
+        }
+        for (let k = 0; k < 9; k++) {
+            let enemy = new SpaceInvader.Enemy2();
+            enemy.x = 88 + k * 42;
+            enemy.y = 244;
             SpaceInvader.enemies.push(enemy);
         }
     } //createObjects zu

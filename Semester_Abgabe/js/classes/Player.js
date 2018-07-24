@@ -22,8 +22,8 @@ var SpaceInvader;
         }
         draw() {
             SpaceInvader.crc2.beginPath();
-            SpaceInvader.crc2.strokeStyle = "white";
-            SpaceInvader.crc2.fillStyle = "white";
+            SpaceInvader.crc2.strokeStyle = "rgba(0,0,0,0)";
+            SpaceInvader.crc2.fillStyle = "rgb(255, 255, 255)"; //white
             SpaceInvader.crc2.lineWidth = 1;
             SpaceInvader.crc2.moveTo(this.x, this.y);
             SpaceInvader.crc2.lineTo(this.x + 1, this.y);
@@ -43,12 +43,12 @@ var SpaceInvader;
             SpaceInvader.crc2.lineTo(this.x - 1, this.y + 2);
             SpaceInvader.crc2.lineTo(this.x - 1, this.y);
             SpaceInvader.crc2.lineTo(this.x, this.y);
+            SpaceInvader.crc2.closePath();
             SpaceInvader.crc2.stroke();
             SpaceInvader.crc2.fill();
-            SpaceInvader.crc2.closePath();
             SpaceInvader.crc2.font = "21px Arial";
             SpaceInvader.crc2.fillText("SCORE: " + SpaceInvader.score, 20, 37);
-            SpaceInvader.crc2.fillText("3", 21, 581); //lives
+            SpaceInvader.crc2.fillText("Lives: " + this.lives, 21, 581); //lives
         }
     }
     SpaceInvader.Player = Player; //class player zu

@@ -44,19 +44,23 @@ namespace SpaceInvader {
         } //destroy laser zu
 
         draw(): void {
-            crc2.strokeStyle = "white";
-            crc2.fillStyle = "white";
+            crc2.beginPath();
+            crc2.strokeStyle = "rgba(0,0,0,0)";
+            crc2.fillStyle = "rgb(255, 255, 255)"; //white
             crc2.moveTo(this.x, this.y);
             crc2.lineTo(this.x + 2, this.y);
             crc2.lineTo(this.x + 2, this.y - 16);
             crc2.lineTo(this.x, this.y - 16);
-            crc2.lineTo(this.x, this.y);
-            crc2.closePath();
+            crc2.lineTo(this.x, this.y);      
+            crc2.closePath();  
+            crc2.stroke();   
             crc2.fill();
+            
+            
         }
 
         move(): void {
-            this.y -= 3;
+            this.y -= 8;
         }
 
     } //class laser zu

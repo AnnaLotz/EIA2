@@ -47,9 +47,16 @@ namespace SpaceInvader {
         }
 
         for (let j: number = 0; j < 10; j++) {
-            let enemy: Enemy2 = new Enemy2();
-            enemy.x = 80 + j * 37;
+            let enemy: Enemy1 = new Enemy1();
+            enemy.x = 89 + j * 37;
             enemy.y = 281;
+            enemies.push(enemy);
+        }
+        
+        for (let k: number = 0; k < 9; k++) {
+            let enemy: Enemy2 = new Enemy2();
+            enemy.x = 88 + k * 42;
+            enemy.y = 244;
             enemies.push(enemy);
         }
 

@@ -27,18 +27,20 @@ var SpaceInvader;
             SpaceInvader.player.bullets -= 1;
         } //destroy laser zu
         draw() {
-            SpaceInvader.crc2.strokeStyle = "white";
-            SpaceInvader.crc2.fillStyle = "white";
+            SpaceInvader.crc2.beginPath();
+            SpaceInvader.crc2.strokeStyle = "rgba(0,0,0,0)";
+            SpaceInvader.crc2.fillStyle = "rgb(255, 255, 255)"; //white
             SpaceInvader.crc2.moveTo(this.x, this.y);
             SpaceInvader.crc2.lineTo(this.x + 2, this.y);
             SpaceInvader.crc2.lineTo(this.x + 2, this.y - 16);
             SpaceInvader.crc2.lineTo(this.x, this.y - 16);
             SpaceInvader.crc2.lineTo(this.x, this.y);
             SpaceInvader.crc2.closePath();
+            SpaceInvader.crc2.stroke();
             SpaceInvader.crc2.fill();
         }
         move() {
-            this.y -= 3;
+            this.y -= 8;
         }
     }
     SpaceInvader.Laser = Laser; //class laser zu
