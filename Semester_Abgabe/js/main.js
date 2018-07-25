@@ -1,6 +1,7 @@
 var SpaceInvader;
 (function (SpaceInvader) {
     window.addEventListener("load", init);
+    let startButton;
     let imgData;
     let breite = (window.innerWidth);
     let hoehe = (window.innerHeight);
@@ -8,20 +9,27 @@ var SpaceInvader;
     SpaceInvader.enemies = [];
     SpaceInvader.score = 0;
     function init(_event) {
+        document.getElementById("game").style.display = "none";
+        startButton = document.getElementById("startButton");
+        startButton.addEventListener("click", startGame);
         SpaceInvader.canvas = document.getElementsByTagName("canvas")[0];
         SpaceInvader.crc2 = SpaceInvader.canvas.getContext("2d");
-        SpaceInvader.drawBackground();
-        imgData = SpaceInvader.crc2.getImageData(0, 0, SpaceInvader.canvas.width, SpaceInvader.canvas.height);
         if (breite > hoehe) {
             SpaceInvader.canvas.style.setProperty("height", hoehe + "px");
         }
         else if (hoehe > breite) {
             SpaceInvader.canvas.style.setProperty("width", breite + "px");
         }
+    } //init zu
+    function startGame() {
+        document.getElementById("startMenue").style.display = "none"; //menu unsichtbar machen
+        document.getElementById("game").style.display = "initial"; //gamefield sichtbar machen
+        SpaceInvader.drawBackground();
+        imgData = SpaceInvader.crc2.getImageData(0, 0, SpaceInvader.canvas.width, SpaceInvader.canvas.height);
         createObjects();
         SpaceInvader.createListener();
         animate();
-    } //init zu
+    }
     function createObjects() {
         SpaceInvader.player = new SpaceInvader.Player();
         for (let i = 0; i < 10; i++) {

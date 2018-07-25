@@ -2,6 +2,7 @@ namespace SpaceInvader {
 
     window.addEventListener("load", init);
 
+    let startButton: HTMLButtonElement;
     export let crc2: CanvasRenderingContext2D;
     export let canvas: HTMLCanvasElement;
     let imgData: ImageData;
@@ -15,11 +16,17 @@ namespace SpaceInvader {
 
     function init(_event: Event): void {
 
+        document.getElementById("game").style.display = "none";
+        
+        startButton = <HTMLButtonElement>document.getElementById("startButton");
+        startButton.addEventListener("click", startGame);
+        
+        
+
         canvas = document.getElementsByTagName("canvas")[0];
         crc2 = canvas.getContext("2d");
 
-        drawBackground();
-        imgData = crc2.getImageData(0, 0, canvas.width, canvas.height);
+
 
         if (breite > hoehe) {
             canvas.style.setProperty("height", hoehe + "px");
@@ -28,11 +35,20 @@ namespace SpaceInvader {
         }
 
 
+    } //init zu
+
+    function startGame(): void {
+        
+        document.getElementById("startMenue").style.display = "none"; //menu unsichtbar machen
+        document.getElementById("game").style.display = "initial"; //gamefield sichtbar machen
+
+
+        drawBackground();
+        imgData = crc2.getImageData(0, 0, canvas.width, canvas.height);
         createObjects();
         createListener();
         animate();
-
-    } //init zu
+    }
 
 
     function createObjects(): void {

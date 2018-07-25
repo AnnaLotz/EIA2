@@ -11,6 +11,8 @@
 <title>Anna's Space Invaders</title>
 <meta name="viewport" content="user-scalable=no"/>
 <meta charset="utf-8" />
+
+<link rel='shortcut icon' type='image/x-icon' href='pictures/favicon.ico' />
 <!-- SKRIPTE VERLINKEN!!!!!! erst superklasse, dann subklassen, dann main.js -->
 
 <script src="js/classes/MovingObject.js" type="text/javascript" charset="utf-8"></script>
@@ -31,13 +33,30 @@
 
 <body>
 
-	<div id="canvasDiv">
-	<canvas id="game" width=525 height=600>Your browser does not support the HTML5 Canvas</canvas>
+	<div id="startMenue">
+		<h1>Space Invaders</h1>
+		<hr>
+		
+		<div id="aliens">
+			<img src="pictures/Alien1.png" alt="Alien 1"> = 10 pts <br>
+			<img src="pictures/Alien2.png" alt="Alien 2"> = 20 pts <br>
+			<img src="pictures/Alien3.png" alt="Alien 3"> = 30 pts <br>
+			<img src="pictures/UFO.png" alt="UFO"> = ?? pts <br>
+		</div>
+		<div id="controlls">
+			<p>Move with Left and Right Arrow Key</p>
+			<p>Shoot with Space Key</p>
+		</div>
+		
+		<div><p>Insert Coins to Play</p></div>
+		<button type="button" id="startButton">Start Game</button>
+	</div>
 
-	<button class="buttonsPortait" class ="ButtonsLeftSide" id="LeftButtonPortrait" type="button"> <!--&#8592 --></button>
-	<button class="buttonsPortait" class ="ButtonsLeftSide" id="RightButtonPortrait" type="button"><!-- &#8594 --></button>
-	<button class="buttonsPortait" class="ButtonsRightSide" id="ShootButtonPortrait" type="button"><!-- &#8657 --></button>
-	
+	<div id="game">
+		<canvas id="gameCanvas" width=525 height=600>Your browser does not support the HTML5 Canvas</canvas>	
+		<button class="gameButton" class="ButtonsLeftSide" id="LeftButtonPortrait" type="button"> <!--&#8592 --></button>
+		<button class="gameButton" class="ButtonsLeftSide" id="RightButtonPortrait" type="button"><!-- &#8594 --></button>
+		<button class="gameButton" class="ButtonsRightSide" id="ShootButtonPortrait" type="button"><!-- &#8657 --></button>	
 	</div>
 	
 </body>

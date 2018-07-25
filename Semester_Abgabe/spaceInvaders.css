@@ -2,7 +2,8 @@
 
 html {
 	font-family: 'Press Start 2P', sans-serif;
-	/*background-color: black;*/
+	color: white;
+	background-color: black;
 }
 
 * {
@@ -12,40 +13,76 @@ html {
 	image-rendering: crisp-edges;
 }
 
-canvas {
-	margin: -0.5em;
-	image-rendering: -moz-crisp-edges;
-	image-rendering: -webkit-crisp-edges;
-	image-rendering: pixelated;
-	image-rendering: crisp-edges;
-	object-fit: contain;
-	border: 10px;
-	border: white;
-	overflow: hidden;
-	margin-left: auto;
-	margin-right: auto;
-}
-
 div {
 	margin-left: auto;
 	margin-right: auto;
 	text-align: center;
 	overflow: hidden;
+	object-fit: contain;
 }
 
-canvas {
+/* ==== Menu ==== */
+
+img {
+	height: 3.8em;
+}
+
+h1 {
+	color: rgb(34, 249, 27);
+}
+
+#controlls {
+	margin: 2em;
+	color: rgb(34, 249, 27);
+	
+}
+
+#startButton {
+    transition-duration: 0.15s;    
+    background-color: black;
+    border: 2px solid rgb(34, 249, 27);
+    color: rgb(34, 249, 27);
+    padding: 1em 2em;
+    cursor: pointer;
+    
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1em;
+}
+
+#startButton:hover {
+    background-color: rgb(34, 249, 27); /* Green */
+    color: white;
+}
+
+
+/* ==== Spiel ==== */
+canvas {	
+	image-rendering: -moz-crisp-edges;
+	image-rendering: -webkit-crisp-edges;
+	image-rendering: pixelated;
+	image-rendering: crisp-edges;
+	object-fit: contain;
 	display: block;
+	border: 10px;
+	border: white;
+	overflow: hidden;
+	margin: -0.8em;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 @media ( hover : hover) {
-	button {
+	.gameButton {
 		display: none;
 	}
 
 }
 
 @media ( hover : none) {
-	button {
+	.gameButton {
+		display: initial;
 		margin: auto;
 		height: 8em;
 		width: 8em;
