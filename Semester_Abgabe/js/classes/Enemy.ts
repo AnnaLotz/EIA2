@@ -7,11 +7,12 @@ namespace SpaceInvader {
         health: number;
         speed: number;
         direction: number; // 1 -> to right, -1 -> to left
+        width: number;
 
 
         constructor() {
             this.health = 1;
-            this.speed = 0.6;
+            this.speed = 1.2;
             this.direction = 1;
         }
 
@@ -27,6 +28,11 @@ namespace SpaceInvader {
             }
 
 
+        }
+        
+        changeSpeed(): void {
+            
+            this.speed += 0.3;
         }
 
         givePoints(): void {

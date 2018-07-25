@@ -38,28 +38,43 @@ namespace SpaceInvader {
     function createObjects(): void {
 
         player = new Player();
-
+        
         for (let i: number = 0; i < 10; i++) {
-            let enemy: Enemy1 = new Enemy1();
+            let enemy: Enemy3 = new Enemy3();
             enemy.x = 90 + i * 37;
-            enemy.y = 318;
+            enemy.y = 137;
             enemies.push(enemy);
         }
-
-        for (let j: number = 0; j < 10; j++) {
-            let enemy: Enemy1 = new Enemy1();
-            enemy.x = 89 + j * 37;
-            enemy.y = 281;
+        
+        for (let l: number = 0; l < 9; l++) {
+            let enemy: Enemy2 = new Enemy2();
+            enemy.x = 87 + l * 42;
+            enemy.y = 174;
             enemies.push(enemy);
         }
         
         for (let k: number = 0; k < 9; k++) {
             let enemy: Enemy2 = new Enemy2();
             enemy.x = 88 + k * 42;
-            enemy.y = 244;
+            enemy.y = 214;
             enemies.push(enemy);
         }
 
+        for (let i: number = 0; i < 9; i++) {
+            let enemy: Enemy1 = new Enemy1();
+            enemy.x = 91 + i * 42;
+            enemy.y = 288;
+            enemies.push(enemy);
+        }
+
+        for (let j: number = 0; j < 9; j++) {
+            let enemy: Enemy1 = new Enemy1();
+            enemy.x = 89 + j * 42;
+            enemy.y = 251;
+            enemies.push(enemy);
+        }
+        
+        
 
     } //createObjects zu
 
@@ -112,7 +127,7 @@ namespace SpaceInvader {
         }
 
         for (let i: number = 0; i < enemies.length; i++) {
-            enemies[i].move();
+            //enemies[i].move();
         }
 
 

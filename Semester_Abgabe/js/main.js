@@ -25,21 +25,33 @@ var SpaceInvader;
     function createObjects() {
         SpaceInvader.player = new SpaceInvader.Player();
         for (let i = 0; i < 10; i++) {
-            let enemy = new SpaceInvader.Enemy1();
+            let enemy = new SpaceInvader.Enemy3();
             enemy.x = 90 + i * 37;
-            enemy.y = 318;
+            enemy.y = 137;
             SpaceInvader.enemies.push(enemy);
         }
-        for (let j = 0; j < 10; j++) {
-            let enemy = new SpaceInvader.Enemy1();
-            enemy.x = 89 + j * 37;
-            enemy.y = 281;
+        for (let l = 0; l < 9; l++) {
+            let enemy = new SpaceInvader.Enemy2();
+            enemy.x = 87 + l * 42;
+            enemy.y = 174;
             SpaceInvader.enemies.push(enemy);
         }
         for (let k = 0; k < 9; k++) {
             let enemy = new SpaceInvader.Enemy2();
             enemy.x = 88 + k * 42;
-            enemy.y = 244;
+            enemy.y = 214;
+            SpaceInvader.enemies.push(enemy);
+        }
+        for (let i = 0; i < 9; i++) {
+            let enemy = new SpaceInvader.Enemy1();
+            enemy.x = 91 + i * 42;
+            enemy.y = 288;
+            SpaceInvader.enemies.push(enemy);
+        }
+        for (let j = 0; j < 9; j++) {
+            let enemy = new SpaceInvader.Enemy1();
+            enemy.x = 89 + j * 42;
+            enemy.y = 251;
             SpaceInvader.enemies.push(enemy);
         }
     } //createObjects zu
@@ -79,7 +91,6 @@ var SpaceInvader;
             }
         }
         for (let i = 0; i < SpaceInvader.enemies.length; i++) {
-            SpaceInvader.enemies[i].move();
         }
     } //moveObjects zu
     function drawObjects() {

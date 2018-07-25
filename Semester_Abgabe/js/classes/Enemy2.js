@@ -4,11 +4,12 @@ var SpaceInvader;
         constructor() {
             super();
             this.points = 20;
+            this.width = 18;
         }
         draw() {
             SpaceInvader.crc2.beginPath();
             SpaceInvader.crc2.strokeStyle = "rgba(0,0,0,0)";
-            SpaceInvader.crc2.fillStyle = "rgb(255, 76, 228)"; //pink
+            SpaceInvader.crc2.fillStyle = "rgb(0, 252, 247)"; //blue
             SpaceInvader.crc2.moveTo(this.x, this.y);
             SpaceInvader.crc2.lineTo(this.x, this.y - 3);
             SpaceInvader.crc2.lineTo(this.x - 6, this.y - 3);

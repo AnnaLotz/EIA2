@@ -12,7 +12,7 @@ var SpaceInvader;
             }
             for (let i = 0; i < SpaceInvader.enemies.length; i++) {
                 if (this.y <= SpaceInvader.enemies[i].y + 1 && this.y >= SpaceInvader.enemies[i].y - 21) {
-                    if (this.x <= SpaceInvader.enemies[i].x + 12 && this.x >= SpaceInvader.enemies[i].x - 12) {
+                    if (this.x <= SpaceInvader.enemies[i].x + SpaceInvader.enemies[i].width && this.x >= SpaceInvader.enemies[i].x - SpaceInvader.enemies[i].width) {
                         SpaceInvader.enemies[i].givePoints();
                         let index = i;
                         SpaceInvader.enemies.splice(index, 1);
