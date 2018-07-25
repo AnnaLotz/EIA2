@@ -3,10 +3,10 @@ var SpaceInvader;
     class Enemy {
         constructor() {
             this.health = 1;
-            this.speed = 0.6;
+            this.speed = 6;
             this.direction = 1;
         }
-        checkPosition() {
+        checkPositionLeftOrRight() {
             //check ob enemy ganz rechts ...
             if (this.x > SpaceInvader.canvas.width - 30) {
                 return true;

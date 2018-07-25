@@ -8,6 +8,22 @@ var SpaceInvader;
             this.movingDirection = 0;
             this.bullets = 0;
         }
+        checkIfHit() {
+            for (let i = 0; i < SpaceInvader.enemies.length; i++) {
+                if (this.y <= SpaceInvader.enemies[i].y) {
+                    if (this.x <= SpaceInvader.enemies[i].x + SpaceInvader.enemies[i].width && this.x >= SpaceInvader.enemies[i].x - SpaceInvader.enemies[i].width) {
+                        this.lost();
+                    }
+                }
+            }
+        }
+        lost() {
+            this.lives = 0;
+            window.alert("Game Over\nPress OK to Start again");
+            if (window.alert) {
+                location.reload();
+            }
+        }
         move() {
             if (this.movingDirection < 0) {
                 this.moveLeft();

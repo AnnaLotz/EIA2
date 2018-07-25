@@ -13,9 +13,29 @@ namespace SpaceInvader {
             this.lives = 3;
             this.movingDirection = 0;
             this.bullets = 0;
+        }
+
+        checkIfHit(): void {
+
+
+            for (let i: number = 0; i < enemies.length; i++) {
+                if (this.y <= enemies[i].y) {
+                    if (this.x <= enemies[i].x + enemies[i].width && this.x >= enemies[i].x - enemies[i].width) {
+                        this.lost();
+                    }
+                }
+            }
 
         }
 
+        lost(): void {
+            this.lives = 0;
+            window.alert("Game Over\nPress OK to Start again");
+            
+            if (window.alert) { 
+                location.reload(); 
+            }
+        }
         move(): void {
             if (this.movingDirection < 0) {
                 this.moveLeft();

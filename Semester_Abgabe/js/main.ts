@@ -13,15 +13,16 @@ namespace SpaceInvader {
     export let enemies: Enemy[] = [];
     export let player: Player;
     export let score: number = 0;
+    export let totalEnemies: number = 0;
 
     function init(_event: Event): void {
 
         document.getElementById("game").style.display = "none";
-        
+
         startButton = <HTMLButtonElement>document.getElementById("startButton");
         startButton.addEventListener("click", startGame);
-        
-        
+
+
 
         canvas = document.getElementsByTagName("canvas")[0];
         crc2 = canvas.getContext("2d");
@@ -38,7 +39,7 @@ namespace SpaceInvader {
     } //init zu
 
     function startGame(): void {
-        
+
         document.getElementById("startMenue").style.display = "none"; //menu unsichtbar machen
         document.getElementById("game").style.display = "initial"; //gamefield sichtbar machen
 
@@ -60,6 +61,7 @@ namespace SpaceInvader {
             enemy.x = 90 + i * 37;
             enemy.y = 137;
             enemies.push(enemy);
+            totalEnemies++;
         }
 
         for (let l: number = 0; l < 9; l++) {
@@ -67,6 +69,7 @@ namespace SpaceInvader {
             enemy.x = 87 + l * 42;
             enemy.y = 174;
             enemies.push(enemy);
+            totalEnemies++;
         }
 
         for (let k: number = 0; k < 9; k++) {
@@ -74,6 +77,7 @@ namespace SpaceInvader {
             enemy.x = 88 + k * 42;
             enemy.y = 214;
             enemies.push(enemy);
+            totalEnemies++;
         }
 
         for (let i: number = 0; i < 9; i++) {
@@ -81,6 +85,7 @@ namespace SpaceInvader {
             enemy.x = 91 + i * 42;
             enemy.y = 288;
             enemies.push(enemy);
+            totalEnemies++;
         }
 
         for (let j: number = 0; j < 9; j++) {
@@ -88,8 +93,10 @@ namespace SpaceInvader {
             enemy.x = 89 + j * 42;
             enemy.y = 251;
             enemies.push(enemy);
+            totalEnemies++;
         }
 
+        console.log(totalEnemies);
 
 
     } //createObjects zu
@@ -118,15 +125,21 @@ namespace SpaceInvader {
     function moveObjects(): void {
 
         player.move();
+        player.checkIfHit();
+
 
         for (let i: number = 0; i < movingObjects.length; i++) {
             movingObjects[i].move();
             movingObjects[i].checkPosition();
         }
+        
+        for (let i: number = 0; i < enemies.length; i++) {
+            enemies[i].move();
+        }
 
         //if one enemy is far left or right - change direction and yPosition
         for (let i: number = 0; i < enemies.length; i++) {
-            if (enemies[i].checkPosition() == true) {
+            if (enemies[i].checkPositionLeftOrRight() == true) {
                 for (let i: number = 0; i < enemies.length; i++) {
                     enemies[i].y += 20;
                     enemies[i].direction *= -1;
@@ -134,9 +147,7 @@ namespace SpaceInvader {
             }
         }
 
-        for (let i: number = 0; i < enemies.length; i++) {
-            enemies[i].move();
-        }
+
 
 
 

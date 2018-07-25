@@ -19,12 +19,11 @@ namespace SpaceInvader {
             for (let i: number = 0; i < enemies.length; i++) {
                 if (this.y <= enemies[i].y + 1 && this.y >= enemies[i].y - 24) {
                     if (this.x <= enemies[i].x + enemies[i].width && this.x >= enemies[i].x - enemies[i].width) {
-                      
+                                              
                         enemies[i].givePoints();
-
                         let index: number = i;
                         enemies.splice(index, 1);
-
+                        totalEnemies--;
                         this.destroyLaser();
                         
 //                        for (let j: number = 0; j < enemies.length; j++) {
