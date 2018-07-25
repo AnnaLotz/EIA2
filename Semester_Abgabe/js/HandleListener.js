@@ -16,22 +16,18 @@ var SpaceInvader;
     }
     SpaceInvader.createListener = createListener; //createListener zu
     function handleLeftButtonDown(_event) {
-        console.log("left button down");
         SpaceInvader.player.movingDirection = -1;
     }
     SpaceInvader.handleLeftButtonDown = handleLeftButtonDown;
     function handleRightButtonDown(_event) {
-        console.log("right button down");
         SpaceInvader.player.movingDirection = +1;
     }
     SpaceInvader.handleRightButtonDown = handleRightButtonDown;
     function handleButtonUp(_event) {
-        console.log("button up");
         SpaceInvader.player.movingDirection = 0;
     }
     SpaceInvader.handleButtonUp = handleButtonUp;
     function handleShootButton(_event) {
-        console.log("button shoot");
         SpaceInvader.shoot();
     }
     SpaceInvader.handleShootButton = handleShootButton;

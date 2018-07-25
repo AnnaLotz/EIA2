@@ -21,22 +21,18 @@ namespace SpaceInvader {
     } //createListener zu
 
     export function handleLeftButtonDown(_event: TouchEvent): void {
-        console.log("left button down");
         player.movingDirection = - 1;
     }
 
     export function handleRightButtonDown(_event: TouchEvent): void {
-        console.log("right button down");
         player.movingDirection = + 1;
     }
 
     export function handleButtonUp(_event: TouchEvent): void {
-        console.log("button up");
         player.movingDirection = 0;
     }
 
     export function handleShootButton(_event: TouchEvent): void {
-        console.log("button shoot");
         shoot();
     }
 
