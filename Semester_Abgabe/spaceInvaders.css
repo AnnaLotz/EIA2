@@ -29,51 +29,37 @@ div {
 	text-align: center;
 }
 
-button {
-	margin: auto;
-	height: 8em;
-	width: 8em;
-}
-
-.buttonsLeftSide {
-	float: left;
-	margin-left: 10px;	
-}
-
-.buttonsRightSide {
-	float: right;
-}
-
-@media (orientation : portrait) {
-	canvas {
-		display: block;
-	}
-	.buttonsLandscape {
-		display: none;
-	}
-	.buttonsPortait {
-		display: inline;
-		margin: 5em;
-		margin-top: 2em;
-	}
-}
-
-@media (orientation : landscape) {
-	canvas {
-		display: inline;
-	}
-	.buttonsPortait {
-		display: none;
-	}
-	.buttonsLandscape {
-		display: inital;
-		margin: 5em;
-		margin-top: 2em;
-	}
+canvas {
+	display: block;
 }
 
 @media ( hover : hover) {
 	button {
 		display: none;
 	}
+}
+
+@media ( hover : none) {
+	
+	button {
+		margin: auto;
+		height: 8em;
+		width: 8em;
+	}
+	
+	.buttonsPortait {
+		display: inline;
+		margin: 5em;
+		margin-top: 2em;
+	}
+	
+	.buttonsLeftSide {
+		float: left;
+		margin-left: 10px;
+	}
+	
+	.buttonsRightSide {
+		float: right;
+	}
+		
 }
