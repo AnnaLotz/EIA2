@@ -15,7 +15,7 @@ namespace SpaceInvader {
             this.bullets = 0;
         }
 
-        checkIfHit(): void {
+        public checkIfHit(): void {
 
 
             for (let i: number = 0; i < enemies.length; i++) {
@@ -28,15 +28,24 @@ namespace SpaceInvader {
 
         }
 
-        lost(): void {
+        public lost(): void {
             this.lives = 0;
-            window.alert("Game Over\nPress OK to Start again");
-            
-            if (window.alert) { 
-                location.reload(); 
+            window.alert("Game Over\nPress OK to start again");
+
+            if (window.alert) {
+                location.reload();
             }
         }
-        move(): void {
+
+        public won(): void {
+            window.alert("You Won!\nYour score: " + score + "\nPress OK to start again");
+
+            if (window.alert) {
+                location.reload();
+            }
+        }
+
+        public move(): void {
             if (this.movingDirection < 0) {
                 this.moveLeft();
             } else if (this.movingDirection > 0) {
@@ -44,14 +53,14 @@ namespace SpaceInvader {
             }
         }
 
-        moveRight(): void {
+        private moveRight(): void {
             if (this.x > canvas.width - 30)
                 this.x = canvas.width - 29;
             else
                 this.x += 2;
         }
 
-        moveLeft(): void {
+        private moveLeft(): void {
             if (this.x < 30)
                 this.x = 29;
             else
@@ -60,7 +69,7 @@ namespace SpaceInvader {
 
 
 
-        draw(): void {
+        public draw(): void {
             crc2.beginPath();
             crc2.strokeStyle = "rgba(0,0,0,0)";
             crc2.fillStyle = "rgb(255, 255, 255)"; //white

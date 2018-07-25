@@ -12,7 +12,7 @@ namespace SpaceInvader {
 
         constructor() {
             this.health = 1;
-            this.speed = 6;
+            this.speed = 1;
             this.direction = 1;
         }
 

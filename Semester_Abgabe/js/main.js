@@ -68,7 +68,6 @@ var SpaceInvader;
             SpaceInvader.enemies.push(enemy);
             SpaceInvader.totalEnemies++;
         }
-        console.log(SpaceInvader.totalEnemies);
     } //createObjects zu
     function animate() {
         window.setTimeout(animate, 20); //framerate: 50 fps -> 20 ms
@@ -76,6 +75,9 @@ var SpaceInvader;
         SpaceInvader.crc2.putImageData(imgData, 0, 0);
         moveObjects();
         drawObjects();
+        if (SpaceInvader.totalEnemies == 0) {
+            SpaceInvader.player.won();
+        }
     } //animate zu
     function shoot() {
         //max Bullets:
@@ -93,6 +95,7 @@ var SpaceInvader;
             SpaceInvader.movingObjects[i].checkPosition();
         }
         for (let i = 0; i < SpaceInvader.enemies.length; i++) {
+            SpaceInvader.enemies[i].move();
         }
         //if one enemy is far left or right - change direction and yPosition
         for (let i = 0; i < SpaceInvader.enemies.length; i++) {

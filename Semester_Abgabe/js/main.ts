@@ -96,7 +96,6 @@ namespace SpaceInvader {
             totalEnemies++;
         }
 
-        console.log(totalEnemies);
 
 
     } //createObjects zu
@@ -109,6 +108,9 @@ namespace SpaceInvader {
 
         moveObjects();
         drawObjects();
+        if (totalEnemies == 0) {
+            player.won();    
+        }
 
     } //animate zu
 
@@ -134,7 +136,7 @@ namespace SpaceInvader {
         }
         
         for (let i: number = 0; i < enemies.length; i++) {
-            //enemies[i].move();
+            enemies[i].move();
         }
 
         //if one enemy is far left or right - change direction and yPosition

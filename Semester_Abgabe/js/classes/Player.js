@@ -19,7 +19,13 @@ var SpaceInvader;
         }
         lost() {
             this.lives = 0;
-            window.alert("Game Over\nPress OK to Start again");
+            window.alert("Game Over\nPress OK to start again");
+            if (window.alert) {
+                location.reload();
+            }
+        }
+        won() {
+            window.alert("You Won!\nYour score: " + SpaceInvader.score + "\nPress OK to start again");
             if (window.alert) {
                 location.reload();
             }
