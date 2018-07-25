@@ -93,7 +93,6 @@ var SpaceInvader;
             SpaceInvader.movingObjects[i].checkPosition();
         }
         for (let i = 0; i < SpaceInvader.enemies.length; i++) {
-            SpaceInvader.enemies[i].move();
         }
         //if one enemy is far left or right - change direction and yPosition
         for (let i = 0; i < SpaceInvader.enemies.length; i++) {

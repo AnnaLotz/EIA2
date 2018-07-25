@@ -79,8 +79,8 @@ canvas {
 	}
 
 }
-
-@media ( hover : none) {
+/* @media not all and (hover: none) */
+@media not all and ( hover : hover) {
 	.gameButton {
 		display: initial;
 		margin: auto;
