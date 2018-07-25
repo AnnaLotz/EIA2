@@ -25,7 +25,7 @@ var SpaceInvader;
             }
         }
         won() {
-            window.alert("You Won!\nYour score: " + SpaceInvader.score + "\nPress OK to start again");
+            window.alert("You Won!\nYour score: " + SpaceInvader.score + "\nPress OK to play again");
             if (window.alert) {
                 location.reload();
             }

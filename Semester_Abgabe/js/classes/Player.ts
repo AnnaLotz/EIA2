@@ -38,7 +38,7 @@ namespace SpaceInvader {
         }
 
         public won(): void {
-            window.alert("You Won!\nYour score: " + score + "\nPress OK to start again");
+            window.alert("You Won!\nYour score: " + score + "\nPress OK to play again");
 
             if (window.alert) {
                 location.reload();
