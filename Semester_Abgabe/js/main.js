@@ -55,6 +55,13 @@ var SpaceInvader;
             SpaceInvader.enemies.push(enemy);
         }
     } //createObjects zu
+    function animate() {
+        window.setTimeout(animate, 20); //framerate: 50 fps -> 20 ms
+        SpaceInvader.crc2.clearRect(0, 0, SpaceInvader.crc2.canvas.width, SpaceInvader.crc2.canvas.height);
+        SpaceInvader.crc2.putImageData(imgData, 0, 0);
+        moveObjects();
+        drawObjects();
+    } //animate zu
     function shoot() {
         //max Bullets:
         //if (player.bullets < 5) {
@@ -63,23 +70,11 @@ var SpaceInvader;
         //}
     }
     SpaceInvader.shoot = shoot; //shoot zu
-    function animate() {
-        window.setTimeout(animate, 20); //framerate: 50 fps -> 20 ms
-        SpaceInvader.crc2.clearRect(0, 0, SpaceInvader.crc2.canvas.width, SpaceInvader.crc2.canvas.height);
-        SpaceInvader.crc2.putImageData(imgData, 0, 0);
-        moveObjects();
-        drawObjects();
-    } //animate zu
     function moveObjects() {
+        SpaceInvader.player.move();
         for (let i = 0; i < SpaceInvader.movingObjects.length; i++) {
             SpaceInvader.movingObjects[i].move();
             SpaceInvader.movingObjects[i].checkPosition();
-        }
-        if (SpaceInvader.player.movingDirection < 0) {
-            SpaceInvader.player.moveLeft();
-        }
-        else if (SpaceInvader.player.movingDirection > 0) {
-            SpaceInvader.player.moveRight();
         }
         //if one enemy is far left or right - change direction and yPosition
         for (let i = 0; i < SpaceInvader.enemies.length; i++) {
@@ -91,6 +86,7 @@ var SpaceInvader;
             }
         }
         for (let i = 0; i < SpaceInvader.enemies.length; i++) {
+            SpaceInvader.enemies[i].move();
         }
     } //moveObjects zu
     function drawObjects() {

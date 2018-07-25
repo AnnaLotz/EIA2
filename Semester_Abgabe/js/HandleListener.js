@@ -5,14 +5,6 @@ var SpaceInvader;
         window.onkeydown = handleKeyDown;
         window.onkeyup = handleKeyUp;
         //ButtonEvents
-        let leftButtonLandscape = document.getElementById("LeftButtonLandscape");
-        leftButtonLandscape.addEventListener("touchstart", handleLeftButtonDown);
-        leftButtonLandscape.addEventListener("touchend", handleButtonUp);
-        let rightButtonLandspace = document.getElementById("RightButtonLandspace");
-        rightButtonLandspace.addEventListener("touchstart", handleRightButtonDown);
-        rightButtonLandspace.addEventListener("touchend", handleButtonUp);
-        let shootButtonLandscape = document.getElementById("ShootButtonLandscape");
-        shootButtonLandscape.addEventListener("touchstart", handleShootButton);
         let leftButtonPortrait = document.getElementById("LeftButtonPortrait");
         leftButtonPortrait.addEventListener("touchstart", handleLeftButtonDown);
         leftButtonPortrait.addEventListener("touchend", handleButtonUp);

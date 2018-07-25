@@ -7,17 +7,6 @@ namespace SpaceInvader {
         window.onkeyup = handleKeyUp;
 
         //ButtonEvents
-        let leftButtonLandscape: HTMLButtonElement = <HTMLButtonElement>document.getElementById("LeftButtonLandscape");
-        leftButtonLandscape.addEventListener("touchstart", handleLeftButtonDown);
-        leftButtonLandscape.addEventListener("touchend", handleButtonUp);
-
-        let rightButtonLandspace: HTMLButtonElement = <HTMLButtonElement>document.getElementById("RightButtonLandspace");
-        rightButtonLandspace.addEventListener("touchstart", handleRightButtonDown);
-        rightButtonLandspace.addEventListener("touchend", handleButtonUp);
-
-        let shootButtonLandscape: HTMLButtonElement = <HTMLButtonElement>document.getElementById("ShootButtonLandscape");
-        shootButtonLandscape.addEventListener("touchstart", handleShootButton);
-
         let leftButtonPortrait: HTMLButtonElement = <HTMLButtonElement>document.getElementById("LeftButtonPortrait");
         leftButtonPortrait.addEventListener("touchstart", handleLeftButtonDown);
         leftButtonPortrait.addEventListener("touchend", handleButtonUp);

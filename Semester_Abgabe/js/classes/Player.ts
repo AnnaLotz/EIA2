@@ -16,6 +16,14 @@ namespace SpaceInvader {
 
         }
 
+        move(): void {
+            if (this.movingDirection < 0) {
+                this.moveLeft();
+            } else if (this.movingDirection > 0) {
+                this.moveRight();
+            }
+        }
+
         moveRight(): void {
             if (this.x > canvas.width - 30)
                 this.x = canvas.width - 29;
@@ -58,12 +66,10 @@ namespace SpaceInvader {
             crc2.closePath();
             crc2.stroke();
             crc2.fill();
-            
 
             crc2.font = "21px Arial";
             crc2.fillText("SCORE: " + score, 20, 37);
             crc2.fillText("Lives: " + this.lives, 21, 581); //lives
-
         }
 
 

@@ -56,6 +56,10 @@ namespace SpaceInvader {
             crc2.closePath();
             crc2.stroke();
             crc2.fill();
+            
+            crc2.fillStyle = "rgb(0, 0, 0)"; //black
+            crc2.fillRect(this.x - 6, this.y - 15 , 3, 3);
+            crc2.fillRect(this.x + 3, this.y - 15 , 3, 3);
         }
 
 

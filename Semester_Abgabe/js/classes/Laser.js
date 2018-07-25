@@ -11,7 +11,7 @@ var SpaceInvader;
                 this.destroyLaser();
             }
             for (let i = 0; i < SpaceInvader.enemies.length; i++) {
-                if (this.y <= SpaceInvader.enemies[i].y + 1 && this.y >= SpaceInvader.enemies[i].y - 21) {
+                if (this.y <= SpaceInvader.enemies[i].y + 1 && this.y >= SpaceInvader.enemies[i].y - 24) {
                     if (this.x <= SpaceInvader.enemies[i].x + SpaceInvader.enemies[i].width && this.x >= SpaceInvader.enemies[i].x - SpaceInvader.enemies[i].width) {
                         SpaceInvader.enemies[i].givePoints();
                         let index = i;

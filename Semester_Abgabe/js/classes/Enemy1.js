@@ -56,6 +56,9 @@ var SpaceInvader;
             SpaceInvader.crc2.closePath();
             SpaceInvader.crc2.stroke();
             SpaceInvader.crc2.fill();
+            SpaceInvader.crc2.fillStyle = "rgb(0, 0, 0)"; //black
+            SpaceInvader.crc2.fillRect(this.x - 9, this.y - 15, 6, 3);
+            SpaceInvader.crc2.fillRect(this.x + 3, this.y - 15, 6, 3);
         }
     }
     SpaceInvader.Enemy1 = Enemy1; //class enemy zu

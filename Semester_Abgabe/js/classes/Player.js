@@ -8,6 +8,14 @@ var SpaceInvader;
             this.movingDirection = 0;
             this.bullets = 0;
         }
+        move() {
+            if (this.movingDirection < 0) {
+                this.moveLeft();
+            }
+            else if (this.movingDirection > 0) {
+                this.moveRight();
+            }
+        }
         moveRight() {
             if (this.x > SpaceInvader.canvas.width - 30)
                 this.x = SpaceInvader.canvas.width - 29;
