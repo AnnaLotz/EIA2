@@ -12,7 +12,7 @@ namespace SpaceInvader {
 
         constructor() {
             this.health = 1;
-            this.speed = 1;
+            this.speed = 0.4;
             this.direction = 1;
         }
 
@@ -28,12 +28,10 @@ namespace SpaceInvader {
             } else {
                 return false;
             }
-
         }
 
         changeSpeed(): void {
-
-            this.speed += 0.3;
+            this.speed += 0.05;
         }
 
         givePoints(): void {
@@ -41,11 +39,7 @@ namespace SpaceInvader {
         }
 
         move(): void {
-            //            if (this.y >= player.y) {
-            //                //
-            //            } else 
             this.x += this.speed * this.direction;
-
         }
 
 

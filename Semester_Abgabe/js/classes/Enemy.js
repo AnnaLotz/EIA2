@@ -3,7 +3,7 @@ var SpaceInvader;
     class Enemy {
         constructor() {
             this.health = 1;
-            this.speed = 1;
+            this.speed = 0.4;
             this.direction = 1;
         }
         checkPositionLeftOrRight() {
@@ -19,15 +19,12 @@ var SpaceInvader;
             }
         }
         changeSpeed() {
-            this.speed += 0.3;
+            this.speed += 0.05;
         }
         givePoints() {
             SpaceInvader.score += this.points;
         }
         move() {
-            //            if (this.y >= player.y) {
-            //                //
-            //            } else 
             this.x += this.speed * this.direction;
         }
         draw() {

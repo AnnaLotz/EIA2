@@ -19,23 +19,37 @@ namespace SpaceInvader {
             for (let i: number = 0; i < enemies.length; i++) {
                 if (this.y <= enemies[i].y + 1 && this.y >= enemies[i].y - 24) {
                     if (this.x <= enemies[i].x + enemies[i].width && this.x >= enemies[i].x - enemies[i].width) {
-                                              
+
                         enemies[i].givePoints();
                         let index: number = i;
                         enemies.splice(index, 1);
                         totalEnemies--;
                         this.destroyLaser();
-                        
-//                        for (let j: number = 0; j < enemies.length; j++) {
-//                            enemies[j].changeSpeed();
-//                        } //fallen wieder alle komisch runter damit
+
+                        //this.changeEnemySpeed();
                     }
                 }
             }
+            
+            for (let i: number = 0; i < ufos.length; i++) {
+                if (this.y <= ufos[i].y && this.y >= ufos[i].y - 21) {
+                    if (this.x <= ufos[i].x + ufos[i].width && this.x >= ufos[i].x - ufos[i].width) {
 
+                        ufos[i].givePoints();
+                        let index: number = i;
+                        ufos.splice(index, 1);
+                        this.destroyLaser();                                                
+                    }
+                }
+            }
         } //checkPosition zu
 
 
+        changeEnemySpeed(): void {
+            for (let j: number = 0; j < enemies.length; j++) {
+                enemies[j].changeSpeed();
+            } //fallen wieder alle komisch runter damit    
+        }
 
 
         destroyLaser(): void {
@@ -58,8 +72,6 @@ namespace SpaceInvader {
             crc2.closePath();
             crc2.stroke();
             crc2.fill();
-
-
         }
 
         move(): void {

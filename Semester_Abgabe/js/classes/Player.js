@@ -11,21 +11,19 @@ var SpaceInvader;
         checkIfHit() {
             for (let i = 0; i < SpaceInvader.enemies.length; i++) {
                 if (this.y <= SpaceInvader.enemies[i].y) {
-                    if (this.x <= SpaceInvader.enemies[i].x + SpaceInvader.enemies[i].width && this.x >= SpaceInvader.enemies[i].x - SpaceInvader.enemies[i].width) {
-                        this.lost();
-                    }
+                    this.lost();
                 }
             }
         }
         lost() {
             this.lives = 0;
-            window.alert("Game Over\nPress OK to start again");
+            //window.alert("Game Over\nPress OK to start again");
             if (window.alert) {
                 location.reload();
             }
         }
         won() {
-            window.alert("You Won!\nYour score: " + SpaceInvader.score + "\nPress OK to play again");
+            //window.alert("You Won!\nYour score: " + score + "\nPress OK to play again");
             if (window.alert) {
                 location.reload();
             }

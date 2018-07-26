@@ -21,7 +21,22 @@ var SpaceInvader;
                     }
                 }
             }
+            for (let i = 0; i < SpaceInvader.ufos.length; i++) {
+                if (this.y <= SpaceInvader.ufos[i].y && this.y >= SpaceInvader.ufos[i].y - 21) {
+                    if (this.x <= SpaceInvader.ufos[i].x + SpaceInvader.ufos[i].width && this.x >= SpaceInvader.ufos[i].x - SpaceInvader.ufos[i].width) {
+                        SpaceInvader.ufos[i].givePoints();
+                        let index = i;
+                        SpaceInvader.ufos.splice(index, 1);
+                        this.destroyLaser();
+                    }
+                }
+            }
         } //checkPosition zu
+        changeEnemySpeed() {
+            for (let j = 0; j < SpaceInvader.enemies.length; j++) {
+                SpaceInvader.enemies[j].changeSpeed();
+            } //fallen wieder alle komisch runter damit    
+        }
         destroyLaser() {
             let index = SpaceInvader.movingObjects.indexOf(this);
             SpaceInvader.movingObjects.splice(index, 1);

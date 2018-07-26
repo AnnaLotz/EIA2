@@ -1,6 +1,6 @@
 namespace SpaceInvader {
 
-    window.addEventListener("load", init);
+    window.addEventListener("load", startGame);
 
     let startButton: HTMLButtonElement;
     export let crc2: CanvasRenderingContext2D;
@@ -11,9 +11,11 @@ namespace SpaceInvader {
 
     export let movingObjects: MovingObject[] = [];
     export let enemies: Enemy[] = [];
+    export let ufos: Ufo[] = [];
     export let player: Player;
     export let score: number = 0;
     export let totalEnemies: number = 0;
+    
 
     function init(_event: Event): void {
 
@@ -24,10 +26,15 @@ namespace SpaceInvader {
 
 
 
+    } //init zu
+
+    function startGame(): void {
+
         canvas = document.getElementsByTagName("canvas")[0];
         crc2 = canvas.getContext("2d");
 
-
+        document.getElementById("startMenue").style.display = "none"; //menu unsichtbar machen
+        document.getElementById("game").style.display = "initial"; //gamefield sichtbar machen
 
         if (breite > hoehe) {
             canvas.style.setProperty("height", hoehe + "px");
@@ -35,23 +42,39 @@ namespace SpaceInvader {
             canvas.style.setProperty("width", breite + "px");
         }
 
-
-    } //init zu
-
-    function startGame(): void {
-
-        document.getElementById("startMenue").style.display = "none"; //menu unsichtbar machen
-        document.getElementById("game").style.display = "initial"; //gamefield sichtbar machen
-
-
         drawBackground();
         imgData = crc2.getImageData(0, 0, canvas.width, canvas.height);
-        createObjects();
+
         createListener();
+        createObjects();
+        window.setTimeout(createUfo, 1000);
+        window.setTimeout(enemyShoot, 3000);
         animate();
+
+    } //startGame zu
+    
+    function enemyShoot(): void {
+        //neue klasse erstellen für laser vom enemy
+        //new klasse
+        //einen enemy aus dem enemies array suchen, der den x und y wert vom enemy bekommen
+        //irgendwo rein pushen, in update noch move und draw!!!
+        
+        console.log("enemy shoot");
+        
+        let timeToNextEnemyShoot: number;      
+        timeToNextEnemyShoot = Math.random() * (5000 - 2000) + 2000; // Math.random() * (max - min) + min    
+        window.setTimeout(enemyShoot, timeToNextEnemyShoot);
     }
 
-
+    function createUfo(): void {
+        let ufo: Ufo = new Ufo();
+        ufos.push(ufo);  
+        
+        let timeToNextUfo: number;      
+        timeToNextUfo = Math.random() * (15000 - 10000) + 10000; // Math.random() * (max - min) + min    
+        window.setTimeout(createUfo, timeToNextUfo);
+    }
+    
     function createObjects(): void {
 
         player = new Player();
@@ -96,8 +119,6 @@ namespace SpaceInvader {
             totalEnemies++;
         }
 
-
-
     } //createObjects zu
 
 
@@ -109,7 +130,7 @@ namespace SpaceInvader {
         moveObjects();
         drawObjects();
         if (totalEnemies == 0) {
-            player.won();    
+            player.won();
         }
 
     } //animate zu
@@ -129,12 +150,17 @@ namespace SpaceInvader {
         player.move();
         player.checkIfHit();
 
+        for (let i: number = 0; i < ufos.length; i++) {
+            ufos[i].move();
+            ufos[i].checkPosition();
+        }
+
 
         for (let i: number = 0; i < movingObjects.length; i++) {
             movingObjects[i].move();
             movingObjects[i].checkPosition();
         }
-        
+
         for (let i: number = 0; i < enemies.length; i++) {
             enemies[i].move();
         }
@@ -143,14 +169,11 @@ namespace SpaceInvader {
         for (let i: number = 0; i < enemies.length; i++) {
             if (enemies[i].checkPositionLeftOrRight() == true) {
                 for (let i: number = 0; i < enemies.length; i++) {
-                    enemies[i].y += 20;
+                    enemies[i].y += 10;
                     enemies[i].direction *= -1;
                 }
             }
         }
-
-
-
 
 
     } //moveObjects zu
@@ -158,6 +181,10 @@ namespace SpaceInvader {
 
     function drawObjects(): void {
         player.draw();
+        for (let i: number = 0; i < ufos.length; i++) {
+            ufos[i].draw();
+        }
+        
         for (let i: number = 0; i < enemies.length; i++) {
             enemies[i].draw();
         }

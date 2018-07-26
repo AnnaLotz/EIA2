@@ -1,35 +1,55 @@
 var SpaceInvader;
 (function (SpaceInvader) {
-    window.addEventListener("load", init);
+    window.addEventListener("load", startGame);
     let startButton;
     let imgData;
     let breite = (window.innerWidth);
     let hoehe = (window.innerHeight);
     SpaceInvader.movingObjects = [];
     SpaceInvader.enemies = [];
+    SpaceInvader.ufos = [];
     SpaceInvader.score = 0;
     SpaceInvader.totalEnemies = 0;
     function init(_event) {
         document.getElementById("game").style.display = "none";
         startButton = document.getElementById("startButton");
         startButton.addEventListener("click", startGame);
+    } //init zu
+    function startGame() {
         SpaceInvader.canvas = document.getElementsByTagName("canvas")[0];
         SpaceInvader.crc2 = SpaceInvader.canvas.getContext("2d");
+        document.getElementById("startMenue").style.display = "none"; //menu unsichtbar machen
+        document.getElementById("game").style.display = "initial"; //gamefield sichtbar machen
         if (breite > hoehe) {
             SpaceInvader.canvas.style.setProperty("height", hoehe + "px");
         }
         else if (hoehe > breite) {
             SpaceInvader.canvas.style.setProperty("width", breite + "px");
         }
-    } //init zu
-    function startGame() {
-        document.getElementById("startMenue").style.display = "none"; //menu unsichtbar machen
-        document.getElementById("game").style.display = "initial"; //gamefield sichtbar machen
         SpaceInvader.drawBackground();
         imgData = SpaceInvader.crc2.getImageData(0, 0, SpaceInvader.canvas.width, SpaceInvader.canvas.height);
-        createObjects();
         SpaceInvader.createListener();
+        createObjects();
+        window.setTimeout(createUfo, 1000);
+        window.setTimeout(enemyShoot, 3000);
         animate();
+    } //startGame zu
+    function enemyShoot() {
+        //neue klasse erstellen f�r laser vom enemy
+        //new klasse
+        //einen enemy aus dem enemies array suchen, der den x und y wert vom enemy bekommen
+        //irgendwo rein pushen, in update noch move und draw!!!
+        console.log("enemy shoot");
+        let timeToNextEnemyShoot;
+        timeToNextEnemyShoot = Math.random() * (5000 - 2000) + 2000; // Math.random() * (max - min) + min    
+        window.setTimeout(enemyShoot, timeToNextEnemyShoot);
+    }
+    function createUfo() {
+        let ufo = new SpaceInvader.Ufo();
+        SpaceInvader.ufos.push(ufo);
+        let timeToNextUfo;
+        timeToNextUfo = Math.random() * (15000 - 10000) + 10000; // Math.random() * (max - min) + min    
+        window.setTimeout(createUfo, timeToNextUfo);
     }
     function createObjects() {
         SpaceInvader.player = new SpaceInvader.Player();
@@ -90,6 +110,10 @@ var SpaceInvader;
     function moveObjects() {
         SpaceInvader.player.move();
         SpaceInvader.player.checkIfHit();
+        for (let i = 0; i < SpaceInvader.ufos.length; i++) {
+            SpaceInvader.ufos[i].move();
+            SpaceInvader.ufos[i].checkPosition();
+        }
         for (let i = 0; i < SpaceInvader.movingObjects.length; i++) {
             SpaceInvader.movingObjects[i].move();
             SpaceInvader.movingObjects[i].checkPosition();
@@ -101,7 +125,7 @@ var SpaceInvader;
         for (let i = 0; i < SpaceInvader.enemies.length; i++) {
             if (SpaceInvader.enemies[i].checkPositionLeftOrRight() == true) {
                 for (let i = 0; i < SpaceInvader.enemies.length; i++) {
-                    SpaceInvader.enemies[i].y += 20;
+                    SpaceInvader.enemies[i].y += 10;
                     SpaceInvader.enemies[i].direction *= -1;
                 }
             }
@@ -109,6 +133,9 @@ var SpaceInvader;
     } //moveObjects zu
     function drawObjects() {
         SpaceInvader.player.draw();
+        for (let i = 0; i < SpaceInvader.ufos.length; i++) {
+            SpaceInvader.ufos[i].draw();
+        }
         for (let i = 0; i < SpaceInvader.enemies.length; i++) {
             SpaceInvader.enemies[i].draw();
         }

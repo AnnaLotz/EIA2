@@ -17,12 +17,9 @@ namespace SpaceInvader {
 
         public checkIfHit(): void {
 
-
             for (let i: number = 0; i < enemies.length; i++) {
                 if (this.y <= enemies[i].y) {
-                    if (this.x <= enemies[i].x + enemies[i].width && this.x >= enemies[i].x - enemies[i].width) {
-                        this.lost();
-                    }
+                    this.lost();
                 }
             }
 
@@ -30,7 +27,7 @@ namespace SpaceInvader {
 
         public lost(): void {
             this.lives = 0;
-            window.alert("Game Over\nPress OK to start again");
+            //window.alert("Game Over\nPress OK to start again");
 
             if (window.alert) {
                 location.reload();
@@ -38,7 +35,7 @@ namespace SpaceInvader {
         }
 
         public won(): void {
-            window.alert("You Won!\nYour score: " + score + "\nPress OK to play again");
+            //window.alert("You Won!\nYour score: " + score + "\nPress OK to play again");
 
             if (window.alert) {
                 location.reload();
