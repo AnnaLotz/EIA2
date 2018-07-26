@@ -30,16 +30,16 @@ var SpaceInvader;
         imgData = SpaceInvader.crc2.getImageData(0, 0, SpaceInvader.canvas.width, SpaceInvader.canvas.height);
         SpaceInvader.createListener();
         createObjects();
-        window.setTimeout(createUfo, 1000);
-        window.setTimeout(enemyShoot, 3000);
+        window.setTimeout(createUfo, 6000);
+        window.setTimeout(enemyShoot, 1000);
         animate();
     } //startGame zu
     function enemyShoot() {
-        //neue klasse erstellen f�r laser vom enemy
-        //new klasse
-        //einen enemy aus dem enemies array suchen, der den x und y wert vom enemy bekommen
-        //irgendwo rein pushen, in update noch move und draw!!!
-        console.log("enemy shoot");
+        let enemyLaser = new SpaceInvader.EnemyLaser();
+        SpaceInvader.movingObjects.push(enemyLaser);
+        let j = Math.floor(Math.random() * SpaceInvader.enemies.length);
+        let enemy = SpaceInvader.enemies[j];
+        enemyLaser.getToShootFrom(enemy);
         let timeToNextEnemyShoot;
         timeToNextEnemyShoot = Math.random() * (5000 - 2000) + 2000; // Math.random() * (max - min) + min    
         window.setTimeout(enemyShoot, timeToNextEnemyShoot);

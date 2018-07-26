@@ -15,6 +15,10 @@ var SpaceInvader;
                 }
             }
         }
+        isHit() {
+            console.log("player is hit, -1 life");
+            this.lives--;
+        }
         lost() {
             this.lives = 0;
             //window.alert("Game Over\nPress OK to start again");
@@ -40,13 +44,15 @@ var SpaceInvader;
             if (this.x > SpaceInvader.canvas.width - 30)
                 this.x = SpaceInvader.canvas.width - 29;
             else
-                this.x += 2;
+                // this.x += 2;
+                this.x += 3;
         }
         moveLeft() {
             if (this.x < 30)
                 this.x = 29;
             else
-                this.x -= 2;
+                //this.x -= 2;
+                this.x -= 3;
         }
         draw() {
             SpaceInvader.crc2.beginPath();

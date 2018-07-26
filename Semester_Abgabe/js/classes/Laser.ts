@@ -3,7 +3,6 @@ namespace SpaceInvader {
     export class Laser {
         x: number;
         y: number;
-        hitbox: number;
 
         constructor() {
             this.x = player.x - 1;
@@ -71,7 +70,7 @@ namespace SpaceInvader {
             crc2.lineTo(this.x, this.y);
             crc2.closePath();
             crc2.stroke();
-            crc2.fill();
+            crc2.fill();          
         }
 
         move(): void {

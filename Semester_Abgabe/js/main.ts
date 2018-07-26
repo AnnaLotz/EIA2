@@ -47,20 +47,22 @@ namespace SpaceInvader {
 
         createListener();
         createObjects();
-        window.setTimeout(createUfo, 1000);
-        window.setTimeout(enemyShoot, 3000);
+        window.setTimeout(createUfo, 6000);
+        window.setTimeout(enemyShoot, 1000);
         animate();
 
     } //startGame zu
     
     function enemyShoot(): void {
-        //neue klasse erstellen für laser vom enemy
-        //new klasse
-        //einen enemy aus dem enemies array suchen, der den x und y wert vom enemy bekommen
-        //irgendwo rein pushen, in update noch move und draw!!!
         
-        console.log("enemy shoot");
+        let enemyLaser: EnemyLaser = new EnemyLaser();
+        movingObjects.push(enemyLaser);
         
+        let j: number = Math.floor(Math.random() * enemies.length);
+        let enemy: Enemy = <Enemy>enemies[j];
+        enemyLaser.getToShootFrom(enemy);
+        
+                
         let timeToNextEnemyShoot: number;      
         timeToNextEnemyShoot = Math.random() * (5000 - 2000) + 2000; // Math.random() * (max - min) + min    
         window.setTimeout(enemyShoot, timeToNextEnemyShoot);
@@ -155,7 +157,6 @@ namespace SpaceInvader {
             ufos[i].checkPosition();
         }
 
-
         for (let i: number = 0; i < movingObjects.length; i++) {
             movingObjects[i].move();
             movingObjects[i].checkPosition();
@@ -174,8 +175,6 @@ namespace SpaceInvader {
                 }
             }
         }
-
-
     } //moveObjects zu
 
 
@@ -183,8 +182,7 @@ namespace SpaceInvader {
         player.draw();
         for (let i: number = 0; i < ufos.length; i++) {
             ufos[i].draw();
-        }
-        
+        }       
         for (let i: number = 0; i < enemies.length; i++) {
             enemies[i].draw();
         }

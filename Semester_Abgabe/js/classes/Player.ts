@@ -24,6 +24,11 @@ namespace SpaceInvader {
             }
 
         }
+        
+        isHit(): void {
+            console.log("player is hit, -1 life");
+            this.lives--;
+        }
 
         public lost(): void {
             this.lives = 0;
@@ -54,14 +59,16 @@ namespace SpaceInvader {
             if (this.x > canvas.width - 30)
                 this.x = canvas.width - 29;
             else
-                this.x += 2;
+               // this.x += 2;
+                this.x += 3;
         }
 
         private moveLeft(): void {
             if (this.x < 30)
                 this.x = 29;
             else
-                this.x -= 2;
+                //this.x -= 2;
+            this.x -= 3;
         }
 
 

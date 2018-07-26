@@ -16,7 +16,6 @@ namespace SpaceInvader {
             this.direction = 1;
         }
 
-
         checkPositionLeftOrRight(): boolean {
 
             //check ob enemy ganz rechts ...
