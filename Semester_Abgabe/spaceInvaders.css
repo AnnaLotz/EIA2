@@ -17,8 +17,14 @@ div {
 	margin-left: auto;
 	margin-right: auto;
 	text-align: center;
+	align-content: center;
 	overflow: hidden;
 	object-fit: contain;
+	
+}
+
+button {
+	font-family: 'Press Start 2P', sans-serif;
 }
 
 /* ==== Menu ==== */
@@ -31,13 +37,30 @@ h1 {
 	color: rgb(34, 249, 27);
 }
 
+h2 {
+	color: rgb(255, 0, 0);
+	font-size: 5em;
+	margin: 1.2em;
+
+}
+
+.yourScore {
+	margin: 2em;
+	margin-bottom: 3em;
+}
+
 #controlls {
 	margin: 1.5em;
 	color: rgb(34, 249, 27);
 	
 }
+a {
+	align-content: center;
+	text-align: center;
+}
 
-#startButton {
+.nonGameButtons {
+	
     transition-duration: 0.15s;    
     background-color: black;
     border: 2px solid rgb(34, 249, 27);
@@ -51,7 +74,7 @@ h1 {
     font-size: 1em;
 }
 
-#startButton:hover {
+.nonGameButtons:hover {
     background-color: rgb(34, 249, 27); /* Green */
     color: white;
 }

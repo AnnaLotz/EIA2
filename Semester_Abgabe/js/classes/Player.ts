@@ -29,20 +29,11 @@ namespace SpaceInvader {
         }
 
         public lost(): void {
-            this.lives = 0;
-            window.alert("Game Over\nYour score: " + score + "\nPress OK to start again");
-
-            if (window.alert) {
-                location.reload();
-            }
+            window.setTimeout(showLostScreen, 200);
         }
 
         public won(): void {
-            window.alert("You Won!\nYour score: " + score + "\nPress OK to play again");
-
-            if (window.alert) {
-                location.reload();
-            }
+            window.setTimeout(showWinScreen, 400);
         }
 
         public move(): void {

@@ -1,6 +1,7 @@
 var SpaceInvader;
 (function (SpaceInvader) {
     window.addEventListener("load", init);
+    let node;
     let startButton;
     let imgData;
     let breite = (window.innerWidth);
@@ -10,16 +11,29 @@ var SpaceInvader;
     SpaceInvader.ufos = [];
     SpaceInvader.score = 0;
     SpaceInvader.totalEnemies = 0;
+    let wroteScore = false;
+    //    function init(_event: Event): void {
+    //        //init zum testen von game over and won screen
+    //
+    //        document.getElementById("startMenue").style.display = "none";
+    //        document.getElementById("game").style.display = "none";
+    //        document.getElementById("gameOver").style.display = "none";
+    //        document.getElementById("win").style.display = "initial";
+    //
+    //
+    //    } //init zu
     function init(_event) {
         document.getElementById("game").style.display = "none";
+        document.getElementById("gameOver").style.display = "none";
+        document.getElementById("win").style.display = "none";
         startButton = document.getElementById("startButton");
         startButton.addEventListener("click", startGame);
     } //init zu
     function startGame() {
-        SpaceInvader.canvas = document.getElementsByTagName("canvas")[0];
-        SpaceInvader.crc2 = SpaceInvader.canvas.getContext("2d");
         document.getElementById("startMenue").style.display = "none"; //menu unsichtbar machen
         document.getElementById("game").style.display = "initial"; //gamefield sichtbar machen
+        SpaceInvader.canvas = document.getElementsByTagName("canvas")[0];
+        SpaceInvader.crc2 = SpaceInvader.canvas.getContext("2d");
         if (breite > hoehe) {
             SpaceInvader.canvas.style.setProperty("height", hoehe + "px");
         }
@@ -34,23 +48,28 @@ var SpaceInvader;
         window.setTimeout(enemyShoot, 1000);
         animate();
     } //startGame zu
-    function enemyShoot() {
-        let timeToNextEnemyShoot;
-        timeToNextEnemyShoot = Math.random() * (5000 - 1000) + 1000; // Math.random() * (max - min) + min    
-        window.setTimeout(enemyShoot, timeToNextEnemyShoot);
-        let enemyLaser = new SpaceInvader.EnemyLaser();
-        SpaceInvader.movingObjects.push(enemyLaser);
-        let j = Math.floor(Math.random() * SpaceInvader.enemies.length);
-        let enemy = SpaceInvader.enemies[j];
-        enemyLaser.getToShootFrom(enemy);
-    } //enemyShoot zu
-    function createUfo() {
-        let timeToNextUfo;
-        timeToNextUfo = Math.random() * (15000 - 10000) + 10000; // Math.random() * (max - min) + min    
-        window.setTimeout(createUfo, timeToNextUfo);
-        let ufo = new SpaceInvader.Ufo();
-        SpaceInvader.ufos.push(ufo);
-    } //close createUfo
+    function showWinScreen() {
+        document.getElementById("game").style.display = "none";
+        document.getElementById("win").style.display = "initial";
+        node = document.getElementsByClassName("yourScore")[1];
+        writeScoreToHTML();
+    }
+    SpaceInvader.showWinScreen = showWinScreen; //showWinScreen zu
+    function showLostScreen() {
+        document.getElementById("game").style.display = "none";
+        document.getElementById("gameOver").style.display = "initial";
+        node = document.getElementsByClassName("yourScore")[0];
+        writeScoreToHTML();
+    }
+    SpaceInvader.showLostScreen = showLostScreen; //showLostScreen zu
+    function writeScoreToHTML() {
+        if (!wroteScore) {
+            let content = "";
+            content = "Your score: " + SpaceInvader.score;
+            node.innerHTML += content;
+            wroteScore = true;
+        }
+    } //writeScoreToHTML zu
     function createObjects() {
         SpaceInvader.player = new SpaceInvader.Player();
         for (let i = 0; i < 10; i++) {
@@ -89,6 +108,24 @@ var SpaceInvader;
             SpaceInvader.totalEnemies++;
         }
     } //createObjects zu
+    function enemyShoot() {
+        let timeToNextEnemyShoot;
+        //timeToNextEnemyShoot = Math.random() * (500 - 100) + 100;
+        timeToNextEnemyShoot = Math.random() * (5000 - 1000) + 1000; // Math.random() * (max - min) + min    
+        window.setTimeout(enemyShoot, timeToNextEnemyShoot);
+        let enemyLaser = new SpaceInvader.EnemyLaser();
+        SpaceInvader.movingObjects.push(enemyLaser);
+        let j = Math.floor(Math.random() * SpaceInvader.enemies.length);
+        let enemy = SpaceInvader.enemies[j];
+        enemyLaser.getToShootFrom(enemy);
+    } //enemyShoot zu
+    function createUfo() {
+        let timeToNextUfo;
+        timeToNextUfo = Math.random() * (15000 - 10000) + 10000; // Math.random() * (max - min) + min    
+        window.setTimeout(createUfo, timeToNextUfo);
+        let ufo = new SpaceInvader.Ufo();
+        SpaceInvader.ufos.push(ufo);
+    } //close createUfo
     function animate() {
         window.setTimeout(animate, 20); //framerate: 50 fps -> 20 ms
         SpaceInvader.crc2.clearRect(0, 0, SpaceInvader.crc2.canvas.width, SpaceInvader.crc2.canvas.height);
@@ -103,7 +140,6 @@ var SpaceInvader;
         }
     } //animate zu
     function shoot() {
-        //max Bullets:
         if (SpaceInvader.player.bullets < 1) {
             let laser = new SpaceInvader.Laser();
             SpaceInvader.movingObjects.push(laser);

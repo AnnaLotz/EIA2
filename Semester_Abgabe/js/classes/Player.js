@@ -19,17 +19,10 @@ var SpaceInvader;
             this.lives--;
         }
         lost() {
-            this.lives = 0;
-            window.alert("Game Over\nYour score: " + SpaceInvader.score + "\nPress OK to start again");
-            if (window.alert) {
-                location.reload();
-            }
+            window.setTimeout(SpaceInvader.showLostScreen, 200);
         }
         won() {
-            window.alert("You Won!\nYour score: " + SpaceInvader.score + "\nPress OK to play again");
-            if (window.alert) {
-                location.reload();
-            }
+            window.setTimeout(SpaceInvader.showWinScreen, 400);
         }
         move() {
             if (this.movingDirection < 0) {

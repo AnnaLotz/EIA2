@@ -34,7 +34,7 @@ var SpaceInvader;
         draw() {
             SpaceInvader.crc2.beginPath();
             SpaceInvader.crc2.strokeStyle = "rgba(0,0,0,0)";
-            SpaceInvader.crc2.fillStyle = "rgb(255, 0, 0)"; //white
+            SpaceInvader.crc2.fillStyle = "rgb(255, 0, 0)"; //red
             SpaceInvader.crc2.lineWidth = 1;
             SpaceInvader.crc2.moveTo(this.x, this.y - 3);
             SpaceInvader.crc2.lineTo(this.x + 6, this.y - 3);

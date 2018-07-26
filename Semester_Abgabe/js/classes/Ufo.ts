@@ -41,7 +41,7 @@ namespace SpaceInvader {
         draw(): void {
             crc2.beginPath();
             crc2.strokeStyle = "rgba(0,0,0,0)";
-            crc2.fillStyle = "rgb(255, 0, 0)"; //white
+            crc2.fillStyle = "rgb(255, 0, 0)"; //red
             crc2.lineWidth = 1;
             crc2.moveTo(this.x, this.y - 3);
             crc2.lineTo(this.x + 6, this.y - 3);
