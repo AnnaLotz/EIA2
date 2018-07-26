@@ -21,11 +21,7 @@ namespace SpaceInvader {
                 if (this.y <= enemies[i].y) {
                     this.lost();
                 }
-            }
-            if (this.lives <= 0) {
-                player.lost();    
-            }
-
+            }           
         }
         
         isHit(): void {
@@ -34,7 +30,7 @@ namespace SpaceInvader {
 
         public lost(): void {
             this.lives = 0;
-            //window.alert("Game Over\nPress OK to start again");
+            window.alert("Game Over\nYour score: " + score + "\nPress OK to start again");
 
             if (window.alert) {
                 location.reload();
@@ -42,7 +38,7 @@ namespace SpaceInvader {
         }
 
         public won(): void {
-            //window.alert("You Won!\nYour score: " + score + "\nPress OK to play again");
+            window.alert("You Won!\nYour score: " + score + "\nPress OK to play again");
 
             if (window.alert) {
                 location.reload();
@@ -61,16 +57,16 @@ namespace SpaceInvader {
             if (this.x > canvas.width - 30)
                 this.x = canvas.width - 29;
             else
-               // this.x += 2;
-                this.x += 3;
+                this.x += 2;
+//                this.x += 3;
         }
 
         private moveLeft(): void {
             if (this.x < 30)
                 this.x = 29;
             else
-                //this.x -= 2;
-            this.x -= 3;
+                this.x -= 2;
+//                this.x -= 3;
         }
 
 

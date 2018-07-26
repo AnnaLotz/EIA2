@@ -1,6 +1,6 @@
 var SpaceInvader;
 (function (SpaceInvader) {
-    window.addEventListener("load", startGame);
+    window.addEventListener("load", init);
     let startButton;
     let imgData;
     let breite = (window.innerWidth);
@@ -35,22 +35,22 @@ var SpaceInvader;
         animate();
     } //startGame zu
     function enemyShoot() {
+        let timeToNextEnemyShoot;
+        timeToNextEnemyShoot = Math.random() * (5000 - 1000) + 1000; // Math.random() * (max - min) + min    
+        window.setTimeout(enemyShoot, timeToNextEnemyShoot);
         let enemyLaser = new SpaceInvader.EnemyLaser();
         SpaceInvader.movingObjects.push(enemyLaser);
         let j = Math.floor(Math.random() * SpaceInvader.enemies.length);
         let enemy = SpaceInvader.enemies[j];
         enemyLaser.getToShootFrom(enemy);
-        let timeToNextEnemyShoot;
-        timeToNextEnemyShoot = Math.random() * (5000 - 2000) + 2000; // Math.random() * (max - min) + min    
-        window.setTimeout(enemyShoot, timeToNextEnemyShoot);
-    }
+    } //enemyShoot zu
     function createUfo() {
-        let ufo = new SpaceInvader.Ufo();
-        SpaceInvader.ufos.push(ufo);
         let timeToNextUfo;
         timeToNextUfo = Math.random() * (15000 - 10000) + 10000; // Math.random() * (max - min) + min    
         window.setTimeout(createUfo, timeToNextUfo);
-    }
+        let ufo = new SpaceInvader.Ufo();
+        SpaceInvader.ufos.push(ufo);
+    } //close createUfo
     function createObjects() {
         SpaceInvader.player = new SpaceInvader.Player();
         for (let i = 0; i < 10; i++) {
@@ -98,13 +98,16 @@ var SpaceInvader;
         if (SpaceInvader.totalEnemies == 0) {
             SpaceInvader.player.won();
         }
+        if (SpaceInvader.player.lives <= 0) {
+            SpaceInvader.player.lost();
+        }
     } //animate zu
     function shoot() {
         //max Bullets:
-        //if (player.bullets < 5) {
-        let laser = new SpaceInvader.Laser();
-        SpaceInvader.movingObjects.push(laser);
-        //}
+        if (SpaceInvader.player.bullets < 1) {
+            let laser = new SpaceInvader.Laser();
+            SpaceInvader.movingObjects.push(laser);
+        }
     }
     SpaceInvader.shoot = shoot; //shoot zu
     function moveObjects() {

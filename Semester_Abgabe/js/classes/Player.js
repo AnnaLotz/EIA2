@@ -14,22 +14,19 @@ var SpaceInvader;
                     this.lost();
                 }
             }
-            if (this.lives <= 0) {
-                SpaceInvader.player.lost();
-            }
         }
         isHit() {
             this.lives--;
         }
         lost() {
             this.lives = 0;
-            //window.alert("Game Over\nPress OK to start again");
+            window.alert("Game Over\nYour score: " + SpaceInvader.score + "\nPress OK to start again");
             if (window.alert) {
                 location.reload();
             }
         }
         won() {
-            //window.alert("You Won!\nYour score: " + score + "\nPress OK to play again");
+            window.alert("You Won!\nYour score: " + SpaceInvader.score + "\nPress OK to play again");
             if (window.alert) {
                 location.reload();
             }
@@ -46,15 +43,15 @@ var SpaceInvader;
             if (this.x > SpaceInvader.canvas.width - 30)
                 this.x = SpaceInvader.canvas.width - 29;
             else
-                // this.x += 2;
-                this.x += 3;
+                this.x += 2;
+            //                this.x += 3;
         }
         moveLeft() {
             if (this.x < 30)
                 this.x = 29;
             else
-                //this.x -= 2;
-                this.x -= 3;
+                this.x -= 2;
+            //                this.x -= 3;
         }
         draw() {
             SpaceInvader.crc2.beginPath();
