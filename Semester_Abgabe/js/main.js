@@ -1,6 +1,7 @@
 var SpaceInvader;
 (function (SpaceInvader) {
     window.addEventListener("load", init);
+    window.addEventListener("click", shoot);
     let node;
     let startButton;
     let imgData;

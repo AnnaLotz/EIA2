@@ -1,6 +1,7 @@
 namespace SpaceInvader {
 
     window.addEventListener("load", init);
+    window.addEventListener("click", shoot);
 
     let node: HTMLDivElement;
     let startButton: HTMLButtonElement;
