@@ -13,6 +13,8 @@
 <meta charset="utf-8" />
 
 <link rel='shortcut icon' type='image/x-icon' href='pictures/favicon.ico' />
+<link rel="stylesheet" type="text/css" href="spaceInvaders.css">
+<link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
 <!-- SKRIPTE VERLINKEN!!!!!! erst superklasse, dann subklassen, dann main.js -->
 
 <script src="js/classes/MovingObject.js" type="text/javascript" charset="utf-8"></script>
@@ -28,8 +30,7 @@
 <script src="js/HandleListener.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/main.js" type="text/javascript" charset="utf-8"></script>
 
-<link rel="stylesheet" type="text/css" href="spaceInvaders.css">
-<link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+
 </head>
 
 <body>
@@ -54,10 +55,12 @@
 	</div>
 
 	<div id="game">
-		<canvas id="gameCanvas" width=525 height=600>Your browser does not support the HTML5 Canvas</canvas>	
-		<button class="gameButton" class="ButtonsLeftSide" id="LeftButtonPortrait" type="button"> <!--&#8592 --></button>
-		<button class="gameButton" class="ButtonsLeftSide" id="RightButtonPortrait" type="button"><!-- &#8594 --></button>
-		<button class="gameButton" class="ButtonsRightSide" id="ShootButtonPortrait" type="button"><!-- &#8657 --></button>	
+		<canvas id="gameCanvas" width=525 height=600>Your browser does not support the HTML5 Canvas</canvas>
+		<div id="gameButtons">
+			<button class="gameButton" class="ButtonsLeftSide" id="LeftButtonPortrait" type="button"> <!--&#8592 --></button>
+			<button class="gameButton" class="ButtonsLeftSide" id="RightButtonPortrait" type="button"><!-- &#8594 --></button>
+			<button class="gameButton" class="ButtonsRightSide" id="ShootButtonPortrait" type="button"><!-- &#8657 --></button>
+		</div>
 	</div>
 	
 	<div id="gameOver">

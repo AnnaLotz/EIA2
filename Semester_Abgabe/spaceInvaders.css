@@ -4,6 +4,7 @@ html {
 	font-family: 'Press Start 2P', sans-serif;
 	color: white;
 	background-color: black;
+	overflow: hidden;
 }
 
 * {
@@ -106,18 +107,17 @@ canvas {
 @media not all and ( hover : hover) {
 	.gameButton {
 		display: initial;
-		margin: auto;
-		height: 8em;
-		width: 8em;
+
+		height: 15em;
+		width: 15em;
 	}
-	.buttonsPortait {
-		display: inline;
-		margin: 5em;
-		margin-top: 2em;
+	#gameButtons {
+		width: 100%;	
 	}
+
 	.buttonsLeftSide {
 		float: left;
-		margin-left: 10px;
+		/*margin-right: 5em;*/
 	}
 	.buttonsRightSide {
 		float: right;
