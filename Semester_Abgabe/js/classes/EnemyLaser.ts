@@ -20,13 +20,8 @@ namespace SpaceInvader {
                 this.destroyLaser();
             }
             
-            console.log("checkPosition");
-
-            if (this.x <= player.x + 15 && this.x >= player.x - 15) {
-                console.log("player x");
+            if (this.x <= player.x + 16 && this.x >= player.x - 16) {
                 if (this.y <= player.y + 18 && this.y >= player.y + 7) {
-                    console.log("player x und y");
-
                     player.isHit();
                     this.destroyLaser();
 
@@ -39,7 +34,6 @@ namespace SpaceInvader {
         destroyLaser(): void {
             let index: number = movingObjects.indexOf(this);
             movingObjects.splice(index, 1);
-            console.log("destroylaser in enemyLaser");
         } //destroy laser zu
 
         draw(): void {

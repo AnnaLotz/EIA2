@@ -22,11 +22,13 @@ namespace SpaceInvader {
                     this.lost();
                 }
             }
+            if (this.lives <= 0) {
+                player.lost();    
+            }
 
         }
         
         isHit(): void {
-            console.log("player is hit, -1 life");
             this.lives--;
         }
 
@@ -101,7 +103,7 @@ namespace SpaceInvader {
             crc2.fill();
 
             crc2.font = "21px Arial";
-            crc2.fillText("SCORE: " + score, 20, 37);
+            crc2.fillText("SCORE: " + score, 20, 37);          
             crc2.fillText("Lives: " + this.lives, 21, 581); //lives
         }
 

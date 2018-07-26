@@ -13,11 +13,8 @@ var SpaceInvader;
             if (this.y >= SpaceInvader.canvas.height) {
                 this.destroyLaser();
             }
-            console.log("checkPosition");
-            if (this.x <= SpaceInvader.player.x + 15 && this.x >= SpaceInvader.player.x - 15) {
-                console.log("player x");
+            if (this.x <= SpaceInvader.player.x + 16 && this.x >= SpaceInvader.player.x - 16) {
                 if (this.y <= SpaceInvader.player.y + 18 && this.y >= SpaceInvader.player.y + 7) {
-                    console.log("player x und y");
                     SpaceInvader.player.isHit();
                     this.destroyLaser();
                 }
@@ -26,7 +23,6 @@ var SpaceInvader;
         destroyLaser() {
             let index = SpaceInvader.movingObjects.indexOf(this);
             SpaceInvader.movingObjects.splice(index, 1);
-            console.log("destroylaser in enemyLaser");
         } //destroy laser zu
         draw() {
             SpaceInvader.crc2.beginPath();

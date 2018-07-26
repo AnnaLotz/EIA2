@@ -14,9 +14,11 @@ var SpaceInvader;
                     this.lost();
                 }
             }
+            if (this.lives <= 0) {
+                SpaceInvader.player.lost();
+            }
         }
         isHit() {
-            console.log("player is hit, -1 life");
             this.lives--;
         }
         lost() {
