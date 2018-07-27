@@ -21,7 +21,6 @@ div {
 	align-content: center;
 	overflow: hidden;
 	object-fit: contain;
-	
 }
 
 button {
@@ -29,8 +28,7 @@ button {
 }
 
 /* ==== Menu ==== */
-
-img {
+#startMenue img {
 	height: 3.8em;
 }
 
@@ -42,7 +40,6 @@ h2 {
 	color: rgb(255, 0, 0);
 	font-size: 5em;
 	margin: 1.2em;
-
 }
 
 .yourScore {
@@ -53,36 +50,33 @@ h2 {
 #controlls {
 	margin: 1.5em;
 	color: rgb(34, 249, 27);
-	
 }
+
 a {
 	align-content: center;
 	text-align: center;
 }
 
 .nonGameButtons {
-	
-    transition-duration: 0.15s;    
-    background-color: black;
-    border: 2px solid rgb(34, 249, 27);
-    color: rgb(34, 249, 27);
-    padding: 1em 2em;
-    cursor: pointer;
-    
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 1em;
+	transition-duration: 0.15s;
+	background-color: black;
+	border: 2px solid rgb(34, 249, 27);
+	color: rgb(34, 249, 27);
+	padding: 1em 2em;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 1em;
 }
 
 .nonGameButtons:hover {
-    background-color: rgb(34, 249, 27); /* Green */
-    color: white;
+	background-color: rgb(34, 249, 27); /* Green */
+	color: white;
 }
 
-
 /* ==== Spiel ==== */
-canvas {	
+canvas {
 	image-rendering: -moz-crisp-edges;
 	image-rendering: -webkit-crisp-edges;
 	image-rendering: pixelated;
@@ -101,25 +95,23 @@ canvas {
 	.gameButton {
 		display: none;
 	}
-
 }
-/* @media not all and (hover: none) */
+/* @media (hover: none) */
 @media not all and (hover : hover) {
 	.gameButton {
 		display: initial;
-
-		height: 15em;
-		width: 15em;
+		height: 16em;
+		width: 16em;
 	}
 	#gameButtons {
-		width: 100%;	
+		width: 100%;
 	}
-
-	.buttonsLeftSide {
-		float: left;
-		/*margin-right: 5em;*/
-	}
-	.buttonsRightSide {
-		float: right;
+	#game img {
+		
+		margin: auto;
+		margin-top: 0.8em;
+		margin-right: 1em;
+		width: 16em;
+		height: 16em;
 	}
 }

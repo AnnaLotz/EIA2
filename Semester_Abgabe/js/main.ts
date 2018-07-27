@@ -61,7 +61,7 @@ namespace SpaceInvader {
 
         createListener();
         createObjects();
-        window.setTimeout(createUfo, 6000);
+        window.setTimeout(createUfo, 8000);
         window.setTimeout(enemyShoot, 1000);
         animate();
 
@@ -157,7 +157,7 @@ namespace SpaceInvader {
 
     function createUfo(): void {
         let timeToNextUfo: number;
-        timeToNextUfo = Math.random() * (15000 - 10000) + 10000; // Math.random() * (max - min) + min    
+        timeToNextUfo = Math.random() * (20000 - 11000) + 11000; // Math.random() * (max - min) + min    
         window.setTimeout(createUfo, timeToNextUfo);
 
         let ufo: Ufo = new Ufo();
