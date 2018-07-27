@@ -10,7 +10,7 @@ namespace SpaceInvader {
     let breite: number = <number>(window.innerWidth);
     let hoehe: number = <number>(window.innerHeight);
 
-    export let movingObjects: MovingObject[] = [];
+    export let everyLaser: EveryLaser[] = [];
     export let enemies: Enemy[] = [];
     export let ufos: Ufo[] = [];
     export let player: Player;
@@ -144,11 +144,11 @@ namespace SpaceInvader {
     function enemyShoot(): void {
         let timeToNextEnemyShoot: number;
         //timeToNextEnemyShoot = Math.random() * (500 - 100) + 100;
-        timeToNextEnemyShoot = Math.random() * (5000 - 1000) + 1000; // Math.random() * (max - min) + min    
+        timeToNextEnemyShoot = Math.random() * (4000 - 800) + 800; // Math.random() * (max - min) + min    
         window.setTimeout(enemyShoot, timeToNextEnemyShoot);
 
         let enemyLaser: EnemyLaser = new EnemyLaser();
-        movingObjects.push(enemyLaser);
+        everyLaser.push(enemyLaser);
         let j: number = Math.floor(Math.random() * enemies.length);
         let enemy: Enemy = <Enemy>enemies[j];
         enemyLaser.getToShootFrom(enemy);
@@ -157,7 +157,7 @@ namespace SpaceInvader {
 
     function createUfo(): void {
         let timeToNextUfo: number;
-        timeToNextUfo = Math.random() * (20000 - 11000) + 11000; // Math.random() * (max - min) + min    
+        timeToNextUfo = Math.random() * (25000 - 13000) + 13000; // Math.random() * (max - min) + min    
         window.setTimeout(createUfo, timeToNextUfo);
 
         let ufo: Ufo = new Ufo();
@@ -186,7 +186,7 @@ namespace SpaceInvader {
     export function shoot(): void {
         if (player.bullets < 1) {
             let laser: Laser = new Laser();
-            movingObjects.push(laser);
+            everyLaser.push(laser);
         }
     } //shoot zu
 
@@ -201,9 +201,9 @@ namespace SpaceInvader {
             ufos[i].checkPosition();
         }
 
-        for (let i: number = 0; i < movingObjects.length; i++) {
-            movingObjects[i].move();
-            movingObjects[i].checkPosition();
+        for (let i: number = 0; i < everyLaser.length; i++) {
+            everyLaser[i].move();
+            everyLaser[i].checkPosition();
         }
 
         for (let i: number = 0; i < enemies.length; i++) {
@@ -230,8 +230,8 @@ namespace SpaceInvader {
         for (let i: number = 0; i < enemies.length; i++) {
             enemies[i].draw();
         }
-        for (let i: number = 0; i < movingObjects.length; i++) {
-            movingObjects[i].draw();
+        for (let i: number = 0; i < everyLaser.length; i++) {
+            everyLaser[i].draw();
         }
     } //drawObjects zu
 

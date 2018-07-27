@@ -19,7 +19,7 @@ var SpaceInvader;
             }
         }
         changeSpeed() {
-            this.speed += 0.05;
+            this.speed += 0.1;
         }
         givePoints() {
             SpaceInvader.score += this.points;

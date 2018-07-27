@@ -1,7 +1,8 @@
 var SpaceInvader;
 (function (SpaceInvader) {
-    class EnemyLaser {
+    class EnemyLaser extends SpaceInvader.EveryLaser {
         constructor() {
+            super();
             //
         } //constructor zu
         getToShootFrom(_enemy) {
@@ -20,10 +21,6 @@ var SpaceInvader;
                 }
             }
         } //checkPosition zu
-        destroyLaser() {
-            let index = SpaceInvader.movingObjects.indexOf(this);
-            SpaceInvader.movingObjects.splice(index, 1);
-        } //destroy laser zu
         draw() {
             SpaceInvader.crc2.beginPath();
             SpaceInvader.crc2.strokeStyle = "rgba(0,0,0,0)";

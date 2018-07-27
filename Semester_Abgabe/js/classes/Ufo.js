@@ -28,7 +28,7 @@ var SpaceInvader;
             }
         }
         destroyUfo() {
-            let index = SpaceInvader.movingObjects.indexOf(this);
+            let index = SpaceInvader.ufos.indexOf(this);
             SpaceInvader.ufos.splice(index, 1);
         }
         draw() {

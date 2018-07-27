@@ -22,7 +22,7 @@ var SpaceInvader;
             window.setTimeout(SpaceInvader.showLostScreen, 200);
         }
         won() {
-            window.setTimeout(SpaceInvader.showWinScreen, 400);
+            window.setTimeout(SpaceInvader.showWinScreen, 300);
         }
         move() {
             if (this.movingDirection < 0) {

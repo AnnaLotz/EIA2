@@ -30,7 +30,7 @@ namespace SpaceInvader {
         }
 
         changeSpeed(): void {
-            this.speed += 0.05;
+            this.speed += 0.1;
         }
 
         givePoints(): void {

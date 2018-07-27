@@ -1,11 +1,11 @@
 namespace SpaceInvader {
 
-    export class EnemyLaser {
-        x: number;
-        y: number;
-        enemy: Enemy; //?
+    export class EnemyLaser extends EveryLaser {
+        
+        enemy: Enemy;
 
         constructor() {
+            super();
             //
         } //constructor zu
 
@@ -31,10 +31,6 @@ namespace SpaceInvader {
 
         } //checkPosition zu
 
-        destroyLaser(): void {
-            let index: number = movingObjects.indexOf(this);
-            movingObjects.splice(index, 1);
-        } //destroy laser zu
 
         draw(): void {
             crc2.beginPath();

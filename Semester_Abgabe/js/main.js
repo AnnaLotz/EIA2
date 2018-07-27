@@ -6,7 +6,7 @@ var SpaceInvader;
     let imgData;
     let breite = (window.innerWidth);
     let hoehe = (window.innerHeight);
-    SpaceInvader.movingObjects = [];
+    SpaceInvader.everyLaser = [];
     SpaceInvader.enemies = [];
     SpaceInvader.ufos = [];
     SpaceInvader.score = 0;
@@ -111,17 +111,17 @@ var SpaceInvader;
     function enemyShoot() {
         let timeToNextEnemyShoot;
         //timeToNextEnemyShoot = Math.random() * (500 - 100) + 100;
-        timeToNextEnemyShoot = Math.random() * (5000 - 1000) + 1000; // Math.random() * (max - min) + min    
+        timeToNextEnemyShoot = Math.random() * (4000 - 800) + 800; // Math.random() * (max - min) + min    
         window.setTimeout(enemyShoot, timeToNextEnemyShoot);
         let enemyLaser = new SpaceInvader.EnemyLaser();
-        SpaceInvader.movingObjects.push(enemyLaser);
+        SpaceInvader.everyLaser.push(enemyLaser);
         let j = Math.floor(Math.random() * SpaceInvader.enemies.length);
         let enemy = SpaceInvader.enemies[j];
         enemyLaser.getToShootFrom(enemy);
     } //enemyShoot zu
     function createUfo() {
         let timeToNextUfo;
-        timeToNextUfo = Math.random() * (20000 - 11000) + 11000; // Math.random() * (max - min) + min    
+        timeToNextUfo = Math.random() * (25000 - 13000) + 13000; // Math.random() * (max - min) + min    
         window.setTimeout(createUfo, timeToNextUfo);
         let ufo = new SpaceInvader.Ufo();
         SpaceInvader.ufos.push(ufo);
@@ -142,7 +142,7 @@ var SpaceInvader;
     function shoot() {
         if (SpaceInvader.player.bullets < 1) {
             let laser = new SpaceInvader.Laser();
-            SpaceInvader.movingObjects.push(laser);
+            SpaceInvader.everyLaser.push(laser);
         }
     }
     SpaceInvader.shoot = shoot; //shoot zu
@@ -153,9 +153,9 @@ var SpaceInvader;
             SpaceInvader.ufos[i].move();
             SpaceInvader.ufos[i].checkPosition();
         }
-        for (let i = 0; i < SpaceInvader.movingObjects.length; i++) {
-            SpaceInvader.movingObjects[i].move();
-            SpaceInvader.movingObjects[i].checkPosition();
+        for (let i = 0; i < SpaceInvader.everyLaser.length; i++) {
+            SpaceInvader.everyLaser[i].move();
+            SpaceInvader.everyLaser[i].checkPosition();
         }
         for (let i = 0; i < SpaceInvader.enemies.length; i++) {
             SpaceInvader.enemies[i].move();
@@ -178,8 +178,8 @@ var SpaceInvader;
         for (let i = 0; i < SpaceInvader.enemies.length; i++) {
             SpaceInvader.enemies[i].draw();
         }
-        for (let i = 0; i < SpaceInvader.movingObjects.length; i++) {
-            SpaceInvader.movingObjects[i].draw();
+        for (let i = 0; i < SpaceInvader.everyLaser.length; i++) {
+            SpaceInvader.everyLaser[i].draw();
         }
     } //drawObjects zu
 })(SpaceInvader || (SpaceInvader = {})); // namespace zu

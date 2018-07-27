@@ -33,7 +33,7 @@ namespace SpaceInvader {
         }
 
         public won(): void {
-            window.setTimeout(showWinScreen, 400);
+            window.setTimeout(showWinScreen, 300);
         }
 
         public move(): void {

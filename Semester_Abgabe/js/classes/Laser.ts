@@ -1,10 +1,9 @@
 namespace SpaceInvader {
 
-    export class Laser {
-        x: number;
-        y: number;
+    export class Laser extends EveryLaser {
 
         constructor() {
+            super();
             this.x = player.x - 1;
             this.y = player.y;
             player.bullets += 1;
@@ -25,7 +24,7 @@ namespace SpaceInvader {
                         totalEnemies--;
                         this.destroyLaser();
 
-                        //this.changeEnemySpeed();
+                        //this.changeEnemySpeed(); //erzeugt noch bugs 
                     }
                 }
             }
@@ -47,16 +46,14 @@ namespace SpaceInvader {
         changeEnemySpeed(): void {
             for (let j: number = 0; j < enemies.length; j++) {
                 enemies[j].changeSpeed();
-            } //fallen wieder alle komisch runter damit    
+            }  
         }
 
 
         destroyLaser(): void {
-            let index: number = movingObjects.indexOf(this);
-            movingObjects.splice(index, 1);
+            let index: number = everyLaser.indexOf(this);
+            everyLaser.splice(index, 1);
             player.bullets -= 1;
-
-
         } //destroy laser zu
 
         draw(): void {

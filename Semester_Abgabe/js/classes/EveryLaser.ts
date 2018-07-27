@@ -1,8 +1,8 @@
 namespace SpaceInvader {
-    export class MovingObject {
+    export class EveryLaser {
         x: number;
         y: number;
-
+        
         draw(): void {
             //    
         }
@@ -14,6 +14,11 @@ namespace SpaceInvader {
         checkPosition(): void {
             //
         }
+        
+        destroyLaser(): void {
+            let index: number = everyLaser.indexOf(this);
+            everyLaser.splice(index, 1);
+        } //destroy laser zu
 
     } //class MovingObjects zu
 } //namespace zu

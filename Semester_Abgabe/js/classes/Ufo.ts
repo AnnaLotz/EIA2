@@ -33,7 +33,7 @@ namespace SpaceInvader {
         }
 
         destroyUfo(): void {
-            let index: number = movingObjects.indexOf(this);
+            let index: number = ufos.indexOf(this);
             ufos.splice(index, 1);
         }
 

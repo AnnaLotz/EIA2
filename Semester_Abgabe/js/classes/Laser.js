@@ -1,7 +1,8 @@
 var SpaceInvader;
 (function (SpaceInvader) {
-    class Laser {
+    class Laser extends SpaceInvader.EveryLaser {
         constructor() {
+            super();
             this.x = SpaceInvader.player.x - 1;
             this.y = SpaceInvader.player.y;
             SpaceInvader.player.bullets += 1;
@@ -35,11 +36,11 @@ var SpaceInvader;
         changeEnemySpeed() {
             for (let j = 0; j < SpaceInvader.enemies.length; j++) {
                 SpaceInvader.enemies[j].changeSpeed();
-            } //fallen wieder alle komisch runter damit    
+            }
         }
         destroyLaser() {
-            let index = SpaceInvader.movingObjects.indexOf(this);
-            SpaceInvader.movingObjects.splice(index, 1);
+            let index = SpaceInvader.everyLaser.indexOf(this);
+            SpaceInvader.everyLaser.splice(index, 1);
             SpaceInvader.player.bullets -= 1;
         } //destroy laser zu
         draw() {
