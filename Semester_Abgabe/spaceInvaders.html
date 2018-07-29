@@ -9,14 +9,13 @@
 <html lang="en">
 <head>
 <title>Anna's Space Invaders</title>
-<meta name="viewport" content="user-scalable=no"/>
+<meta name="viewport" content="user-scalable=no"/> <!-- Damit der User am Handy nicht ausversehen ranzoomt, da diese Funktion eh nicht benötigt wird -->
 <meta charset="utf-8" />
 
 <link rel='shortcut icon' type='image/x-icon' href='pictures/favicon.ico' />
 <link rel="stylesheet" type="text/css" href="spaceInvaders.css">
 <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
 <!-- SKRIPTE VERLINKEN!!!!!! erst superklasse, dann subklassen, dann main.js -->
-
 <script src="js/classes/EveryLaser.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/classes/Enemy.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/classes/Enemy1.js" type="text/javascript" charset="utf-8"></script>
@@ -30,15 +29,13 @@
 <script src="js/HandleListener.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/main.js" type="text/javascript" charset="utf-8"></script>
 
-
 </head>
 
 <body>
 
 	<div id="startMenue">
 		<h1>Space Invaders</h1>
-		<hr>
-		
+		<hr>		
 		<div id="aliens">
 			<img src="pictures/Alien1.png" alt="Alien 1"> = 10 pts <br>
 			<img src="pictures/Alien2.png" alt="Alien 2"> = 20 pts <br>
@@ -48,11 +45,11 @@
 		<div id="controlls">
 			<p>Move with Left and Right Arrow Key</p>
 			<p>Shoot with Space Key</p>
-		</div>
-		
+		</div>		
 		<div><p>Insert Coins to Play</p></div>
 		<button type="button" id="startButton" class="nonGameButtons">Start Game</button>
 	</div>
+
 
 	<div id="game">
 		<canvas id="gameCanvas" width=525 height=600>Your browser does not support the HTML5 Canvas</canvas>
@@ -63,29 +60,27 @@
 		</div>
 	</div>
 	
+	
 	<div id="gameOver">
 		<h2>Game<br>over</h2>
 		<div class="yourScore"></div>
-
 		<div>
 		<a href="javascript:window.location.href=window.location.href">
 			<button type="button" id="playAgain" class="nonGameButtons">Try Again</button>
 		</a>
-		</div>
-	
+		</div>	
 	</div>
+		
 		
 	<div id="win">		
 		<h2>You won</h2>
 		<p>Congratulations!</p>
 		<div class="yourScore"></div>
-
 		<div>
 		<a href="javascript:window.location.href=window.location.href">
 			<button type="button" id="playAgain" class="nonGameButtons">Play Again</button>
 		</a>
-		</div>
-	
+		</div>	
 	</div>
 	
 </body>

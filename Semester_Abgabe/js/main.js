@@ -7,17 +7,17 @@
 var SpaceInvader;
 (function (SpaceInvader) {
     window.addEventListener("load", init);
-    let node;
     let startButton;
     let imgData;
     let breite = (window.innerWidth);
     let hoehe = (window.innerHeight);
+    let node;
+    let wroteScore = false;
     SpaceInvader.everyLaser = [];
     SpaceInvader.enemies = [];
     SpaceInvader.ufos = [];
     SpaceInvader.score = 0;
     SpaceInvader.totalEnemies = 0;
-    let wroteScore = false;
     function init(_event) {
         document.getElementById("game").style.display = "none";
         document.getElementById("gameOver").style.display = "none";
@@ -116,6 +116,7 @@ var SpaceInvader;
             SpaceInvader.player.lost();
         }
     } //animate zu
+    //in HandleListener.js ausgel�st
     function shoot() {
         if (SpaceInvader.player.bullets < 1) {
             let laser = new SpaceInvader.Laser();
@@ -159,6 +160,7 @@ var SpaceInvader;
             SpaceInvader.everyLaser[i].draw();
         }
     } //drawObjects zu
+    //wird in Player.js ausgel�st
     function showWinScreen() {
         document.getElementById("game").style.display = "none";
         document.getElementById("win").style.display = "initial";
@@ -166,6 +168,7 @@ var SpaceInvader;
         writeScoreToHTML();
     }
     SpaceInvader.showWinScreen = showWinScreen; //showWinScreen zu
+    //wird in Player.js ausgel�st
     function showLostScreen() {
         document.getElementById("game").style.display = "none";
         document.getElementById("gameOver").style.display = "initial";

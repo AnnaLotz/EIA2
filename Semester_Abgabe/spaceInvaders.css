@@ -14,7 +14,7 @@ html {
 	overflow: hidden;
 }
 
-* {
+* { /* damit der pixel-stil gut skaliert werden kann und nicht verschwommen wird, auch bei hoher vergrößerung*/
 	image-rendering: -moz-crisp-edges;
 	image-rendering: -webkit-crisp-edges;
 	image-rendering: pixelated;

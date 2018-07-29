@@ -9,13 +9,15 @@ namespace SpaceInvader {
 
     window.addEventListener("load", init);
 
-    let node: HTMLDivElement;
+
     let startButton: HTMLButtonElement;
     export let crc2: CanvasRenderingContext2D;
     export let canvas: HTMLCanvasElement;
     let imgData: ImageData;
     let breite: number = <number>(window.innerWidth);
     let hoehe: number = <number>(window.innerHeight);
+    let node: HTMLDivElement;
+    let wroteScore: boolean = false;
 
     export let everyLaser: EveryLaser[] = [];
     export let enemies: Enemy[] = [];
@@ -23,7 +25,7 @@ namespace SpaceInvader {
     export let player: Player;
     export let score: number = 0;
     export let totalEnemies: number = 0;
-    let wroteScore: boolean = false;
+
 
     function init(_event: Event): void {
 
@@ -109,7 +111,7 @@ namespace SpaceInvader {
         }
     } //createObjects zu
 
-    
+
     //nach random Zeit einen EnemyLaser erzeugen und von einem zufälligen Enemy aus schießen
     function enemyShoot(): void {
         let timeToNextEnemyShoot: number;
@@ -123,7 +125,7 @@ namespace SpaceInvader {
         enemyLaser.getToShootFrom(enemy);
     } //enemyShoot zu
 
-    
+
     //nach Random Zeit ein Ufo erzeugen
     function createUfo(): void {
         let timeToNextUfo: number;
@@ -153,6 +155,7 @@ namespace SpaceInvader {
     } //animate zu
 
 
+    //in HandleListener.js ausgelöst
     export function shoot(): void {
         if (player.bullets < 1) {
             let laser: Laser = new Laser();
@@ -206,6 +209,7 @@ namespace SpaceInvader {
     } //drawObjects zu
 
 
+    //wird in Player.js ausgelöst
     export function showWinScreen(): void {
         document.getElementById("game").style.display = "none";
         document.getElementById("win").style.display = "initial";
@@ -213,7 +217,8 @@ namespace SpaceInvader {
         writeScoreToHTML();
     } //showWinScreen zu
 
-
+    
+    //wird in Player.js ausgelöst
     export function showLostScreen(): void {
         document.getElementById("game").style.display = "none";
         document.getElementById("gameOver").style.display = "initial";
