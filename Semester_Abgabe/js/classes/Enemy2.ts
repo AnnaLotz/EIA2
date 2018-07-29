@@ -1,7 +1,13 @@
+/*  Aufgabe: Abschlussaufgabe - Space Invaders
+    Name: Anna Lotz
+    Matrikel: 257449
+    Datum: 29.07.18
+    
+    Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.*/
+
 namespace SpaceInvader {
 
     export class Enemy2 extends Enemy {
-
 
         constructor() {
             super();
@@ -9,8 +15,7 @@ namespace SpaceInvader {
             this.width = 18;
         }
 
-
-        draw(): void {
+        public draw(): void {
             crc2.beginPath();
             crc2.strokeStyle = "rgba(0,0,0,0)";
             crc2.fillStyle = "rgb(0, 252, 247)"; //blue
@@ -70,9 +75,7 @@ namespace SpaceInvader {
             crc2.fillStyle = "rgb(0, 0, 0)"; //black
             crc2.fillRect(this.x - 6, this.y - 15 , 3, 3);
             crc2.fillRect(this.x + 6, this.y - 15 , 3, 3);
-
         }
-
 
     } //class enemy zu
 

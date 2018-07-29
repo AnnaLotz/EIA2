@@ -1,3 +1,9 @@
+/*  Aufgabe: Abschlussaufgabe - Space Invaders
+    Name: Anna Lotz
+    Matrikel: 257449
+    Datum: 29.07.18
+    
+    Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.*/
 var SpaceInvader;
 (function (SpaceInvader) {
     class EnemyLaser extends SpaceInvader.EveryLaser {
@@ -5,6 +11,7 @@ var SpaceInvader;
             super();
             //
         } //constructor zu
+        //Ursprungsposition des gegnerischen Lasers definieren �ber den mitgegebenen enemy aus dem array
         getToShootFrom(_enemy) {
             this.enemy = _enemy;
             this.x = this.enemy.x - 1;
@@ -14,6 +21,7 @@ var SpaceInvader;
             if (this.y >= SpaceInvader.canvas.height) {
                 this.destroyLaser();
             }
+            //abfrage ob Spieler getroffen wird
             if (this.x <= SpaceInvader.player.x + 16 && this.x >= SpaceInvader.player.x - 16) {
                 if (this.y <= SpaceInvader.player.y + 18 && this.y >= SpaceInvader.player.y + 7) {
                     SpaceInvader.player.isHit();

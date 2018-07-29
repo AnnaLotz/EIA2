@@ -1,3 +1,9 @@
+/*  Aufgabe: Abschlussaufgabe - Space Invaders
+    Name: Anna Lotz
+    Matrikel: 257449
+    Datum: 29.07.18
+    
+    Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.*/
 var SpaceInvader;
 (function (SpaceInvader) {
     class Player {
@@ -9,12 +15,14 @@ var SpaceInvader;
             this.bullets = 0;
         }
         checkIfHit() {
+            //check ob ein Enemy den Spieler bez�hlich des y Werts erreicht hat
             for (let i = 0; i < SpaceInvader.enemies.length; i++) {
                 if (this.y <= SpaceInvader.enemies[i].y) {
                     this.lost();
                 }
             }
         }
+        //ein Leben abziehen wenn getroffen wurde
         isHit() {
             this.lives--;
         }
@@ -37,14 +45,12 @@ var SpaceInvader;
                 this.x = SpaceInvader.canvas.width - 29;
             else
                 this.x += 2;
-            //                this.x += 3;
         }
         moveLeft() {
             if (this.x < 30)
                 this.x = 29;
             else
                 this.x -= 2;
-            //                this.x -= 3;
         }
         draw() {
             SpaceInvader.crc2.beginPath();

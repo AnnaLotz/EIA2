@@ -1,25 +1,34 @@
+/*  Aufgabe: Abschlussaufgabe - Space Invaders
+    Name: Anna Lotz
+    Matrikel: 257449
+    Datum: 29.07.18
+    
+    Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.*/
+
 namespace SpaceInvader {
 
     export class EnemyLaser extends EveryLaser {
         
-        enemy: Enemy;
+        private enemy: Enemy;
 
         constructor() {
             super();
             //
         } //constructor zu
-
-        getToShootFrom(_enemy: Enemy): void {
+        
+        //Ursprungsposition des gegnerischen Lasers definieren über den mitgegebenen enemy aus dem array
+        public getToShootFrom(_enemy: Enemy): void {
             this.enemy = _enemy;
             this.x = this.enemy.x - 1;
             this.y = this.enemy.y;
         }
 
-        checkPosition(): void {
+        public checkPosition(): void {
             if (this.y >= canvas.height) {
                 this.destroyLaser();
             }
             
+            //abfrage ob Spieler getroffen wird
             if (this.x <= player.x + 16 && this.x >= player.x - 16) {
                 if (this.y <= player.y + 18 && this.y >= player.y + 7) {
                     player.isHit();
@@ -27,12 +36,9 @@ namespace SpaceInvader {
 
                 }
             }
-
-
         } //checkPosition zu
 
-
-        draw(): void {
+        public draw(): void {
             crc2.beginPath();
             crc2.strokeStyle = "rgba(0,0,0,0)";
             crc2.fillStyle = "rgb(255, 255, 255)"; //white
@@ -50,7 +56,7 @@ namespace SpaceInvader {
             crc2.fill();
         }
 
-        move(): void {
+        public move(): void {
             this.y += 4;
         }
 

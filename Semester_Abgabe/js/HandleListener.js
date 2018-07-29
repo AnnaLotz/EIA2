@@ -1,3 +1,9 @@
+/*  Aufgabe: Abschlussaufgabe - Space Invaders
+    Name: Anna Lotz
+    Matrikel: 257449
+    Datum: 29.07.18
+    
+    Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.*/
 var SpaceInvader;
 (function (SpaceInvader) {
     function createListener() {
@@ -31,6 +37,7 @@ var SpaceInvader;
         SpaceInvader.shoot();
     }
     SpaceInvader.handleShootButton = handleShootButton;
+    //wenn irgendeine Taste ged�ckt wird: �ber switch abfragen, welche Taste und somit jeweilige Funktion aufrufen bzw. Wert �ndern
     function handleKeyDown(_event) {
         switch (_event.keyCode) {
             case 32:
@@ -47,6 +54,7 @@ var SpaceInvader;
         }
     }
     SpaceInvader.handleKeyDown = handleKeyDown; //handleKeyDown zu
+    //wenn irgendeine Taste hochgeht: die entsprechenden Tasten abfragen und die Bewegung stoppen
     function handleKeyUp(_event) {
         switch (_event.keyCode) {
             case 37: //left arrow

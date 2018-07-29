@@ -1,22 +1,27 @@
+/*  Aufgabe: Abschlussaufgabe - Space Invaders
+    Name: Anna Lotz
+    Matrikel: 257449
+    Datum: 29.07.18
+    
+    Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.*/
+
 namespace SpaceInvader {
 
     export class Enemy {
-        x: number;
-        y: number;
-        points: number;
-        health: number;
-        speed: number;
-        direction: number; // 1 -> to right, -1 -> to left
-        width: number;
+        public x: number;
+        public y: number;
+        protected points: number;
+        protected speed: number;
+        public direction: number; // 1 -> to right, -1 -> to left
+        public width: number;
 
 
         constructor() {
-            this.health = 1;
             this.speed = 0.4;
             this.direction = 1;
         }
 
-        checkPositionLeftOrRight(): boolean {
+        public checkPositionLeftOrRight(): boolean {
 
             //check ob enemy ganz rechts ...
             if (this.x > canvas.width - 30) {
@@ -29,20 +34,19 @@ namespace SpaceInvader {
             }
         }
 
-        changeSpeed(): void {
+        public changeSpeed(): void {
             this.speed += 0.1;
         }
 
-        givePoints(): void {
+        public givePoints(): void {
             score += this.points;
         }
 
-        move(): void {
+        public move(): void {
             this.x += this.speed * this.direction;
         }
 
-
-        draw(): void {
+        public draw(): void {
             //
         }
 

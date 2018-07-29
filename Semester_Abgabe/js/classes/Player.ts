@@ -1,11 +1,18 @@
+/*  Aufgabe: Abschlussaufgabe - Space Invaders
+    Name: Anna Lotz
+    Matrikel: 257449
+    Datum: 29.07.18
+    
+    Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.*/
+
 namespace SpaceInvader {
 
     export class Player {
-        x: number;
-        y: number;
-        lives: number;
-        movingDirection: number;
-        bullets: number;
+        public x: number;
+        public y: number;
+        public lives: number;
+        public movingDirection: number;
+        public bullets: number;
 
         constructor() {
             this.x = 250;
@@ -16,15 +23,17 @@ namespace SpaceInvader {
         }
 
         public checkIfHit(): void {
-
+            
+            //check ob ein Enemy den Spieler bezühlich des y Werts erreicht hat
             for (let i: number = 0; i < enemies.length; i++) {
                 if (this.y <= enemies[i].y) {
                     this.lost();
                 }
-            }           
+            }
         }
         
-        isHit(): void {
+        //ein Leben abziehen wenn getroffen wurde
+        public isHit(): void {
             this.lives--;
         }
 
@@ -49,7 +58,6 @@ namespace SpaceInvader {
                 this.x = canvas.width - 29;
             else
                 this.x += 2;
-//                this.x += 3;
         }
 
         private moveLeft(): void {
@@ -57,10 +65,7 @@ namespace SpaceInvader {
                 this.x = 29;
             else
                 this.x -= 2;
-//                this.x -= 3;
         }
-
-
 
         public draw(): void {
             crc2.beginPath();
@@ -90,7 +95,7 @@ namespace SpaceInvader {
             crc2.fill();
 
             crc2.font = "21px Arial";
-            crc2.fillText("SCORE: " + score, 20, 37);          
+            crc2.fillText("SCORE: " + score, 20, 37);
             crc2.fillText("Lives: " + this.lives, 21, 581); //lives
         }
 

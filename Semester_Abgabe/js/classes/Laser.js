@@ -1,3 +1,9 @@
+/*  Aufgabe: Abschlussaufgabe - Space Invaders
+    Name: Anna Lotz
+    Matrikel: 257449
+    Datum: 29.07.18
+    
+    Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.*/
 var SpaceInvader;
 (function (SpaceInvader) {
     class Laser extends SpaceInvader.EveryLaser {
@@ -11,6 +17,7 @@ var SpaceInvader;
             if (this.y <= 0) {
                 this.destroyLaser();
             }
+            //alle Gegner durchgehen, ob einer den x und y Werten ( + bestimmten Radius) des Lasers entspricht. Dann Punkte vergeben, Enemy und laser zerst�ren
             for (let i = 0; i < SpaceInvader.enemies.length; i++) {
                 if (this.y <= SpaceInvader.enemies[i].y + 1 && this.y >= SpaceInvader.enemies[i].y - 24) {
                     if (this.x <= SpaceInvader.enemies[i].x + SpaceInvader.enemies[i].width && this.x >= SpaceInvader.enemies[i].x - SpaceInvader.enemies[i].width) {
@@ -22,6 +29,7 @@ var SpaceInvader;
                     }
                 }
             }
+            //Gleiches f�r das Ufo durchgehen
             for (let i = 0; i < SpaceInvader.ufos.length; i++) {
                 if (this.y <= SpaceInvader.ufos[i].y && this.y >= SpaceInvader.ufos[i].y - 21) {
                     if (this.x <= SpaceInvader.ufos[i].x + SpaceInvader.ufos[i].width && this.x >= SpaceInvader.ufos[i].x - SpaceInvader.ufos[i].width) {

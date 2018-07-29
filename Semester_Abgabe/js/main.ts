@@ -1,3 +1,10 @@
+/*  Aufgabe: Abschlussaufgabe - Space Invaders
+    Name: Anna Lotz
+    Matrikel: 257449
+    Datum: 29.07.18
+    
+    Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.*/
+
 namespace SpaceInvader {
 
     window.addEventListener("load", init);
@@ -17,18 +24,6 @@ namespace SpaceInvader {
     export let score: number = 0;
     export let totalEnemies: number = 0;
     let wroteScore: boolean = false;
-
-
-    //    function init(_event: Event): void {
-    //        //init zum testen von game over and won screen
-    //
-    //        document.getElementById("startMenue").style.display = "none";
-    //        document.getElementById("game").style.display = "none";
-    //        document.getElementById("gameOver").style.display = "none";
-    //        document.getElementById("win").style.display = "initial";
-    //
-    //
-    //    } //init zu
 
     function init(_event: Event): void {
 
@@ -50,50 +45,25 @@ namespace SpaceInvader {
         canvas = document.getElementsByTagName("canvas")[0];
         crc2 = canvas.getContext("2d");
 
+        //Anpassen der Canvas größe an den gegebenen Bildschirm
         if (breite > hoehe) {
             canvas.style.setProperty("height", hoehe + "px");
         } else if (hoehe > breite) {
             canvas.style.setProperty("width", breite + "px");
         }
 
-        drawBackground();
+        drawBackground(); // -> drawBackground.js
         imgData = crc2.getImageData(0, 0, canvas.width, canvas.height);
 
-        createListener();
+        createListener(); // -> createListener.js , für alle Listener zum bewegen/schießen
         createObjects();
-        window.setTimeout(createUfo, 8000);
+        window.setTimeout(createUfo, 10000);
         window.setTimeout(enemyShoot, 1000);
         animate();
 
     } //startGame zu
 
-
-    export function showWinScreen(): void {
-        document.getElementById("game").style.display = "none";
-        document.getElementById("win").style.display = "initial";
-        node = <HTMLDivElement>document.getElementsByClassName("yourScore")[1];
-        writeScoreToHTML();
-    } //showWinScreen zu
-
-
-    export function showLostScreen(): void {
-        document.getElementById("game").style.display = "none";
-        document.getElementById("gameOver").style.display = "initial";
-        node = <HTMLDivElement>document.getElementsByClassName("yourScore")[0];
-        writeScoreToHTML();
-    } //showLostScreen zu
-
-
-    function writeScoreToHTML(): void {
-        if (!wroteScore) {
-            let content: string = "";
-            content = "Your score: " + score;
-            node.innerHTML += content;
-            wroteScore = true;
-        }
-    } //writeScoreToHTML zu
-
-
+    //alle anfänglichen Objekte erzeugen
     function createObjects(): void {
 
         player = new Player();
@@ -137,13 +107,12 @@ namespace SpaceInvader {
             enemies.push(enemy);
             totalEnemies++;
         }
-
     } //createObjects zu
 
-
+    
+    //nach random Zeit einen EnemyLaser erzeugen und von einem zufälligen Enemy aus schießen
     function enemyShoot(): void {
         let timeToNextEnemyShoot: number;
-        //timeToNextEnemyShoot = Math.random() * (500 - 100) + 100;
         timeToNextEnemyShoot = Math.random() * (4000 - 800) + 800; // Math.random() * (max - min) + min    
         window.setTimeout(enemyShoot, timeToNextEnemyShoot);
 
@@ -154,7 +123,8 @@ namespace SpaceInvader {
         enemyLaser.getToShootFrom(enemy);
     } //enemyShoot zu
 
-
+    
+    //nach Random Zeit ein Ufo erzeugen
     function createUfo(): void {
         let timeToNextUfo: number;
         timeToNextUfo = Math.random() * (25000 - 13000) + 13000; // Math.random() * (max - min) + min    
@@ -203,7 +173,7 @@ namespace SpaceInvader {
 
         for (let i: number = 0; i < everyLaser.length; i++) {
             everyLaser[i].move();
-            everyLaser[i].checkPosition();
+            everyLaser[i].checkPosition(); //hier wird das Treffen der Gegner abgefragt, daher auch was passiert wenn etwas getroffen wird
         }
 
         for (let i: number = 0; i < enemies.length; i++) {
@@ -234,5 +204,31 @@ namespace SpaceInvader {
             everyLaser[i].draw();
         }
     } //drawObjects zu
+
+
+    export function showWinScreen(): void {
+        document.getElementById("game").style.display = "none";
+        document.getElementById("win").style.display = "initial";
+        node = <HTMLDivElement>document.getElementsByClassName("yourScore")[1];
+        writeScoreToHTML();
+    } //showWinScreen zu
+
+
+    export function showLostScreen(): void {
+        document.getElementById("game").style.display = "none";
+        document.getElementById("gameOver").style.display = "initial";
+        node = <HTMLDivElement>document.getElementsByClassName("yourScore")[0];
+        writeScoreToHTML();
+    } //showLostScreen zu
+
+
+    function writeScoreToHTML(): void {
+        if (!wroteScore) {
+            let content: string = "";
+            content = "Your score: " + score;
+            node.innerHTML += content;
+            wroteScore = true;
+        }
+    } //writeScoreToHTML zus
 
 } // namespace zu

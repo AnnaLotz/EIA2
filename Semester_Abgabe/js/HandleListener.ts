@@ -1,3 +1,10 @@
+/*  Aufgabe: Abschlussaufgabe - Space Invaders
+    Name: Anna Lotz
+    Matrikel: 257449
+    Datum: 29.07.18
+    
+    Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.*/
+
 namespace SpaceInvader {
 
     export function createListener(): void {
@@ -36,6 +43,7 @@ namespace SpaceInvader {
         shoot();
     }
 
+    //wenn irgendeine Taste gedückt wird: über switch abfragen, welche Taste und somit jeweilige Funktion aufrufen bzw. Wert ändern
     export function handleKeyDown(_event: KeyboardEvent): void {
 
         switch (_event.keyCode) {
@@ -53,7 +61,8 @@ namespace SpaceInvader {
                 break;
         }
     } //handleKeyDown zu
-
+    
+    //wenn irgendeine Taste hochgeht: die entsprechenden Tasten abfragen und die Bewegung stoppen
     export function handleKeyUp(_event: KeyboardEvent): void {
 
         switch (_event.keyCode) {

@@ -1,3 +1,9 @@
+/*  Aufgabe: Abschlussaufgabe - Space Invaders
+    Name: Anna Lotz
+    Matrikel: 257449
+    Datum: 29.07.18
+    
+    Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.*/
 var SpaceInvader;
 (function (SpaceInvader) {
     class Ufo extends SpaceInvader.Enemy {
@@ -6,8 +12,9 @@ var SpaceInvader;
             this.x = SpaceInvader.canvas.width + 25;
             this.y = 90;
             this.setPoints();
-            this.width = 24; //noch �ndern
+            this.width = 24;
         }
+        //random Punkte vergeben
         setPoints() {
             let p = Math.floor(Math.random() * 3);
             switch (p) {
