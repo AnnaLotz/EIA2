@@ -8,7 +8,7 @@ var SpaceInvader;
 (function (SpaceInvader) {
     class Enemy {
         constructor() {
-            this.speed = 0.4;
+            this.speed = 0.3;
             this.direction = 1;
         }
         checkPositionLeftOrRight() {
@@ -24,7 +24,7 @@ var SpaceInvader;
             }
         }
         changeSpeed() {
-            this.speed += 0.1;
+            this.speed += 0.03;
         }
         givePoints() {
             SpaceInvader.score += this.points;

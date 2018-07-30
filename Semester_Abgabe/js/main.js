@@ -145,6 +145,7 @@ var SpaceInvader;
                     SpaceInvader.enemies[i].y += 10;
                     SpaceInvader.enemies[i].direction *= -1;
                 }
+                break;
             }
         }
     } //moveObjects zu

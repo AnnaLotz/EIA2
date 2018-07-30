@@ -32,7 +32,7 @@ namespace SpaceInvader {
                         totalEnemies--;
                         this.destroyLaser();
 
-                        //this.changeEnemySpeed(); //erzeugt manchmal noch gamebreaking bugs 
+                        this.changeEnemySpeed(); //erzeugt manchmal noch gamebreaking bugs 
                     }
                 }
             }
@@ -79,7 +79,7 @@ namespace SpaceInvader {
         }
 
         public move(): void {
-            this.y -= 8;
+            this.y -= 11;
         }
 
     } //class laser zu

@@ -26,6 +26,7 @@ var SpaceInvader;
                         SpaceInvader.enemies.splice(index, 1);
                         SpaceInvader.totalEnemies--;
                         this.destroyLaser();
+                        this.changeEnemySpeed(); //erzeugt manchmal noch gamebreaking bugs 
                     }
                 }
             }
@@ -65,7 +66,7 @@ var SpaceInvader;
             SpaceInvader.crc2.fill();
         }
         move() {
-            this.y -= 8;
+            this.y -= 11;
         }
     }
     SpaceInvader.Laser = Laser; //class laser zu

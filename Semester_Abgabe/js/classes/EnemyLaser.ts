@@ -57,7 +57,7 @@ namespace SpaceInvader {
         }
 
         public move(): void {
-            this.y += 4;
+            this.y += 7;
         }
 
     } //class laser zu

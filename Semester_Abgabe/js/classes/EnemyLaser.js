@@ -47,7 +47,7 @@ var SpaceInvader;
             SpaceInvader.crc2.fill();
         }
         move() {
-            this.y += 4;
+            this.y += 7;
         }
     }
     SpaceInvader.EnemyLaser = EnemyLaser; //class laser zu

@@ -190,6 +190,7 @@ namespace SpaceInvader {
                     enemies[i].y += 10;
                     enemies[i].direction *= -1;
                 }
+                break;
             }
         }
     } //moveObjects zu
@@ -217,7 +218,7 @@ namespace SpaceInvader {
         writeScoreToHTML();
     } //showWinScreen zu
 
-    
+
     //wird in Player.js ausgelöst
     export function showLostScreen(): void {
         document.getElementById("game").style.display = "none";
