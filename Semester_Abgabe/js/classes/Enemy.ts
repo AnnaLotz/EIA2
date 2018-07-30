@@ -35,7 +35,7 @@ namespace SpaceInvader {
         }
 
         public changeSpeed(): void {
-            this.speed += 0.03;
+            this.speed += 0.02;
         }
 
         public givePoints(): void {
