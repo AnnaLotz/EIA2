@@ -1,0 +1,124 @@
+/*  Aufgabe: Abschlussaufgabe - Space Invaders
+    Name: Anna Lotz
+    Matrikel: 257449
+    Datum: 29.07.18
+    
+    Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.*/
+
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+
+html {
+	font-family: 'Press Start 2P', sans-serif;
+	color: white;
+	background-color: black;
+	overflow: hidden;
+}
+
+* { /* damit der pixel-stil gut skaliert werden kann und nicht verschwommen wird, auch bei hoher vergrößerung*/
+	image-rendering: -moz-crisp-edges;
+	image-rendering: -webkit-crisp-edges;
+	image-rendering: pixelated;
+	image-rendering: crisp-edges;
+}
+
+div {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	align-content: center;
+	overflow: hidden;
+	object-fit: contain;
+}
+
+button {
+	font-family: 'Press Start 2P', sans-serif;
+}
+
+/* ==== Menu ==== */
+#startMenue img {
+	height: 3.8em;
+}
+
+h1 {
+	color: rgb(34, 249, 27);
+}
+
+h2 {
+	color: rgb(255, 0, 0);
+	font-size: 5em;
+	margin: 1.2em;
+}
+
+.yourScore {
+	margin: 2em;
+	margin-bottom: 3em;
+}
+
+#controlls {
+	margin: 1.5em;
+	color: rgb(34, 249, 27);
+}
+
+a {
+	align-content: center;
+	text-align: center;
+}
+
+.nonGameButtons {
+	transition-duration: 0.15s;
+	background-color: black;
+	border: 2px solid rgb(34, 249, 27);
+	color: rgb(34, 249, 27);
+	padding: 1em 2em;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 1em;
+}
+
+.nonGameButtons:hover {
+	background-color: rgb(34, 249, 27); /* Green */
+	color: white;
+}
+
+/* ==== Spiel ==== */
+canvas {
+	image-rendering: -moz-crisp-edges;
+	image-rendering: -webkit-crisp-edges;
+	image-rendering: pixelated;
+	image-rendering: crisp-edges;
+	object-fit: contain;
+	display: block;
+	border: 10px;
+	border: white;
+	overflow: hidden;
+	margin: -0.8em;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+@media ( hover : hover) {
+	.gameButton {
+		display: none;
+	}
+}
+/* @media (hover: none) */
+@media not all and (hover : hover) {
+	.gameButton {
+		display: initial;
+		height: 16em;
+		width: 16em;
+	}
+	#gameButtons {
+		width: 100%;
+	}
+	#game img {
+		
+		margin: auto;
+		margin-top: 0.8em;
+		margin-right: 1em;
+		width: 16em;
+		height: 16em;
+	}
+}
