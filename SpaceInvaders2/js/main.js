@@ -13,7 +13,7 @@ var SpaceInvader2;
     let hoehe = (window.innerHeight);
     let node;
     let wroteScore = false;
-    let isFirstGame = true;
+    let round = 0;
     SpaceInvader2.everyLaser = [];
     SpaceInvader2.enemies = [];
     SpaceInvader2.ufos = [];
@@ -39,18 +39,23 @@ var SpaceInvader2;
         }
         SpaceInvader2.drawBackground(); // -> drawBackground.js
         imgData = SpaceInvader2.crc2.getImageData(0, 0, SpaceInvader2.canvas.width, SpaceInvader2.canvas.height);
-        createObjects();
-        if (isFirstGame == true) {
-            SpaceInvader2.createListener(); // -> createListener.js , f�r alle Listener zum bewegen/schie�en
-            window.setTimeout(createUfo, 10000);
-            window.setTimeout(enemyShoot, 1000);
-            isFirstGame = false;
-            animate();
-        }
-    } //startGame zu
-    //alle anf�nglichen Objekte erzeugen
-    function createObjects() {
+        createEnemies();
         SpaceInvader2.player = new SpaceInvader2.Player();
+        SpaceInvader2.createListener(); // -> createListener.js , f�r alle Listener zum bewegen/schie�en
+        window.setTimeout(createUfo, 10000);
+        window.setTimeout(enemyShoot, 1000);
+        animate();
+    } //startGame zu
+    function startNewGame() {
+        round++;
+        console.log(round);
+        createEnemies();
+        for (let i = 0; i < SpaceInvader2.enemies.length; i++) {
+            SpaceInvader2.enemies[i].speed += round * 0.3;
+        }
+    }
+    //alle anf�nglichen Objekte erzeugen
+    function createEnemies() {
         for (let i = 0; i < 10; i++) {
             let enemy = new SpaceInvader2.Enemy3();
             enemy.x = 90 + i * 37;
@@ -113,7 +118,7 @@ var SpaceInvader2;
         moveObjects();
         drawObjects();
         if (SpaceInvader2.totalEnemies == 0) {
-            startGame();
+            startNewGame();
         }
         if (SpaceInvader2.player.lives <= 0) {
             SpaceInvader2.player.lost();

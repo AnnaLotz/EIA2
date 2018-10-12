@@ -11,7 +11,7 @@ namespace SpaceInvader2 {
         public x: number;
         public y: number;
         protected points: number;
-        protected speed: number;
+        public speed: number;
         public direction: number; // 1 -> to right, -1 -> to left
         public width: number;
 

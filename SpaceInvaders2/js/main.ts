@@ -18,7 +18,7 @@ namespace SpaceInvader2 {
     let hoehe: number = <number>(window.innerHeight);
     let node: HTMLDivElement;
     let wroteScore: boolean = false;
-    let isFirstGame: boolean = true;
+    let round: number = 0;
 
     export let everyLaser: EveryLaser[] = [];
     export let enemies: Enemy[] = [];
@@ -41,9 +41,6 @@ namespace SpaceInvader2 {
 
     function startGame(): void {
 
-        
-
-
         document.getElementById("startMenue").style.display = "none"; //menu unsichtbar machen
         document.getElementById("game").style.display = "initial"; //gamefield sichtbar machen
 
@@ -61,26 +58,36 @@ namespace SpaceInvader2 {
         imgData = crc2.getImageData(0, 0, canvas.width, canvas.height);
 
 
-        createObjects();
+        createEnemies();
+        player = new Player();
 
-        if (isFirstGame == true) {
+        createListener(); // -> createListener.js , für alle Listener zum bewegen/schießen
 
-            createListener(); // -> createListener.js , für alle Listener zum bewegen/schießen
+        window.setTimeout(createUfo, 10000);
+        window.setTimeout(enemyShoot, 1000);
 
-            window.setTimeout(createUfo, 10000);
-            window.setTimeout(enemyShoot, 1000);
-
-            isFirstGame = false;
-            animate();
-        }
+        animate();
         
+
 
     } //startGame zu
 
-    //alle anfänglichen Objekte erzeugen
-    function createObjects(): void {
+    function startNewGame(): void {
+        round++;
+        console.log(round);
+        createEnemies();
+        
+        for (let i: number = 0; i < enemies.length; i++) {
+            enemies[i].speed += round * 0.3;
+        }
+        
 
-        player = new Player();
+    }
+
+
+
+    //alle anfänglichen Objekte erzeugen
+    function createEnemies(): void {
 
         for (let i: number = 0; i < 10; i++) {
             let enemy: Enemy3 = new Enemy3();
@@ -159,14 +166,14 @@ namespace SpaceInvader2 {
         drawObjects();
 
         if (totalEnemies == 0) {
-            startGame();
+            startNewGame();
         }
 
         if (player.lives <= 0) {
             player.lost();
         }
     } //animate zu
-    
+
 
 
     //in HandleListener.js ausgelöst
