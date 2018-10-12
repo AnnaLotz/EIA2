@@ -48,7 +48,6 @@ var SpaceInvader2;
     } //startGame zu
     function startNewGame() {
         round++;
-        console.log(round);
         createEnemies();
         for (let i = 0; i < SpaceInvader2.enemies.length; i++) {
             SpaceInvader2.enemies[i].speed += round * 0.3;

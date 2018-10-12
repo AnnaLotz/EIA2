@@ -74,13 +74,11 @@ namespace SpaceInvader2 {
 
     function startNewGame(): void {
         round++;
-        console.log(round);
         createEnemies();
 
         for (let i: number = 0; i < enemies.length; i++) {
             enemies[i].speed += round * 0.3;
         }
-
 
     }
 
