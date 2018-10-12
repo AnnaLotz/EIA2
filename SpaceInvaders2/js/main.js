@@ -26,12 +26,6 @@ var SpaceInvader2;
         startButton.addEventListener("click", startGame);
     } //init zu
     function startGame() {
-        if (isFirstGame == true) {
-            SpaceInvader2.createListener(); // -> createListener.js , f�r alle Listener zum bewegen/schie�en
-            window.setTimeout(createUfo, 10000);
-            window.setTimeout(enemyShoot, 1000);
-            isFirstGame = false;
-        }
         document.getElementById("startMenue").style.display = "none"; //menu unsichtbar machen
         document.getElementById("game").style.display = "initial"; //gamefield sichtbar machen
         SpaceInvader2.canvas = document.getElementsByTagName("canvas")[0];
@@ -46,7 +40,13 @@ var SpaceInvader2;
         SpaceInvader2.drawBackground(); // -> drawBackground.js
         imgData = SpaceInvader2.crc2.getImageData(0, 0, SpaceInvader2.canvas.width, SpaceInvader2.canvas.height);
         createObjects();
-        animate();
+        if (isFirstGame == true) {
+            SpaceInvader2.createListener(); // -> createListener.js , f�r alle Listener zum bewegen/schie�en
+            window.setTimeout(createUfo, 10000);
+            window.setTimeout(enemyShoot, 1000);
+            isFirstGame = false;
+            animate();
+        }
     } //startGame zu
     //alle anf�nglichen Objekte erzeugen
     function createObjects() {

@@ -41,15 +41,7 @@ namespace SpaceInvader2 {
 
     function startGame(): void {
 
-        if (isFirstGame == true) {
-
-            createListener(); // -> createListener.js , für alle Listener zum bewegen/schießen
-
-            window.setTimeout(createUfo, 10000);
-            window.setTimeout(enemyShoot, 1000);
-
-            isFirstGame = false;
-        }
+        
 
 
         document.getElementById("startMenue").style.display = "none"; //menu unsichtbar machen
@@ -71,7 +63,17 @@ namespace SpaceInvader2 {
 
         createObjects();
 
-        animate();
+        if (isFirstGame == true) {
+
+            createListener(); // -> createListener.js , für alle Listener zum bewegen/schießen
+
+            window.setTimeout(createUfo, 10000);
+            window.setTimeout(enemyShoot, 1000);
+
+            isFirstGame = false;
+            animate();
+        }
+        
 
     } //startGame zu
 
