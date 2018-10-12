@@ -126,10 +126,10 @@ var SpaceInvader2;
     } //animate zu
     //in HandleListener.js ausgel�st
     function shoot() {
-        //        if (player.bullets < 1) {
-        let laser = new SpaceInvader2.Laser();
-        SpaceInvader2.everyLaser.push(laser);
-        //        }
+        if (SpaceInvader2.player.bullets < 1) {
+            let laser = new SpaceInvader2.Laser();
+            SpaceInvader2.everyLaser.push(laser);
+        }
     }
     SpaceInvader2.shoot = shoot; //shoot zu
     function moveObjects() {

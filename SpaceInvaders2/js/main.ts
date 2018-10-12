@@ -67,7 +67,7 @@ namespace SpaceInvader2 {
         window.setTimeout(enemyShoot, 1000);
 
         animate();
-        
+
 
 
     } //startGame zu
@@ -76,11 +76,11 @@ namespace SpaceInvader2 {
         round++;
         console.log(round);
         createEnemies();
-        
+
         for (let i: number = 0; i < enemies.length; i++) {
             enemies[i].speed += round * 0.3;
         }
-        
+
 
     }
 
@@ -178,10 +178,10 @@ namespace SpaceInvader2 {
 
     //in HandleListener.js ausgelöst
     export function shoot(): void {
-        //        if (player.bullets < 1) {
-        let laser: Laser = new Laser();
-        everyLaser.push(laser);
-        //        }
+        if (player.bullets < 1) {
+            let laser: Laser = new Laser();
+            everyLaser.push(laser);
+        }
     } //shoot zu
 
 
